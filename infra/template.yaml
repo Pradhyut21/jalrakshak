@@ -77,6 +77,8 @@ Resources:
             Ref: AllowedOrigin
           JAL_COOKIE_SECURE: 'true'
           JAL_DEMO_ONLY: 'true'
+          JAL_MAX_NEW_SESSIONS_PER_HOUR: '100'
+          JAL_MAX_NEW_SESSIONS_PER_MINUTE: '6'
           JAL_SESSION_TTL_HOURS:
             Ref: SessionTtlHours
       Policies:

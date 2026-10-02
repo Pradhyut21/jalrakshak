@@ -4,11 +4,15 @@ from copy import deepcopy
 from datetime import datetime
 import json
 import math
+import hashlib
 
 import pytest
 
 from backend.app.domain import RATE_WINDOW_INTERVALS, analyze
 from scripts.evaluate import ROOT, build_report, canonical, choose_window, generate, history_at, metrics, predict, split_origins
+from scripts.evaluate import evaluate_anomaly
+from scripts import evaluate
+from scripts.backtest_reserve import FROZEN_ORIGINAL_DATA_SHA256
 
 
 def test_metric_arithmetic_is_independently_hand_calculated():
@@ -28,6 +32,7 @@ def test_window_selection_uses_validation_and_shorter_tie_break():
 def test_generation_is_reproducible_and_features_exclude_truth_and_future():
     dataset = generate()
     assert canonical(dataset) == canonical(generate())
+    assert hashlib.sha256(canonical(dataset).encode()).hexdigest() == FROZEN_ORIGINAL_DATA_SHA256
     rows, arrivals, at = history_at(dataset, 200)
     assert len(rows) == 201
     assert all(datetime.fromisoformat(row["observed_at"]) <= at for row in rows)
@@ -57,6 +62,20 @@ def test_operational_rate_matches_evaluated_method_on_refill_history():
     assert result["current_rate_lph"] == pytest.approx(predict(rows, arrivals, at, "recent_mean", RATE_WINDOW_INTERVALS), abs=0.00051)
 
 
+def test_continuing_false_alert_at_boundary_is_not_counted_as_new_or_new_episode_detection(monkeypatch):
+    dataset = generate(total_hours=10)
+    for row in dataset["truth"]:
+        row["abnormal"] = False
+    dataset["truth"][4]["abnormal"] = True
+    monkeypatch.setattr(evaluate, "analyze", lambda *args: {"anomaly": {"active": True}})
+    result = evaluate_anomaly(dataset, [3, 4, 5])
+    assert result["false_alert_events"] == 0
+    assert result["labeled_episodes"] == result["detected_episodes"] == 1
+    assert result["episodes_already_alerted_before_onset"] == 1
+    assert result["episodes_with_new_alert_transition"] == 0
+    assert result["episodes"][0]["new_alert_delay_hours"] is None
+
+
 def test_generated_artifacts_reproduce_and_packaged_bytes_match():
     first = (ROOT / "artifacts" / "evaluation.json").read_bytes()
     second = (ROOT / "backend" / "app" / "data" / "evaluation.json").read_bytes()
@@ -65,6 +84,9 @@ def test_generated_artifacts_reproduce_and_packaged_bytes_match():
     regenerated = build_report()
     assert regenerated == saved
     assert saved["data_kind"] == "SIMULATED"
-    assert saved["selection"]["matches_operational_method"] is True
-    assert saved["reserve_timing"]["status"] == "not_evaluated"
+    assert saved["selection"]["matches_operational_method"] is False
+    assert saved["reserve_timing"]["status"] == "evaluated"
+    assert saved["reserve_timing"]["selection"]["matches_operational_method"] is True
     assert saved["final_test"]["recent_mean_selected"]["samples"] == 166
+    assert saved["final_test"]["last_rate"]["mae_l"] == 149.097767
+    assert saved["anomaly_final_test"]["labeled_episodes"] > 1

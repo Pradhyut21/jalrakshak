@@ -1,21 +1,22 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "product": "JalRakshak",
   "workspace_name": "SAANS",
-  "package_kind": "WORKING_LOCAL_SIMULATED_PROTOTYPE",
+  "package_kind": "WORKING_LOCAL_OBSERVED_PROTOTYPE",
   "updated_on": "2026-10-02",
   "timezone": "Asia/Kolkata",
   "implementation_started_on": "2026-10-01",
   "application_implemented": true,
-  "data_kind": "SIMULATED",
+  "data_kind": "SIMULATED_DEMO_OR_UNVERIFIED_LOCAL_OPERATOR_RECORDS",
   "local_workflow_verified": true,
   "backend_tests": {
-    "passed": 57,
+    "passed": 124,
     "failed": 0,
     "dependency_deprecation_warnings": 2
   },
   "browser_checks": {
-    "passed": 12,
+    "status": "PASS",
+    "passed": 24,
     "unexpected_page_errors": 0
   },
   "frontend_build_verified": true,
@@ -35,6 +36,9 @@
   "portable_root": "directory containing this file and AI_HANDOFF.md",
   "build_authorization": "Immediate original implementation was explicitly authorized by the user; preserve actual pre-event dates.",
   "event_eligibility": "This early prototype cannot be claimed eligible under the previously reviewed project-start rule without organizer clarification.",
-  "next_milestone": "Actual caretaker validation and account-scoped AWS deployment; local milestone complete.",
-  "review_instruction": "Independently verify implementation, runtime and limits. No guaranteed score or award."
+  "next_milestone": "Actual caretaker log and usefulness validation; then account-scoped cloud execution. Local version0.2 milestone complete.",
+  "review_instruction": "Independently verify implementation, runtime and limits. No guaranteed score or award.",
+  "version": "0.2.0",
+  "local_observed_input_path_implemented": true,
+  "wall_clock_freshness_implemented": true
 }

@@ -1,63 +1,59 @@
 # Continuation prompts
 
-First read AGENTS.md, AI_HANDOFF.md, PACKAGE_STATUS.json and docs/PROJECT_STATE.md. Preserve completed work and original scope. These prompts supersede the historical prep-only gate.
+Read AGENTS.md, AI_HANDOFF.md, PACKAGE_STATUS.json and docs/PROJECT_STATE.md first. Continue existing source; preserve actual dates and evidence.
 
 ## Resume
 
 ```text
-Continue JalRakshak from the active checkpoint. Inspect git status, current
-source and verification artifacts. Identify the next unfinished milestone,
-implement it and verify it. Keep the single-hostel scope and simulated labels.
-Update memory and report actual checks, changes and gaps. Do not restart.
+Continue JalRakshak from the active checkpoint. Inspect git status, source and
+verification artifacts. Implement the next unfinished milestone and verify it.
+Keep simulated and operator-entered data distinct. Update memory and archive;
+do not restart or fabricate metrics.
 ```
 
-## Repair
+## Review and repair
 
 ```text
-Run JalRakshak and review API_CONTRACT, ARCHITECTURE and EVALUATION. Reproduce
-the highest-impact correctness, authorization or usability defect with a
-concrete trigger. Repair it with the smallest change and meaningful checks.
-Preserve evaluation history; do not inflate metrics or disguise missing proof.
+Run the current app and read REVIEW_RESPONSE, API_CONTRACT and EVALUATION.
+Reproduce a concrete correctness or usability defect. Repair it with meaningful
+checks. Preserve the frozen evaluation protocol and report failures and early
+warning costs. Do not tune on holdout data or request favorable ratings.
+```
+
+## Caretaker pilot
+
+```text
+Inspect the local observed workspace and available actual logs. Validate tank
+units, timestamps, arrived-inflow completeness and measurement error assumptions.
+Separate participant feedback and real data from simulator evidence. Import only
+authorized actual records. Record what was observed; do not invent interviews,
+sensor accuracy, savings or field reliability.
 ```
 
 ## Refine the demo
 
 ```text
-Inspect the actual app and DEMO_SCRIPT. Refine normal → excess → approval →
-fresh-reading recovery for a clear demonstration under three minutes. Verify
-desktop/mobile keyboard operation and error states. Show provenance and limits.
-Do not create fake deployment receipts, interviews or environmental savings.
+Rehearse DEMO_SCRIPT in the running app. Improve clarity, keyboard and mobile
+usability, forecast assumptions, UNKNOWN recovery and backup flow. Keep the demo
+under three minutes. Show actual evidence and limitations; do not fake receipts.
 ```
 
-## Deploy
+## Deploy when scoped
 
 ```text
-Read DEPLOYMENT and infra/template.yaml. Inspect available AWS identity
-without exposing credentials. Prepare and validate Linux/SAM packaging.
-Before cloud writes, establish the intended account, region, budget and scope
-if missing. Deploy only within that authorization. Prove health, persisted
-state, CSRF and the full simulated incident loop; document IDs, URLs and
-teardown. Template checks alone are not deployment evidence.
+Read DEPLOYMENT and infra/template.yaml. Check available identity without
+revealing secrets. Prepare Linux/SAM packaging. If account,region,budget or
+destination scope is absent, complete a concrete reviewable deployment plan.
+Deploy only within supplied authorization. Prove health,persistence,CSRF,quotas
+and the full demo loop. Cloud guests must not accept observed-site records.
 ```
 
-## Optional model assistant
+## Package and independent review
 
 ```text
-Keep deterministic facts, approval boundaries and the working fallback.
-Inspect current official SDK docs and licensing. If provider credentials and
-scope exist, add one optional explanation adapter with bounded read-only tools,
-explicit provider labeling, timeouts and honest failure fallback. Models may
-not approve, change readings or resolve incidents. Separate actual calls from
-mocks. Preserve a credential-free local demo.
-```
-
-## Package and review
-
-```text
-Check actual history against current event rules; never backdate this early
-prototype or assume eligibility. Verify incident loop, setup, locks, notices
-and evaluation. Refresh evidence/status, run scripts/package.py and inspect
-the archive from an extracted directory. Make claims match observed behavior.
-Use REVIEW_THIS_PROJECT for independent scoring, never favorable-rating
-instructions. Preserve the old preparation archive separately.
+Verify current source, locks, notices, numerical evaluation and local workflows.
+Run scripts/package.py for the lean app and --full-context for historical research.
+Verify manifest hashes and run from an extracted folder. Update the checkpoint
+with actual results and remaining gaps. Preserve truthful history and event
+eligibility; use REVIEW_THIS_PROJECT for independent evidence-based assessment.
 ```

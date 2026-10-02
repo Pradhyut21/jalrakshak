@@ -2,20 +2,21 @@
 
 ```mermaid
 flowchart LR
-    UI[React operations dashboard] --> API[FastAPI validated API]
-    API --> DOMAIN[Pure accounting and forecast]
-    API --> OPS[Approval and verification]
-    OPS --> STORE[Isolated SQLite session]
-    API -. optional cloud mode .-> DDB[DynamoDB conditional updates]
-    API -. SAM source .-> AWS[API Gateway + Lambda]
+  UI[React caretaker interface] --> API[Validated FastAPI]
+  API --> DOMAIN[Pure tank balance and hourly forecast]
+  API --> OPS[Evidence and incident lifecycle]
+  OPS --> STORE[Transactional local SQLite]
+  API -. demo-only cloud source .-> DDB[DynamoDB conditional updates]
 ```
 
-domain.py owns numerical facts. operations.py owns ingestion, incident state and evidence-bound actions. repository.py serializes SQLite updates and provides conditional DynamoDB revisions. main.py validates HTTP requests and serves the built interface. The browser cannot set incident status, verification counts or success receipts.
+domain.py owns numerical facts; operations.py owns records, incident facts and evidence-bound actions; repository.py owns persistence and concurrency; main.py validates requests and locality. The browser cannot set incident status, success receipts or verification counts.
 
-Preview changes future assumptions only, never observed readings. Duplicate approval returns the same local receipt. Invalid mutations roll back. DynamoDB retries operate only on session data; no outbound side effects occur inside a retry.
+Demo sessions use an isolated virtual clock. LOCAL_OBSERVED is available only to loopback peers with SQLite and without JAL_DEMO_ONLY=true. It begins empty and uses UTC server wall time. Recorded inputs are operator-entered, not authenticated sensor measurements. Site timezone drives forecast buckets; the UI currently collects/displays IST. India/UTC work without an external timezone database.
 
-This demo uses session isolation, not real-site authentication. A random HTTP-only cookie identifies each session; mutations also require its CSRF token and an allowed Origin when supplied. Local cookies use SameSite=Lax; cloud config uses Secure, SameSite=None and a precise frontend origin. Browser third-party cookie restrictions may still affect cloud hosting. TTL is enforced on reads even before storage cleanup. Archive packaging excludes database files, cookies and credentials.
+Session cookies are random and HTTP-only. Mutations and exports require CSRF and an allowed Origin when present. This provides local session isolation, not production authentication. Observed sessions expire after30 days without a write; disposable demos default24h. SQLite atomically enforces200 active sessions and300KB payloads; new guest creation is limited per peer to6/minute. DynamoDB source uses an atomic global100/hour creation budget. Its quotas and conditional updates are tested offline; live AWS behavior is unverified.
 
-The assistant explains computed facts deterministically. An optional webhook adapter is tested against a real local HTTP receiver with success and failure, but is not connected to an external destination. A local inbox receipt cannot establish human acknowledgement, tanker booking or repair.
+Imports integrate arrived inflow and observations in a single transaction before analysis. Conflicts roll back. Batch imports cannot manufacture three independent recovery checks. Planned delivery IDs can transition to arrived exactly once. Changed records/settings invalidate outstanding approvals. Reading-error tolerance is bounded by the declared per-reading error; larger unexplained rises remain UNKNOWN.
 
-Tests cover independent arithmetic, chronological availability, freshness, inflow reconciliation, schema rejection, ownership, approval revision/expiry, persistence, concurrent duplicate approval and recovery. Browser checks exercise the built UI. Synthetic evaluation has separate methodology and is not proof of field reliability.
+Stored incident lifecycle is derived from approval, intervention and verified timestamps. UNKNOWN is a view of current data quality and does not erase those facts. Fresh readings restore OPEN, ACTION_REQUESTED or VERIFYING. Unknown/gapped/revised evidence clears recovery counts. Preview/assistant use the validated session snapshot, removing the second-read expiry race.
+
+No outbound send occurs inside retries. Local notice receipts establish only persistence. The optional webhook adapter has local receiver tests and is not connected to a recipient. The assistant explains computed facts deterministically. See EVALUATION.md for independent synthetic reserve timing, censoring, early warnings and detector false alerts.

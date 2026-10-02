@@ -1,33 +1,47 @@
 # Active JalRakshak checkpoint
 
-Updated October 2, 2026, Asia/Kolkata. **Phase: WORKING_LOCAL_SIMULATED_PROTOTYPE.** Local implementation and portable packaging milestone complete.
+Updated October 2, 2026 Â· Asia/Kolkata. **Version 0.2: WORKING_LOCAL_OBSERVED_PROTOTYPE. Local repair and portable packaging milestone complete.**
 
-## Locked direction
+## Objective and decisions
 
-Original JalRakshak in the SAANS workspace: one caretaker, one tank, conservative reserve/action deadline, sustained abnormal depletion, explicitly approved local notice and recovery evidence. The user authorized immediate implementation after the event timing consequence was explained. Real implementation began October1 and continued October2. Preserve dates; never claim this early prototype satisfies the previously reviewed project-start rule without organizer clarification.
+The user asked to fix the independent review and continue the original water-operations app in this workspace. Scope remains one caretaker, one tank and one incident loop. Winner repositories informed research; their restricted or unlicensed code was not copied. Preserve actual October 1â€“2 development dates and unresolved event-start eligibility.
 
-## Implemented
+## Completed
 
-React/Vite/TypeScript responsive interface with original SVG tank/projections, scenarios, notice review, incident history and API-derived evaluation. Modular FastAPI with validated simulated inputs, random isolated sessions, CSRF/origin checks, persistent atomic SQLite, deterministic analysis/assistant and future-only previews. Actions bind evidence revision/expiry and require an actual JSON boolean confirmation. Duplicate approvals retain one local receipt. SAM/API Gateway/Lambda source and optional DynamoDB conditional-update repository are included.
+- Replaced constant last-rate Ã— 1.2 forecasting with historical local-hour medians, empirical upper-demand bounds and a recent upper-rate floor. Parameters were frozen using validation only. Forecasts account for arrivals once, preserve measured rates, separate reserve crossing from emptiness and expose sparse history and reading-error assumptions.
+- Separated incident lifecycle facts from UNKNOWN data quality. Valid readings restore prior workflow state; older saved approval receipts are preserved on upgrade. Approval remains bound to session, action, evidence revision, expiry and a strict boolean.
+- Recovery requires three independent fresh normal post-intervention readings plus adequate modeled margin. Claims alone cannot resolve incidents. Changed imports, ambiguous intervals and historical revisions invalidate recovery credit. No intervention event is created without an incident.
+- Added an empty local observed workspace, editable tank settings, timestamped manual entries, atomic CSV/arrival imports, actual/planned delivery records, wall-time freshness and JSON backups. Demo fixtures cannot carry into actual records. Inputs remain unverified operator entries, available only on loopback SQLite; cloud guests remain simulated.
+- Bounded anonymous creation, active SQLite sessions and payload size. Added offline-tested DynamoDB hourly quota source. Removed the preview/assistant second-read expiry race and return401 for mutation expiry.
+- Fixed CSV accessibility labels, mobile evaluation overflow and faint explanatory text. The browser refreshes every30 seconds and on visibility changes, with request-order guards and clear refresh failure.
+- Created a lean app archive and a separate full-context archive. Current screenshots, active handoff and six continuation prompts are easy to find. Required dependency notices are preserved.
 
-Numerical rules: forecast anchored at latest measurement, actual arrivals reconciled once, 48-hour bounded trajectories, conservative excludes planned supply and increases demand20%. Validation selected the simple last-interval forecast; detector separately requires three high intervals against earlier median. Delivery preserves excess demand; only repair scenario reduces it. Verification requires three fresh normal post-intervention intervals and adequate margin. UNKNOWN or late evidence clears/reopens verification; claims and notifications do not prove repair. Nonfinite requests return422 rather than crashing. SQLite connections close after every transaction.
+Observed records retain the newest1,000 readings and at most200 supply records. They expire after30 days without a write; export backups. Combined supply lead time and buffer cannot exceed the48-hour model horizon. This is local session isolation, not a production identity system.
 
-## Verified evidence
+## Verified
 
-- 57 backend tests pass,0failures;2 upstream deprecation warnings.
-- Production TypeScript/Vite build passes.
-- 12 Chromium checks pass,0unexpected page errors: initial state,24h delay,assistant,excess,approval,repair/refill,recovery,manual entry,evaluation,reset,mobile overflow,UNKNOWN and API failure.
-- Fresh archive extraction: new .venv, locked install,npm ci/build,57tests and12browserchecks pass on Windows. Source/lock hashes recorded in artifacts/portable-install-verification.json.
-- Synthetic chronological holdout:166 one-hour forecasts,MAE149.097767L; validation-only window selection. One labeled holdout abnormal episode detected after2h;0newfalsealerts/159normal site-hours. No real-data,calibrated uncertainty or48-hour forecast accuracy claim. See docs/EVALUATION.md.
-- SAM YAML/wiring/static AST checks pass offline; no transform,Linux build or deployment verified.
-- Observed dependency inventory:35Python,25npm,26preservednoticefiles; absent-platform entries and metadata-only gap explicit. Current ZIP manifest verifies all payload hashes and safe paths.
+- **124 backend tests pass**, zero failures and two upstream deprecation warnings, in a new environment from the extracted archive.
+- **24 Chromium checks pass**, zero JavaScript errors, covering the demo, observed data path, imports, local approval/recovery, backups,390px mobile pages, polling and error flows. Generated E2E inputs are explicitly test data; stale polling uses a declared mock, while backend wall-clock aging is independently tested.
+- Fresh locked Python install, npm ci and production build pass on Windows. All49 application-source, built-interface and lock files checked match the tested archive bytes. See artifacts/portable-install-verification.json.
+- Exact synthetic evaluation reproduction passes; both packaged JSON copies match. Original generator hash remains688ad1143797468282f2e051acd7bc9a870f5272633a6ce9164143393f4e23c0.
+- Offline infrastructure structure/static AST checks pass. SAM transform, Linux Lambda build and deployment were not run.
+- Dependency inventory remains35 Python distributions,25 installed npm packages and44 platform-specific/uninstalled lock entries. One optional native development dependency has metadata-only license evidence; notices and scope remain documented.
+- Archive manifests verify safe paths, full coverage, hashes and CRC. Runtime records, installed dependencies, credentials and Git internals are excluded.
+
+## Forecast evidence and limits
+
+Full48-hour targets are purged across chronological splits. Original120-window holdout: legacy53 late predictions, upgraded0, but mean5.700h early and P9013.848h. Normal-only65 windows: legacy27 late, upgraded0. The protocol differs from the external review's63/20 counts; no executable review protocol was supplied.
+
+Twelve predeclared untuned stress cases contain1,440 windows,1,232 true crossings and208 censored outcomes. The new method still has12 late predictions (maximum0.930h), no missed horizon events and substantial early warnings. All208 censored windows also received predicted crossings. The detector has44 false-alert events over1,515 normal site-hours.13 episodes overlap alerts, including3 already alerted before onset. These are synthetic results, not field accuracy, calibrated probability or a safety guarantee.
 
 ## Run and resume
 
-From this root: `python scripts/run.py --setup`; later `python scripts/run.py`. Local appURL http://127.0.0.1:8000. First setup needs Python3.13,Node22.18+ and internet for locked dependencies. START_APP.cmd provides the same Windows startup. The packaged built UI is included; no API keys required. Tests: `.venv/Scripts/python.exe -m pytest -q backend/tests`. Reproduce evaluation: `.venv/Scripts/python.exe scripts/evaluate.py`. Browser harness requires Playwright Chromium installed separately.
+From this root: `python scripts/run.py --setup`; later `python scripts/run.py`. Initial setup needs Python3.13, Node22.18+ and internet. Default URL is http://127.0.0.1:8000. Another project currently uses8000; the final root app is running at **http://127.0.0.1:8012**, launched with `python scripts/run.py --no-browser --port 8012`.
 
-Use AI_HANDOFF.md, docs/PROJECT_BRIEF.md and docs/CONTINUE_PROMPTS.md in a new chat. Preserve source/history; prep is historical and its earlier preparation-only gate is superseded. Keep old preparation ZIP separate. A new source change requires appropriate rechecks and a refreshed manifest/archive; never reuse this evidence for changed behavior.
+Tests: `.venv/Scripts/python.exe -m pytest -q backend/tests`. Reproduce evaluation: `.venv/Scripts/python.exe scripts/evaluate.py`. Browser check accepts the running URL. Packaging: `python scripts/package.py` and optional `--full-context`.
 
-## Next milestone and limits
+Read AI_HANDOFF.md, PROJECT_BRIEF.md, API_CONTRACT.md, EVALUATION.md and REVIEW_RESPONSE.md before continuing. Historical prep is separate; its old preparation-only gate is superseded by the user's explicit immediate-build authorization. Preserve source and failures; refresh checks and archives after changes.
 
-No required local-app work remains for this milestone. Next high-value work is actual caretaker validation and a scoped AWS deployment, then optionally a grounded provider assistant or authorized transport. AWS identity/account,region,budget and notification recipient have not been supplied. There are no real sensors/interviews,cloud receipts,LLM calls,measured savings or awarded scores. Public demo isolation is not production authentication; all inputs remain simulated. Do not guess credentials,recipients or eligibility. Use the existing deployment guide/continuation prompts when concrete scope is available.
+## Next evidence milestone
+
+Actual caretaker tank logs and a usefulness check have not been supplied. There is no calibrated sensor, real caretaker pilot, live AWS execution, external supplier send, model call or measured water saving. Cloud work needs concrete account, region and cost scope; external transport needs an authorized destination. No universal rating or award is promised. No required local work remains for this milestone.

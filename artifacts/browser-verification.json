@@ -1,32 +1,72 @@
 {
   "status": "PASS",
-  "checked_at_utc": "2026-10-02T15:51:57.699551+00:00",
+  "checked_at_utc": "2026-10-02T17:05:45.987225+00:00",
   "tool": "Playwright / Chromium",
-  "url": "http://127.0.0.1:8000",
+  "url": "http://127.0.0.1:8012",
   "checks": [
-    "initial API-backed healthy state",
-    "24h delayed supply preview creates 8.7h projected physical shortage without mutation",
-    "deterministic assistant explains computed deadline",
-    "excess scenario updates readings, volume, risk and incident",
-    "explicit exact-request confirmation produces truthful local receipt",
-    "repair does not resolve low-margin incident; extra simulated delivery and fresh readings verify recovery",
-    "manual simulated reading advances virtual clock and persists",
-    "evaluation page renders generated artifact",
-    "reset restores isolated healthy demo",
-    "390px mobile viewport has no horizontal overflow",
-    "unknown inflow produces UNKNOWN, disables proposal and preserves truthful assistant fallback",
-    "API failure shows reconnect, with no invented tank values"
+    "Initial demo storage and status render API-backed state without fallback values",
+    "24-hour preview matches API shortage, preserves observed rate, and does not mutate evidence",
+    "Deterministic guide explains observed-demand planning assumptions without a safety guarantee",
+    "Excess-use scenario updates observed evidence, risk and incident through the server",
+    "Approval starts unchecked and creates a local receipt, not a supplier booking",
+    "Repair follows current server evidence; resolution requires at least three accepted verification readings",
+    "Manual demo entry discloses clock advance and remains simulated",
+    "Evaluation separates actual legacy demand metrics from reserve timing, stress failures and passed deadlines",
+    "390px demo overview has no horizontal overflow",
+    "Unrecorded inflow is UNKNOWN, blocks proposals, and preserves truthful assistant fallback",
+    "Observed transition needs explicit consent, clears demo history, starts null/UNKNOWN and hides demo controls",
+    "Actual observation form starts blank with an editable IST observation time",
+    "Generated E2E fixture imports logs and arrivals atomically with correct inflow-adjusted demand",
+    "Malformed CSV is visibly rejected without creating observations",
+    "Conflicting import returns visible server error and preserves prior evidence",
+    "Planned supply is conditional and does not increase measured tank volume",
+    "Editable tank settings recompute forecasts and retain stored observations",
+    "Manual entry saves exact timestamp without advancing wall clock; provenance and assumptions remain explicit",
+    "Browser downloads backup with evidence/settings, excluding credentials; retention limits remain visible",
+    "390px observed overview and settings/import/export forms have no horizontal overflow",
+    "Observed workspace keeps synthetic evaluation separate; artifact tables remain responsive",
+    "Actual 30-second timer accepts mocked stale-clock response, blocks proposals and preserves measured volume",
+    "Refresh failure visibly preserves last-known data without invented current values",
+    "Initial API failure shows reconnect without fabricated readings or metrics"
   ],
   "unexpected_page_errors": [],
+  "failure": null,
   "screenshots": [
-    "approval.png",
     "desktop.png",
-    "evaluation.png",
-    "excess-usage.png",
-    "mobile.png",
     "scenario-preview.png",
+    "excess-usage.png",
+    "approval.png",
+    "verified-recovery.png",
+    "evaluation.png",
+    "mobile.png",
     "unknown-mobile.png",
-    "verified-recovery.png"
+    "local-empty.png",
+    "local-observed.png",
+    "local-data-mobile.png",
+    "local-observed-mobile.png",
+    "local-stale-mobile.png",
+    "desktop-preview.png"
   ],
-  "limits": "Local simulated prototype only; no AWS, external recipient or real sensor verification."
+  "observations": {
+    "24h_delay_shortage_hours_from_api": 8.666667,
+    "repair_scenario_incident_status": "RESOLVED",
+    "stress_failure_cases_from_artifact": 5
+  },
+  "test_inputs": {
+    "label": "GENERATED E2E TEST INPUTS \u2014 NOT FIELD OBSERVATIONS",
+    "purpose": "Generated E2E numbers and recent timestamps exercise observed ingestion; these are not field logs or field deployment evidence.",
+    "generated_readings": 9,
+    "generated_arrivals": 1,
+    "browser_sessions": 1
+  },
+  "limits": "Local browser and HTTP integration only. No AWS execution, external recipient, calibrated sensor or field accuracy claim. Stale browser polling uses an explicitly mocked dashboard snapshot; actual clock/domain freshness is tested separately.",
+  "additional_screenshot_capture": {
+    "checked_at_utc": "2026-10-02T17:09:34.528914+00:00",
+    "filename": "desktop-preview.png",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "scope": "Current built app screenshot only; the 24 integration checks retain their original checked_at_utc."
+  }
 }

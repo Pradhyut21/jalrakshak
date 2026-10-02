@@ -5,6 +5,7 @@ import argparse
 import os
 from pathlib import Path
 import shutil
+import socket
 import subprocess
 import sys
 import webbrowser
@@ -40,18 +41,25 @@ def main():
         raise SystemExit("First run: python scripts/run.py --setup")
     if not (ROOT / "frontend/dist/index.html").exists():
         raise SystemExit("The interface must be built first: python scripts/run.py --setup")
+    try:
+        with socket.socket() as probe:
+            probe.bind(("127.0.0.1", args.port))
+    except OSError as error:
+        raise SystemExit(f"Port {args.port} is unavailable. Keep the other application running and choose a free port, for example: python scripts/run.py --port 8012") from error
     url = f"http://127.0.0.1:{args.port}"
     env = os.environ.copy()
     origins = env.get("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",")
     origins.extend([url, f"http://localhost:{args.port}"])
     env["ALLOWED_ORIGINS"] = ",".join(dict.fromkeys(origin.strip() for origin in origins if origin.strip()))
-    print(f"JalRakshak simulated demo: {url}\nPress Ctrl+C to stop.", flush=True)
+    print(f"JalRakshak local app: {url}\nPress Ctrl+C to stop.", flush=True)
     if not args.no_browser:
         Timer(2.0, lambda: webbrowser.open(url)).start()
     try:
         command([python, "-m", "uvicorn", "app.main:app", "--app-dir", ROOT / "backend", "--host", "127.0.0.1", "--port", args.port], env=env)
     except KeyboardInterrupt:
         pass
+    except subprocess.CalledProcessError as error:
+        raise SystemExit(f"The local server stopped (exit {error.returncode}). Check the server message above.") from error
 
 
 if __name__ == "__main__":

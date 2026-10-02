@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at_ist": "2026-10-02T21:09:30.974888+05:30",
+  "generated_at_ist": "2026-10-02T22:28:06.329758+05:30",
   "inventory_kind": "OBSERVED_INSTALLED_DEPENDENCIES_NOT_LEGAL_CERTIFICATION",
   "python_version": "3.13.5",
   "platform": "Windows",
@@ -1442,7 +1442,7 @@
   "npm": {
     "manifest": "frontend/package.json",
     "lockfile": "frontend/package-lock.json",
-    "lockfile_sha256": "e638fd4ad69866a20bd49177f31c35201dd385408af1e10bd7a4dae18a5ff931",
+    "lockfile_sha256": "1112299205171a2163f51b4952020869a4c7a58743651b04218cddc4bfff2240",
     "lockfile_version": 3,
     "packages": [
       {

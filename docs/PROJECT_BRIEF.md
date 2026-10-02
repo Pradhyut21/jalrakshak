@@ -1,19 +1,13 @@
-# Active implementation brief
+# Implementation brief
 
-Updated October 2, 2026. The earlier proposal is in prep/PROJECT_BRIEF.md.
+Updated October 2, 2026. One caretaker manages one tank. JalRakshak helps decide when to arrange supply and inspect abnormal site-level depletion before reserve crossing.
 
-One hostel caretaker manages one tank. The decision is when to request additional supply and inspect abnormal depletion before crossing the reserve. The fictional sample tank has 50,000 L capacity, 5,000 L reserve, 14-hour supply lead time and 3-hour buffer. These are demonstration assumptions, not measured campus parameters.
+Implemented: local operator log entry/import, editable site settings, separate supply ledger, wall-time freshness, 48-hour reserve planning, read-only previews, incident history, evidence-bound local notices, fresh-reading recovery, backup export and reproducible synthetic evaluation. The demo uses fictional 50,000 L capacity, 5,000 L reserve, 14-hour lead time and 3-hour buffer; these are editable in the empty observed workspace.
 
-Implemented scope: operations dashboard, forecast/scenario view, incident timeline, local notice inbox, synthetic evaluation and deterministic evidence assistant. Supported readings are simulated; real-site collection and production authentication remain future work.
+Observed interval demand accounts for arrivals once. Central forecasts use local-hour historical medians; the upper planning path uses empirical observed-demand bounds, a recent upper-rate floor and measured storage minus declared error. Lookback168h, upper quantile0.9, minimum bucket2h and multiplier1.0 were frozen before final reporting. Sparse history is explicit. No guaranteed safety or calibrated probability is claimed.
 
-Recent demand uses the last usable measurement interval, accounting for arrived inflow once; this one-interval window was selected on synthetic validation MAE and frozen before final reporting, and is exactly the last-rate baseline. Earlier median demand excluding the last four hours is the anomaly baseline. Three consecutive intervals over 1.5 times that baseline open an abnormal-depletion incident. Aggregate data cannot locate a physical leak.
+Three consecutive intervals above1.5Ã— the earlier median flag abnormal depletion. This detector has false alerts under daily cycles and cannot locate a leak. UNKNOWN is a temporary quality view, separate from stored lifecycle facts. Approval and intervention do not establish physical success; recovery needs three fresh normal post-intervention readings and at least three hours of modeled planning margin.
 
-Forecasts start at the latest measured volume/time, run 48 hours, cap storage and track overflow/unmet demand separately. Central and optimistic paths conditionally include planned supply. The conservative path excludes unarrived supply and uses 20% higher demand. This is sensitivity analysis, not calibrated uncertainty. Reserve breach and physical emptiness are separate. Action deadline equals conservative reserve breach minus lead time and buffer. Missing, stale or conflicting evidence returns UNKNOWN.
+Observed mode runs on loopback SQLite only. It starts empty and uses the real clock. Entries retain manual_observed/simulated:false provenance but are not authenticated sensor evidence. The session retains the newest1,000 readings, at most200 supply records and expires after30 days without a write. Export backups; cloud guests cannot enter actual-site data.
 
-Explicit approval binds session, action, evidence revision and expiry. It atomically records a receipt in the current session's local inbox; no external message or booking occurs. Repairs are claims. Verification requires three fresh post-intervention readings, normal interval depletion and adequate planning margin.
-
-Tech: React/TypeScript/Vite, original SVG, FastAPI/Pydantic, atomic SQLite sessions, optional DynamoDB repository and SAM Lambda/API Gateway source. Each browser's state persists across local restart and expires after 24 hours. Local use needs no model credentials or paid services.
-
-Acceptance: launch from the documented command, replay normal → excess → propose/approve → repair → delivery → verified recovery, observe truthful error/unknown behavior, reproduce tests and synthetic evaluation. Check the active checkpoint for actual evidence. Caretaker validation, sensor calibration, cloud hosting and authorized external transport are subsequent milestones.
-
-Avoid expanding into cities, payment flows, leak localization, pump automation or unneeded deep learning. Strengthen the demonstrated workflow first. Reviews and awards depend on evidence; no score is promised.
+Tech: React/TypeScript/Vite, original SVG, FastAPI/Pydantic, transactional SQLite, optional DynamoDB and SAM source. The current checkpoint records tests. Actual caretaker utility, sensor accuracy, cloud execution and external transport remain future evidence milestones. Preserve truthful pre-event dates and scope; avoid city-wide claims, leak localization, pump automation, unnecessary deep learning or favorable-rating instructions.

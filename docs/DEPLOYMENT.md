@@ -4,6 +4,8 @@ Prepared 1 October 2026. The user authorized immediate implementation; this prot
 
 **AWS deployment has not been performed or verified.** No AWS account, region, cost scope, public frontend, real sensor, or external notification destination has been verified. `infra/template.yaml` is source for a disposable simulated-session backend; a template or offline check is not cloud execution evidence.
 
+Version0.2 adds a DynamoDB atomic global creation budget (default100 new sessions/hour), a300KB serialized payload cap and per-instance peer rate checks, alongside API Gateway throttling. Offline counter tests do not verify live AWS capacity, billing or TTL cleanup latency. JAL_DEMO_ONLY=true and DynamoDB storage both disable local observed workspaces; actual operator records must stay on the local loopback SQLite application until production identity/access controls are implemented.
+
 On **2 October 2026**, `python infra/check_template.py --check-source` passed the offline YAML/wiring and handler-AST checks against the existing backend. SAM transformation, Linux dependency packaging and actual AWS deployment were not run. These results do not establish runtime cloud compatibility.
 
 ## Resources and runtime contract

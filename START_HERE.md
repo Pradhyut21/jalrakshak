@@ -1,18 +1,8 @@
-# Start JalRakshak
+# Start here
 
-Run `python scripts/run.py --setup` from this folder, or double-click START_APP.cmd on Windows. Python 3.13 and Node 22.18+ are required. Open http://127.0.0.1:8000.
+1. Run `python scripts/run.py --setup` from this folder (Python 3.13, Node 22.18+). Later use `python scripts/run.py`.
+2. Open http://127.0.0.1:8000. Replay **Excess usage â†’ review notice â†’ explicit approval â†’ Repair + readings**. Recovery depends on subsequent evidence and planning margin.
+3. For actual operator records, open **Data & settings** and explicitly create an empty observed workspace. Set actual tank parameters, add timestamped readings or import CSV, record arrived inflow separately, and export backups.
+4. Inspect **Evidence & evaluation** for the separate 48-hour benchmark, failures and assumptions.
 
-Use Demo Lab to introduce sustained excess use, review and approve a local notice, replay repair and delivery, and inspect recovery evidence. All readings are simulated.
-
-For a new AI chat, paste:
-
-```text
-Continue JalRakshak in this extracted folder. Read AGENTS.md, AI_HANDOFF.md,
-PACKAGE_STATUS.json, docs/PROJECT_STATE.md and docs/PROJECT_BRIEF.md.
-Inspect current source and changes; preserve direction and completed work.
-Verify the next milestone, repair concrete failures, update the checkpoint
-and report actual results. Do not revert to the superseded preparation gate.
-Do not fabricate deployment, real-user evidence, messages, savings or scores.
-```
-
-See docs/CONTINUE_PROMPTS.md for focused follow-ups; prep contains the historical research pack.
+Read README.md for retention and setup; docs/PROJECT_STATE.md for the current checkpoint. All demo fixtures are simulated. Operator records are unverified; no field reliability, deployment or award is implied.

@@ -1,57 +1,107 @@
 {
   "status": "PASS",
+  "version": "0.2.0",
   "verified_on": "2026-10-02",
   "timezone": "Asia/Kolkata",
   "backend": {
     "command": ".venv/Scripts/python.exe -m pytest -q backend/tests",
-    "passed": 57,
+    "passed": 124,
     "failed": 0,
     "warnings": [
-      "Starlette httpx testclient deprecation",
+      "Starlette httpx TestClient deprecation",
       "Mangum event-loop deprecation"
     ],
-    "elapsed_seconds": 21.05
+    "elapsed_seconds": 54.86,
+    "environment": "Fresh extracted archive/new venv"
   },
   "frontend": {
-    "command": "npm run build",
+    "command": "npm ci && npm run build",
     "status": "PASS",
-    "source": "frontend worker run; production interface additionally observed with Playwright"
+    "environment": "Fresh extracted archive"
   },
   "infrastructure": {
     "command": ".venv/Scripts/python.exe infra/check_template.py --check-source",
     "status": "PASS",
-    "scope": "Offline YAML/wiring/static AST; no SAM transform, Linux build or deployment"
+    "scope": "Offline structure/static AST; no SAM transform, Linux build or deployment"
   },
   "browser": {
-    "artifact": "artifacts/browser-verification.json",
-    "checks": 12,
     "status": "PASS",
-    "unexpected_page_errors": 0
+    "checks": 24,
+    "unexpected_page_errors": 0,
+    "artifact": "artifacts/browser-verification.json",
+    "fresh_extraction_artifact": "artifacts/portable-install-verification.json"
   },
   "evaluation": {
     "artifact": "artifacts/evaluation.json",
     "data_kind": "SIMULATED",
-    "holdout_origins": 166,
-    "target": "Next-hour consumption (L)",
-    "mae_l": 149.097767,
-    "method": "Last interval; selected on validation only"
+    "original_full_48h_test_windows": 120,
+    "legacy_late_predictions": 53,
+    "upgraded_late_predictions": 0,
+    "upgraded_mean_earliness_hours": 5.7,
+    "stress_true_events": 1232,
+    "stress_late_predictions": 12,
+    "stress_right_censored_windows": 208,
+    "anomaly_false_alerts": 44,
+    "anomaly_normal_site_hours": 1515,
+    "reproduction": "Exact artifact equality test passed in fresh environment"
+  },
+  "source_sha256": {
+    ".env.example": "8a3e764d8ea02c709d561e97ee118efcbd55779d393976c1b9834f270d3e079c",
+    ".github/workflows/ci.yml": "2fd6a8238f645fd3836e293b329d22d50bff1ecb3a27481d20a6b38f85573385",
+    "START_APP.cmd": "1a633fd75383583a05e584f284d85b713a5aa4a036b2feb40e4d6d4946e16296",
+    "backend/app/__init__.py": "82bf440b72adfb0410fa71775fecfe4aad0f944cf5ddecf1de5f4dfb536b12db",
+    "backend/app/data/evaluation.json": "51f26accdee2355ae9a3b54052a221336537a4335ea7b3ac8207d97af79aa132",
+    "backend/app/domain.py": "577de3c1b87dc38a8e26fbda7f0b6229d92c3e43508bcc8f9f5beaaf23d2d2e7",
+    "backend/app/main.py": "2e72cab1cf0402982cf986f77a7f8d62fb5a98689e7a90643a57440d987b677b",
+    "backend/app/notifiers.py": "02d65bb371e4bc981d3072ef0f0d0af29dfa9d1d9de66c3c9dbd54325050356a",
+    "backend/app/operations.py": "34fcfb85c85acf8a3bc2f243a66947947c7c270345d6cce2645e706640b6e826",
+    "backend/app/repository.py": "9d8518c565bb17cbf8fb92a1bebe779df860808840de3616fb0cd48aa5d6217d",
+    "backend/pyproject.toml": "6d7cd4157ad488b231b3759cd94ef8af8fb2e3599e9e58f030d06e914f5e3b0c",
+    "backend/requirements-dev.txt": "1554a449289d532140de1e446ce14564e6c20c110e23b0b28b70f4f8fa193c32",
+    "backend/requirements-lock.txt": "6a3dafad6a34b123f42b7779fdbd209801896eef41d52e4366b83766d7ffb2bf",
+    "backend/requirements.txt": "7b6914381be3387eb9bd59a2c394b53586798617ace7e9223acb2ce085ff785f",
+    "backend/tests/test_domain.py": "87b4613de9021e870d5cb34c1553911dac9ad44e5f810fbb7b69d43a8a036427",
+    "backend/tests/test_evaluation.py": "5db462b6c74fec3b0f9ab54cbad88e72a04333fa76333eef7e9fd1b3282f7437",
+    "backend/tests/test_notifier.py": "b774588bec1ae86e06a3e3a28f03e81c06f4a555669ea5b30bf5ff333aab3294",
+    "backend/tests/test_observed_workspace.py": "651fd893987d2c06da0132705cad5214040985dd4fa8f32178034e296ac29bfb",
+    "backend/tests/test_reserve_backtest.py": "d35b656d29efaeb6a89303a4560c933b4b9f4b911f952f8e42cdd0e9184c6ce2",
+    "backend/tests/test_session_limits.py": "827f1e3045f6585ffd9b93c06ebecdd27c9dce955e4d14dbe76a8dcc7009d50d",
+    "backend/tests/test_workflow.py": "110b0b4221d0fd8a2e01d087d71c724dd71f1e96684500e646005f84f9a8f057",
+    "frontend/dist/assets/index-Cq-oZL4N.css": "233da3d03e4e58b860f3be1b8d299a7c527c3fd9e89435415c61a064d61ea1f3",
+    "frontend/dist/assets/index-DCrW4g84.js": "5f915a6ec75371a5997d70776a731f4cf70e30630693eafe3b988770d3f0dc5b",
+    "frontend/dist/favicon.svg": "befaa418f3cad69708c06d33df7746a5be23b061cad83dc72eec5704591ae194",
+    "frontend/dist/index.html": "3fcb95c12e0d4f3c28c3592793686e22cd22ce6d77cb28991ecbe69e083b382d",
+    "frontend/index.html": "e1e6796c1a4dd0b7c4347d3fee03ee58e70a391a439f66017f9c5e7cb5b598f6",
+    "frontend/package-lock.json": "37b8898a9c0e3e1917b8fad95cd14b5d6e5ffc16ba47fe4b7730535f76729836",
+    "frontend/package.json": "add0c3d9f656adbb3ebad3b4846bede13793637bdc666b49e9275d8287b7c656",
+    "frontend/public/favicon.svg": "befaa418f3cad69708c06d33df7746a5be23b061cad83dc72eec5704591ae194",
+    "frontend/src/App.tsx": "eb20112a8472afa024e54529af7b38b37c326bdc24bc81c90eae2a13a93f4e89",
+    "frontend/src/DataWorkspace.tsx": "60389e1001f9bedb9054466d02f147a8e84f4476cccf33a24bb90d7f90a0f768",
+    "frontend/src/api.ts": "a216a9b13cead55ecaac5122a89a41f7a68f54ba1d78cdedea99b7e0bf555775",
+    "frontend/src/main.tsx": "e9333bad6b4bed217f50653fe8d0c1107a4925ec8d9f0e5b89d7207b2c1d2711",
+    "frontend/src/readability.css": "856530928fa153f40ca3a45495a0cc4a0a38b7055e52dae4168174087de7a86e",
+    "frontend/src/styles.css": "3473f9217bc565389106abf73f9eddd86e4836684efc630dc77979c84f36a64c",
+    "frontend/src/workspace.css": "0aa6f40fe3029e6a1737cee35160aab401777b533feaaa8c3252e6af4570f69b",
+    "frontend/tsconfig.json": "d57f3941c728ff038080604ea813c20777f024720931bf75d808b06578997d42",
+    "frontend/vite.config.ts": "8e1fb48065e78672f695ac41e5c21b6667b56048ead80d7261993b3990e48fe5",
+    "infra/amplify.yml": "90a5d9a4078526263a2e4e98cb12c6480fae66e2f1390a8ca6f75a59a29a391e",
+    "infra/check_template.py": "2ed0c1eee9a9f39649d2d83fdea5d5f55ec9f476130b3ba86f38224ea2d7c5a0",
+    "infra/requirements-validation.txt": "0969da99a0bc2a1b71ed50584560f4588a37567ac63af3ddbaf3c4617ca5621a",
+    "infra/template.yaml": "37e2762e57a53f05f2c0f6478340fa93cb5d37551529dc6b947d0072d2cf3228",
+    "scripts/backtest_reserve.py": "95b05dc07a7bd228324290ff97893584cbfd72a6dc175c47999e0c2acea96d1a",
+    "scripts/browser_check.py": "b686356a6494dc1390ffdd056879114a0cbeded6eb56c61b034b38955212989d",
+    "scripts/evaluate.py": "f9d3862e994b198050249ce4d7000aca8241829483ab0fc0b9fa2067d37cdddd",
+    "scripts/license_inventory.py": "a14178d1dadb8ec75721d61c1ca89f8159807857dab3dd10fc509d4330f0adc5",
+    "scripts/package.py": "c1066b7ae7fde6effd42740cce6bdc5a84c3082cbf7e2412eb545612b4c7dc67",
+    "scripts/run.py": "7c33f65e28280d5bff873c707f7e68d0a9aa198296319287536aec1d209bfcdd",
+    "scripts/verify_archive.py": "7e92ef74055bee947f42e4b58cf436ce8c37bf7e804ddb727faf2d281f76c84a"
   },
   "limits": [
-    "No live AWS deployment",
-    "No real sensors or caretaker pilot",
-    "No external notification",
-    "No calibrated 48h forecast or measured savings",
-    "No actual LLM calls"
-  ],
-  "source_sha256": {
-    "backend/app/main.py": "e1f01c554cdc5ad333dda8b6fc638ecdadf62f88b0c3f60c2d21af3276fc3d1c",
-    "backend/app/domain.py": "d41057967fb3aabe3bea9b9023f6c4b19613d1106e59e721abfbdc0ad9f55b42",
-    "backend/app/operations.py": "c47eaae99d7ab29ba5c1c0af48b2e85c138f7f099aea40e84ceff62a2ad970f1",
-    "backend/app/repository.py": "483711ca793a3f781df6e705d32f73bb6e9bdfc70fe9992b7593847c07f7af79",
-    "frontend/src/App.tsx": "a015908d6057018260b2deec030bb6d21df41785cb0df14e2e682f380e375641",
-    "frontend/src/api.ts": "9c807071c1e2bc7ed44879af4a91a46518e47f12adfd930d1cda97d204b66447",
-    "frontend/src/styles.css": "3473f9217bc565389106abf73f9eddd86e4836684efc630dc77979c84f36a64c",
-    "frontend/src/readability.css": "37f9cfbb89a1fdd0d2a41442c3395d4f43a1290b9438aeb1fc97341fcee6ee60",
-    "frontend/package-lock.json": "e638fd4ad69866a20bd49177f31c35201dd385408af1e10bd7a4dae18a5ff931"
-  }
+    "No live AWS or Linux Lambda verification",
+    "Generated browser data is not field logs",
+    "All forecast evaluation data is synthetic",
+    "Stale browser polling uses a declared mock; backend wall-time aging is independently tested",
+    "No caretaker usefulness trial, calibrated sensor, external send, LLM calls or measured water savings",
+    "Planning envelope is not a calibrated probability or safety guarantee"
+  ]
 }

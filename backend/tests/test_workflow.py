@@ -43,7 +43,7 @@ def test_complete_incident_loop_requires_approval_and_fresh_recovery(client):
     assert initial["analysis"]["status"] == "SAFE"
     assert initial["state"]["volume_l"] == 32000
     assert initial["incident"] is None
-    danger = excess(client)
+    danger = post(client, "/demo/scenario", {"scenario": "excess_usage", "hours": 3})
     assert danger["analysis"]["status"] == "ACT_NOW"
     assert danger["analysis"]["anomaly"]["active"] is True
     assert danger["incident"]["status"] == "OPEN"
@@ -86,8 +86,10 @@ def test_demand_sensitivity_keeps_valid_anchor_and_changes_demand(client, change
     initial = start(client)
     preview = post(client, "/simulate", {"delay_hours": 0, "demand_change_percent": change})
     assert preview["analysis"]["status"] != "UNKNOWN"
-    assert preview["analysis"]["current_rate_lph"] == pytest.approx(960 * (1 + change / 100))
+    assert preview["analysis"]["current_rate_lph"] == 960  # Observed rate is factual, even in a preview.
     assert preview["analysis"]["projection"][0]["volume_l"] == initial["state"]["volume_l"]
+    expected = 32000 - 960 * (1 + change / 100)
+    assert preview["analysis"]["projection"][1]["volume_l"] == pytest.approx(expected)
     assert client.get("/api/dashboard").json() == initial
 
 
@@ -239,9 +241,57 @@ def test_unknown_observation_resets_recovery_batch():
     context["clock"] = iso(at)
     last_volume = context["readings"][-1]["volume_l"]
     operations.ingest(context, {"reading_id": "unknown-inflow", "observed_at": iso(at), "volume_l": last_volume + 100, "source": "manual_demo", "simulated": True})
-    assert context["incident"]["status"] == "UNKNOWN"
+    assert operations.dashboard(context)["incident"]["status"] == "UNKNOWN"
+    assert context["incident"]["status"] == "VERIFYING"  # Quality never overwrites lifecycle facts.
     assert context["incident"]["verification_count"] == 0
     assert context["incident"]["verification_reading_ids"] == []
+
+
+@pytest.mark.parametrize("approve_before_unknown", [False, True])
+def test_incident_recovers_from_unknown_using_stored_facts(client, approve_before_unknown):
+    start(client)
+    danger = excess(client)
+    if approve_before_unknown:
+        action = post(client, "/actions/propose", {})
+        danger = post(client, f"/actions/{action['id']}/approve", {"evidence_version": action["evidence_version"], "confirmed": True})
+    at = parse(danger["clock"]) + timedelta(minutes=30)
+    rising = {"reading_id": "unrecorded-inflow", "observed_at": iso(at), "volume_l": danger["state"]["volume_l"] + 100, "advance_clock": True}
+    unknown = post(client, "/readings", rising)
+    assert unknown["analysis"]["status"] == "UNKNOWN"
+    assert unknown["incident"]["status"] == "UNKNOWN"
+    assert unknown["incident"]["lifecycle_status"] == ("ACTION_REQUESTED" if approve_before_unknown else "OPEN")
+    recovered = post(client, "/readings", {**rising, "reading_id": "valid-next", "observed_at": iso(at + timedelta(minutes=30)), "volume_l": rising["volume_l"] - 1200})
+    assert recovered["analysis"]["status"] != "UNKNOWN"
+    assert recovered["incident"]["status"] == ("ACTION_REQUESTED" if approve_before_unknown else "OPEN")
+    action = post(client, "/actions/propose", {"type": "REQUEST_INSPECTION"})
+    requested = post(client, f"/actions/{action['id']}/approve", {"evidence_version": action["evidence_version"], "confirmed": True})
+    assert requested["incident"]["status"] == "ACTION_REQUESTED"
+    assert "Inspect site-level usage" in action["message"]
+
+
+def test_no_intervention_event_without_incident(client):
+    initial = start(client)
+    assert client.post("/api/interventions", json={"note": "Checked pipes"}).status_code == 409
+    after = client.get("/api/dashboard").json()
+    assert after["version"] == initial["version"]
+    assert not any(event["kind"] == "INTERVENTION" for event in after["events"])
+
+
+def test_upgrade_preserves_legacy_approved_incident_from_receipt_facts(client, repository):
+    start(client)
+    excess(client)
+    action = post(client, "/actions/propose", {})
+    post(client, f"/actions/{action['id']}/approve", {"evidence_version": action["evidence_version"], "confirmed": True})
+    def legacy(context):
+        context["actions"][0].pop("incident_id")
+        context["incident"].pop("approved_action_id")
+        context["incident"]["status"] = "UNKNOWN"  # Old release overwrote lifecycle.
+    repository.mutate(client.cookies.get("jal_session"), legacy)
+    restored = client.get("/api/dashboard").json()
+    assert restored["analysis"]["status"] != "UNKNOWN"
+    assert restored["incident"]["status"] == "ACTION_REQUESTED"
+    assert restored["incident"]["approved_action_id"] == action["id"]
+    assert len([event for event in restored["events"] if event["kind"] == "NOTICE"]) == 1
 
 
 @pytest.mark.parametrize("changes", [{"volume_l": -1}, {"volume_l": 50001}, {"simulated": False}, {"source": "live_sensor"}, {"observed_at": "2026-10-01T04:30:00"}, {"unexpected": "anything"}])

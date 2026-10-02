@@ -2,6 +2,7 @@ export type RiskStatus = 'SAFE' | 'WATCH' | 'ACT_NOW' | 'UNKNOWN';
 export interface Site {
   id: string; name: string; location: string; capacity_l: number; reserve_l: number;
   lead_hours: number; buffer_hours: number; freshness_minutes: number;
+  measurement_error_l?: number; time_zone?: string;
 }
 export interface Analysis {
   status: RiskStatus; current_rate_lph: number | null; baseline_rate_lph: number | null;
@@ -14,6 +15,10 @@ export interface Analysis {
   history: { at: string; volume_l: number; rate_lph: number | null }[];
   projection: { at: string; volume_l: number; conservative_l: number; optimistic_l: number }[];
   shortage_hours: number | null; unmet_demand_l: number | null; overflow_l: number | null;
+  forecast_description?: string; forecast_assumptions?: string[];
+  sufficient_forecast_history?: boolean; forecast_config?: Record<string, unknown>;
+  demand_profile?: { local_hour: number; rate_lph: number; upper_rate_lph: number; supported: boolean }[];
+  measurement_bounds?: { per_reading_l: number; latest_rate_lower_lph: number; latest_rate_upper_lph: number; latest_storage_lower_l: number; latest_storage_upper_l: number };
 }
 export interface Action {
   id: string; type: string; status: string; created_at: string; approved_at: string | null;
@@ -26,10 +31,11 @@ export interface Incident {
 }
 export interface Dashboard {
   site: Site; clock: string; mode: string; version: number; csrf_token: string;
-  state: { volume_l: number; percentage: number; observed_at: string; source: string; simulated: boolean; data_state: string };
+  state: { volume_l: number | null; percentage: number | null; observed_at: string | null; source: string; simulated: boolean; data_state: string };
   analysis: Analysis; incident: Incident | null; actions: Action[];
   events: { id: string; at: string; kind: string; title: string; detail: string }[];
   evaluation: Record<string, unknown>;
+  features?: { local_observed_mode?: boolean };
 }
 export interface Preview { analysis: Analysis; before: unknown; summary: string; simulated: boolean }
 export interface AssistantAnswer { answer: string; facts: unknown[]; provider: string; simulated: boolean }
