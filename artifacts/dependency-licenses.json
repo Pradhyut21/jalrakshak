@@ -1,0 +1,2646 @@
+{
+  "schema_version": 1,
+  "generated_at_ist": "2026-10-02T21:09:30.974888+05:30",
+  "inventory_kind": "OBSERVED_INSTALLED_DEPENDENCIES_NOT_LEGAL_CERTIFICATION",
+  "python_version": "3.13.5",
+  "platform": "Windows",
+  "python_environment": "Run with the app's .venv interpreter; metadata is from that process, not inferred from requirements alone.",
+  "python": {
+    "source_requirements": {
+      "runtime": "backend/requirements.txt",
+      "development": "backend/requirements-dev.txt",
+      "infrastructure_validation": "infra/requirements-validation.txt"
+    },
+    "observed_lockfile": "backend/requirements-lock.txt",
+    "lockfile_sha256": "6a3dafad6a34b123f42b7779fdbd209801896eef41d52e4366b83766d7ffb2bf",
+    "packages": [
+      {
+        "name": "annotated-doc",
+        "canonical_name": "annotated-doc",
+        "installed_version": "0.0.5",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "annotated-doc==0.0.5",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://github.com/fastapi/annotated-doc",
+          "Documentation, https://github.com/fastapi/annotated-doc",
+          "Repository, https://github.com/fastapi/annotated-doc",
+          "Issues, https://github.com/fastapi/annotated-doc/issues",
+          "Changelog, https://github.com/fastapi/annotated-doc/release-notes.md"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "annotated_doc-0.0.5.dist-info/licenses/LICENSE",
+            "bytes": 1086,
+            "sha256": "fff170779a6acbf65abdb405c087f1cee1786691e4a96a4034517e4a504a0cdf",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "annotated-types",
+        "canonical_name": "annotated-types",
+        "installed_version": "0.8.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "annotated-types==0.8.0",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [
+          "Homepage, https://github.com/annotated-types/annotated-types",
+          "Source, https://github.com/annotated-types/annotated-types",
+          "Changelog, https://github.com/annotated-types/annotated-types/releases"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "annotated_types-0.8.0.dist-info/licenses/LICENSE",
+            "bytes": 1083,
+            "sha256": "fe1049884b1a0d9342901e88e07f32925d24b3121d9972b6a6805fb9824b095d",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "anyio",
+        "canonical_name": "anyio",
+        "installed_version": "4.15.1",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "anyio==4.15.1",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Documentation, https://anyio.readthedocs.io/en/latest/",
+          "Changelog, https://anyio.readthedocs.io/en/stable/versionhistory.html",
+          "Source code, https://github.com/agronholm/anyio",
+          "Issue tracker, https://github.com/agronholm/anyio/issues"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "anyio-4.15.1.dist-info/licenses/LICENSE",
+            "bytes": 1081,
+            "sha256": "5361ac9dc58f2ef5fd2e9b09c68297c17f04950909bbc8023bdb82eacf22c2b0",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "boto3",
+        "canonical_name": "boto3",
+        "installed_version": "1.43.106",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [
+          "runtime"
+        ],
+        "declared_requirement": "boto3==1.43.106",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "boto3==1.43.106",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "Apache-2.0",
+        "license_classifiers": [],
+        "project_urls": [
+          "Documentation, https://docs.aws.amazon.com/boto3/latest/",
+          "Source, https://github.com/boto/boto3"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "boto3-1.43.106.dist-info/LICENSE",
+            "bytes": 10174,
+            "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+            "text_hint": "Apache-2.0 text observed",
+            "included_notice": "docs/licenses/python-boto3-1.43.106/boto3-1.43.106.dist-info_LICENSE"
+          },
+          {
+            "distribution_path": "boto3-1.43.106.dist-info/NOTICE",
+            "bytes": 83,
+            "sha256": "04fb1e61484a7810f1ba09bb42bc01ca58c9af33927d7c5a21556e4c4d1c7fa4",
+            "included_notice": "docs/licenses/python-boto3-1.43.106/boto3-1.43.106.dist-info_NOTICE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "botocore",
+        "canonical_name": "botocore",
+        "installed_version": "1.43.106",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "botocore==1.43.106",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "Apache-2.0",
+        "license_classifiers": [],
+        "project_urls": [],
+        "license_files": [
+          {
+            "distribution_path": "botocore-1.43.106.dist-info/LICENSE.txt",
+            "bytes": 10174,
+            "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+            "text_hint": "Apache-2.0 text observed"
+          },
+          {
+            "distribution_path": "botocore-1.43.106.dist-info/NOTICE",
+            "bytes": 2467,
+            "sha256": "1d1c5a6f3d68cb11f4fad1afa86a7450d0286f15c176ef0ea048f255b46d95b0",
+            "text_hint": "Apache-2.0 text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "certifi",
+        "canonical_name": "certifi",
+        "installed_version": "2026.7.22",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "certifi==2026.7.22",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "MPL-2.0",
+        "license_classifiers": [
+          "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+        ],
+        "project_urls": [
+          "Source, https://github.com/certifi/python-certifi"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "certifi-2026.7.22.dist-info/licenses/LICENSE",
+            "bytes": 989,
+            "sha256": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7",
+            "text_hint": "Mozilla Public License text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "click",
+        "canonical_name": "click",
+        "installed_version": "8.5.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "click==8.5.0",
+        "installed_matches_lock": true,
+        "license_expression": "BSD-3-Clause",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Changes, https://click.palletsprojects.com/page/changes/",
+          "Chat, https://discord.gg/pallets",
+          "Documentation, https://click.palletsprojects.com/",
+          "Donate, https://palletsprojects.com/donate",
+          "Source, https://github.com/pallets/click/"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "click-8.5.0.dist-info/licenses/LICENSE.txt",
+            "bytes": 1475,
+            "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "colorama",
+        "canonical_name": "colorama",
+        "installed_version": "0.4.6",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "colorama==0.4.6",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": null,
+        "license_classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "project_urls": [
+          "Homepage, https://github.com/tartley/colorama"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "colorama-0.4.6.dist-info/licenses/LICENSE.txt",
+            "bytes": 1491,
+            "sha256": "cac35c02686e5d04a5a7140bfb3b36e73aed496656e891102e428886d7930318"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "fastapi",
+        "canonical_name": "fastapi",
+        "installed_version": "0.142.2",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [
+          "runtime"
+        ],
+        "declared_requirement": "fastapi==0.142.2",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "fastapi==0.142.2",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://github.com/fastapi/fastapi",
+          "Documentation, https://fastapi.tiangolo.com/",
+          "Repository, https://github.com/fastapi/fastapi",
+          "Issues, https://github.com/fastapi/fastapi/issues",
+          "Changelog, https://fastapi.tiangolo.com/release-notes/"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "fastapi-0.142.2.dist-info/licenses/LICENSE",
+            "bytes": 1086,
+            "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e",
+            "text_hint": "MIT-style text observed",
+            "included_notice": "docs/licenses/python-fastapi-0.142.2/fastapi-0.142.2.dist-info_licenses_LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "greenlet",
+        "canonical_name": "greenlet",
+        "installed_version": "3.5.6",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "greenlet==3.5.6",
+        "installed_matches_lock": true,
+        "license_expression": "MIT AND PSF-2.0",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://greenlet.readthedocs.io",
+          "Documentation, https://greenlet.readthedocs.io",
+          "Repository, https://github.com/python-greenlet/greenlet",
+          "Issues, https://github.com/python-greenlet/greenlet/issues",
+          "Changelog, https://greenlet.readthedocs.io/en/latest/changes.html"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "greenlet-3.5.6.dist-info/licenses/LICENSE",
+            "bytes": 1464,
+            "sha256": "ab977b654605670319509481ece49198f405a129372ac38c96f51cd96c2f452e",
+            "text_hint": "MIT-style text observed"
+          },
+          {
+            "distribution_path": "greenlet-3.5.6.dist-info/licenses/LICENSE.PSF",
+            "bytes": 2471,
+            "sha256": "69efa689cc7aec7736236d3039c1d665e4b0c734a5bfea5abf633023abb2fff4"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "h11",
+        "canonical_name": "h11",
+        "installed_version": "0.16.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "h11==0.16.0",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "MIT",
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [],
+        "license_files": [
+          {
+            "distribution_path": "h11-0.16.0.dist-info/licenses/LICENSE.txt",
+            "bytes": 1124,
+            "sha256": "37db5bb85926db28a427a25867f10b1232003aea1be69ccb851138adb8e6f361",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "httpcore",
+        "canonical_name": "httpcore",
+        "installed_version": "1.0.9",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "httpcore==1.0.9",
+        "installed_matches_lock": true,
+        "license_expression": "BSD-3-Clause",
+        "license_field": null,
+        "license_classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "project_urls": [
+          "Documentation, https://www.encode.io/httpcore",
+          "Homepage, https://www.encode.io/httpcore/",
+          "Source, https://github.com/encode/httpcore"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "httpcore-1.0.9.dist-info/licenses/LICENSE.md",
+            "bytes": 1518,
+            "sha256": "fdcb59154c74cbaba16a11242f7740bea9f23d6feb5547917d8c5f94a80392a5"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "httpx",
+        "canonical_name": "httpx",
+        "installed_version": "0.28.1",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [
+          "runtime"
+        ],
+        "declared_requirement": "httpx==0.28.1",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "httpx==0.28.1",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "BSD-3-Clause",
+        "license_classifiers": [
+          "License :: OSI Approved :: BSD License"
+        ],
+        "project_urls": [
+          "Changelog, https://github.com/encode/httpx/blob/master/CHANGELOG.md",
+          "Documentation, https://www.python-httpx.org",
+          "Homepage, https://github.com/encode/httpx",
+          "Source, https://github.com/encode/httpx"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "httpx-0.28.1.dist-info/licenses/LICENSE.md",
+            "bytes": 1508,
+            "sha256": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d",
+            "included_notice": "docs/licenses/python-httpx-0.28.1/httpx-0.28.1.dist-info_licenses_LICENSE.md"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "idna",
+        "canonical_name": "idna",
+        "installed_version": "3.20",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "idna==3.20",
+        "installed_matches_lock": true,
+        "license_expression": "BSD-3-Clause",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Changelog, https://github.com/kjd/idna/blob/master/HISTORY.md",
+          "Issue tracker, https://github.com/kjd/idna/issues",
+          "Source, https://github.com/kjd/idna"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "idna-3.20.dist-info/licenses/LICENSE.md",
+            "bytes": 1541,
+            "sha256": "1a9a4f0e3d479a27240ddd59a9137a66ab4a0f9dfdc8ca6188cc0bfd85187f04"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "iniconfig",
+        "canonical_name": "iniconfig",
+        "installed_version": "2.3.0",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "iniconfig==2.3.0",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://github.com/pytest-dev/iniconfig"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "iniconfig-2.3.0.dist-info/licenses/LICENSE",
+            "bytes": 1098,
+            "sha256": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "jmespath",
+        "canonical_name": "jmespath",
+        "installed_version": "1.1.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "jmespath==1.1.0",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "MIT",
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [],
+        "license_files": [
+          {
+            "distribution_path": "jmespath-1.1.0.dist-info/LICENSE",
+            "bytes": 1113,
+            "sha256": "6eefacfa4d71b82d08408c751470ac8d9854538da2142cb27be0287fb13d0ab9",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "mangum",
+        "canonical_name": "mangum",
+        "installed_version": "0.22.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [
+          "runtime"
+        ],
+        "declared_requirement": "mangum==0.22.0",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "mangum==0.22.0",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": null,
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [
+          "Homepage, https://github.com/Kludex/mangum",
+          "Documentation, https://mangum.fastapiexpert.com",
+          "Changelog, https://github.com/Kludex/mangum/blob/main/CHANGELOG.md",
+          "Funding, https://github.com/sponsors/Kludex",
+          "Source, https://github.com/Kludex/mangum"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "mangum-0.22.0.dist-info/licenses/LICENSE",
+            "bytes": 1072,
+            "sha256": "0d9eb50b670f2917f02c86e4e196d028bed70f5cdaa984cd0f569d4453e5ebcb",
+            "text_hint": "MIT-style text observed",
+            "included_notice": "docs/licenses/python-mangum-0.22.0/mangum-0.22.0.dist-info_licenses_LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "opentelemetry-api",
+        "canonical_name": "opentelemetry-api",
+        "installed_version": "1.45.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "opentelemetry-api==1.45.0",
+        "installed_matches_lock": true,
+        "license_expression": "Apache-2.0",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api",
+          "Repository, https://github.com/open-telemetry/opentelemetry-python"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "opentelemetry_api-1.45.0.dist-info/licenses/LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "text_hint": "Apache-2.0 text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "packaging",
+        "canonical_name": "packaging",
+        "installed_version": "26.3",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "packaging==26.3",
+        "installed_matches_lock": true,
+        "license_expression": "Apache-2.0 OR BSD-2-Clause",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Documentation, https://packaging.pypa.io/",
+          "Source, https://github.com/pypa/packaging"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "packaging-26.3.dist-info/licenses/LICENSE",
+            "bytes": 197,
+            "sha256": "cad1ef5bd340d73e074ba614d26f7deaca5c7940c3d8c34852e65c4909686c48"
+          },
+          {
+            "distribution_path": "packaging-26.3.dist-info/licenses/LICENSE.APACHE",
+            "bytes": 10174,
+            "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+            "text_hint": "Apache-2.0 text observed"
+          },
+          {
+            "distribution_path": "packaging-26.3.dist-info/licenses/LICENSE.BSD",
+            "bytes": 1344,
+            "sha256": "b70e7e9b742f1cc6f948b34c16aa39ffece94196364bc88ff0d2180f0028fac5"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "playwright",
+        "canonical_name": "playwright",
+        "installed_version": "1.63.0",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [
+          "development"
+        ],
+        "declared_requirement": "playwright==1.63.0",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "playwright==1.63.0",
+        "installed_matches_lock": true,
+        "license_expression": "Apache-2.0",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "homepage, https://github.com/Microsoft/playwright-python",
+          "Release notes, https://github.com/microsoft/playwright-python/releases"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "playwright-1.63.0.dist-info/licenses/LICENSE",
+            "bytes": 11399,
+            "sha256": "7fab1461b41970ff376f1c9303a637076bfaaeb71cd12dd3a1c44aaf59a1a2b9",
+            "text_hint": "Apache-2.0 text observed",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright-1.63.0.dist-info_licenses_LICENSE"
+          },
+          {
+            "distribution_path": "playwright/driver/LICENSE",
+            "bytes": 160555,
+            "sha256": "ed34dd8e3f0a78dbaf00d0444ce8e285b015b765379c2e17880455f70370f8e9",
+            "text_hint": "ISC; preserve complete text including any bundled notices",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright_driver_LICENSE"
+          },
+          {
+            "distribution_path": "playwright/driver/package/LICENSE",
+            "bytes": 11601,
+            "sha256": "45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb",
+            "text_hint": "Apache-2.0 text observed",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright_driver_package_LICENSE"
+          },
+          {
+            "distribution_path": "playwright/driver/package/NOTICE",
+            "bytes": 254,
+            "sha256": "6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright_driver_package_NOTICE"
+          },
+          {
+            "distribution_path": "playwright/driver/package/ThirdPartyNotices.txt",
+            "bytes": 676,
+            "sha256": "a549d329bad8806fe279f0ecae0fc0270dec7e7c2dc8ec10f90e394f7c32b144",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright_driver_package_ThirdPartyNotices.txt"
+          },
+          {
+            "distribution_path": "playwright/driver/package/lib/serverRegistry.js.LICENSE",
+            "bytes": 2982,
+            "sha256": "3098a6efcbc11752cbdf6075fa65480f5470f78c8d981fab9c0796dc9a41cefe",
+            "text_hint": "MIT-style text observed",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright_driver_package_lib_serverRegistry.js.LICENSE"
+          },
+          {
+            "distribution_path": "playwright/driver/package/lib/utilsBundle.js.LICENSE",
+            "bytes": 106591,
+            "sha256": "2495f30be29620d54b58339821eda0ebabdfb6ee9b09455f7285a06fd46fb9f3",
+            "text_hint": "ISC; preserve complete text including any bundled notices",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright_driver_package_lib_utilsBundle.js.LICENSE"
+          },
+          {
+            "distribution_path": "playwright/driver/package/lib/webp_codec.LICENSE",
+            "bytes": 8841,
+            "sha256": "995c7ee35aceb7666829b7a501ca89c0864e12b493c1174b155774ab1e03d831",
+            "text_hint": "MIT-style text observed",
+            "included_notice": "docs/licenses/python-playwright-1.63.0/playwright_driver_package_lib_webp_codec.LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "pluggy",
+        "canonical_name": "pluggy",
+        "installed_version": "1.6.0",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "pluggy==1.6.0",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "MIT",
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [],
+        "license_files": [
+          {
+            "distribution_path": "pluggy-1.6.0.dist-info/licenses/LICENSE",
+            "bytes": 1110,
+            "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "pydantic",
+        "canonical_name": "pydantic",
+        "installed_version": "2.13.5",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [
+          "runtime"
+        ],
+        "declared_requirement": "pydantic==2.13.5",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "pydantic==2.13.5",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://github.com/pydantic/pydantic",
+          "Documentation, https://docs.pydantic.dev",
+          "Funding, https://github.com/sponsors/samuelcolvin",
+          "Source, https://github.com/pydantic/pydantic",
+          "Changelog, https://docs.pydantic.dev/latest/changelog/"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "pydantic-2.13.5.dist-info/licenses/LICENSE",
+            "bytes": 1129,
+            "sha256": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3",
+            "text_hint": "MIT-style text observed",
+            "included_notice": "docs/licenses/python-pydantic-2.13.5/pydantic-2.13.5.dist-info_licenses_LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "pydantic_core",
+        "canonical_name": "pydantic-core",
+        "installed_version": "2.46.5",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "pydantic_core==2.46.5",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Funding, https://github.com/sponsors/samuelcolvin",
+          "Homepage, https://github.com/pydantic",
+          "Source, https://github.com/pydantic/pydantic/tree/main/pydantic-core"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "pydantic_core-2.46.5.dist-info/licenses/LICENSE",
+            "bytes": 1101,
+            "sha256": "fbe7f615f18d135c07000e5a86325db27f42c7729699ef166ac1f7a3f4586bf4",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "pyee",
+        "canonical_name": "pyee",
+        "installed_version": "13.0.1",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "pyee==13.0.1",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "MIT",
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [
+          "Repository, https://github.com/jfhbrook/pyee",
+          "Documentation, https://pyee.readthedocs.io"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "pyee-13.0.1.dist-info/licenses/LICENSE",
+            "bytes": 1080,
+            "sha256": "1ff556ca206b107f10e1c562ae454d3292e0296c3510eb90eb7f114caee32a66",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "Pygments",
+        "canonical_name": "pygments",
+        "installed_version": "2.21.0",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "Pygments==2.21.0",
+        "installed_matches_lock": true,
+        "license_expression": "BSD-2-Clause",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://pygments.org",
+          "Documentation, https://pygments.org/docs",
+          "Source, https://github.com/pygments/pygments",
+          "Bug Tracker, https://github.com/pygments/pygments/issues",
+          "Changelog, https://github.com/pygments/pygments/blob/master/CHANGES"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "pygments-2.21.0.dist-info/licenses/LICENSE",
+            "bytes": 1331,
+            "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "pytest",
+        "canonical_name": "pytest",
+        "installed_version": "9.1.1",
+        "roles": [
+          "development"
+        ],
+        "direct_roles": [
+          "development"
+        ],
+        "declared_requirement": "pytest==9.1.1",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "pytest==9.1.1",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Changelog, https://docs.pytest.org/en/stable/changelog.html",
+          "Contact, https://docs.pytest.org/en/stable/contact.html",
+          "Funding, https://docs.pytest.org/en/stable/sponsor.html",
+          "Homepage, https://docs.pytest.org/en/latest/",
+          "Source, https://github.com/pytest-dev/pytest",
+          "Tracker, https://github.com/pytest-dev/pytest/issues"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "pytest-9.1.1.dist-info/licenses/LICENSE",
+            "bytes": 1091,
+            "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b",
+            "text_hint": "MIT-style text observed",
+            "included_notice": "docs/licenses/python-pytest-9.1.1/pytest-9.1.1.dist-info_licenses_LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "python-dateutil",
+        "canonical_name": "python-dateutil",
+        "installed_version": "2.9.0.post0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "python-dateutil==2.9.0.post0",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "Dual License",
+        "license_classifiers": [
+          "License :: OSI Approved :: BSD License",
+          "License :: OSI Approved :: Apache Software License"
+        ],
+        "project_urls": [
+          "Documentation, https://dateutil.readthedocs.io/en/stable/",
+          "Source, https://github.com/dateutil/dateutil"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "python_dateutil-2.9.0.post0.dist-info/LICENSE",
+            "bytes": 2889,
+            "sha256": "ba00f51a0d92823b5a1cde27d8b5b9d2321e67ed8da9bc163eff96d5e17e577e",
+            "text_hint": "Apache-2.0 text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "PyYAML",
+        "canonical_name": "pyyaml",
+        "installed_version": "6.0.3",
+        "roles": [
+          "development",
+          "infrastructure_validation"
+        ],
+        "direct_roles": [
+          "development",
+          "infrastructure_validation"
+        ],
+        "declared_requirement": "PyYAML==6.0.3",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "PyYAML==6.0.3",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "MIT",
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [
+          "Bug Tracker, https://github.com/yaml/pyyaml/issues",
+          "CI, https://github.com/yaml/pyyaml/actions",
+          "Documentation, https://pyyaml.org/wiki/PyYAMLDocumentation",
+          "Mailing lists, http://lists.sourceforge.net/lists/listinfo/yaml-core",
+          "Source Code, https://github.com/yaml/pyyaml"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "pyyaml-6.0.3.dist-info/licenses/LICENSE",
+            "bytes": 1101,
+            "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4",
+            "text_hint": "MIT-style text observed",
+            "included_notice": "docs/licenses/python-pyyaml-6.0.3/pyyaml-6.0.3.dist-info_licenses_LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "s3transfer",
+        "canonical_name": "s3transfer",
+        "installed_version": "0.19.2",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "s3transfer==0.19.2",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "Apache License 2.0",
+        "license_classifiers": [
+          "License :: OSI Approved :: Apache Software License"
+        ],
+        "project_urls": [],
+        "license_files": [
+          {
+            "distribution_path": "s3transfer-0.19.2.dist-info/LICENSE.txt",
+            "bytes": 11358,
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "text_hint": "Apache-2.0 text observed"
+          },
+          {
+            "distribution_path": "s3transfer-0.19.2.dist-info/NOTICE.txt",
+            "bytes": 83,
+            "sha256": "d8354e0fa7fb762da7bc054a8a6774a0b310dfbbc78006393ee573a0e57612b5"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "six",
+        "canonical_name": "six",
+        "installed_version": "1.17.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "six==1.17.0",
+        "installed_matches_lock": true,
+        "license_expression": null,
+        "license_field": "MIT",
+        "license_classifiers": [
+          "License :: OSI Approved :: MIT License"
+        ],
+        "project_urls": [],
+        "license_files": [
+          {
+            "distribution_path": "six-1.17.0.dist-info/LICENSE",
+            "bytes": 1066,
+            "sha256": "4375ba20e2b9c6c4e7cad2940a628fd90e95cc3d50ee92aae755715d8ba1fbd0",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "starlette",
+        "canonical_name": "starlette",
+        "installed_version": "1.7.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "starlette==1.7.0",
+        "installed_matches_lock": true,
+        "license_expression": "BSD-3-Clause",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://github.com/Kludex/starlette",
+          "Documentation, https://starlette.dev/",
+          "Changelog, https://starlette.dev/release-notes/",
+          "Funding, https://github.com/sponsors/Kludex",
+          "Source, https://github.com/Kludex/starlette"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "starlette-1.7.0.dist-info/licenses/LICENSE.md",
+            "bytes": 1518,
+            "sha256": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "typing_extensions",
+        "canonical_name": "typing-extensions",
+        "installed_version": "4.16.0",
+        "roles": [
+          "development",
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "typing_extensions==4.16.0",
+        "installed_matches_lock": true,
+        "license_expression": "PSF-2.0",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Bug Tracker, https://github.com/python/typing_extensions/issues",
+          "Changes, https://github.com/python/typing_extensions/blob/main/CHANGELOG.md",
+          "Documentation, https://typing-extensions.readthedocs.io/",
+          "Home, https://github.com/python/typing_extensions",
+          "Q & A, https://github.com/python/typing/discussions",
+          "Repository, https://github.com/python/typing_extensions"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "typing_extensions-4.16.0.dist-info/licenses/LICENSE",
+            "bytes": 13936,
+            "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "typing-inspection",
+        "canonical_name": "typing-inspection",
+        "installed_version": "0.4.4",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "typing-inspection==0.4.4",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Homepage, https://github.com/pydantic/typing-inspection",
+          "Documentation, https://pydantic.github.io/typing-inspection/dev/",
+          "Source, https://github.com/pydantic/typing-inspection",
+          "Changelog, https://github.com/pydantic/typing-inspection/blob/main/HISTORY.md"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "typing_inspection-0.4.4.dist-info/licenses/LICENSE",
+            "bytes": 1090,
+            "sha256": "804b59b25f2c31bd278f9202a19ae49a3945aa2664387e2d0a128c7cacc61ec3",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "urllib3",
+        "canonical_name": "urllib3",
+        "installed_version": "2.8.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [],
+        "declared_requirement": null,
+        "installed_matches_direct_requirement": null,
+        "locked_requirement": "urllib3==2.8.0",
+        "installed_matches_lock": true,
+        "license_expression": "MIT",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Changelog, https://github.com/urllib3/urllib3/blob/main/CHANGES.rst",
+          "Documentation, https://urllib3.readthedocs.io",
+          "Code, https://github.com/urllib3/urllib3",
+          "Issue tracker, https://github.com/urllib3/urllib3/issues",
+          "Security policy, https://urllib3.readthedocs.io/en/latest/security.html"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "urllib3-2.8.0.dist-info/licenses/LICENSE.txt",
+            "bytes": 1093,
+            "sha256": "130e3a64d5fdd5d096a752694634a7d9df284469de86e5732100268041e3d686",
+            "text_hint": "MIT-style text observed"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "uvicorn",
+        "canonical_name": "uvicorn",
+        "installed_version": "0.54.0",
+        "roles": [
+          "runtime"
+        ],
+        "direct_roles": [
+          "runtime"
+        ],
+        "declared_requirement": "uvicorn==0.54.0",
+        "installed_matches_direct_requirement": true,
+        "locked_requirement": "uvicorn==0.54.0",
+        "installed_matches_lock": true,
+        "license_expression": "BSD-3-Clause",
+        "license_field": null,
+        "license_classifiers": [],
+        "project_urls": [
+          "Changelog, https://uvicorn.dev/release-notes",
+          "Funding, https://github.com/sponsors/Kludex",
+          "Homepage, https://uvicorn.dev/",
+          "Source, https://github.com/Kludex/uvicorn"
+        ],
+        "license_files": [
+          {
+            "distribution_path": "uvicorn-0.54.0.dist-info/licenses/LICENSE.md",
+            "bytes": 1526,
+            "sha256": "efe1acf3e62fb99c288b0ec73e5a773b7268ef4320fe757ea994214e4b63c371",
+            "included_notice": "docs/licenses/python-uvicorn-0.54.0/uvicorn-0.54.0.dist-info_licenses_LICENSE.md"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      }
+    ],
+    "active_dependency_edges": [
+      {
+        "from": "fastapi",
+        "to": "starlette",
+        "requirement": "starlette>=0.46.0",
+        "role": "runtime"
+      },
+      {
+        "from": "fastapi",
+        "to": "pydantic",
+        "requirement": "pydantic>=2.9.0",
+        "role": "runtime"
+      },
+      {
+        "from": "fastapi",
+        "to": "typing-extensions",
+        "requirement": "typing-extensions>=4.8.0",
+        "role": "runtime"
+      },
+      {
+        "from": "fastapi",
+        "to": "typing-inspection",
+        "requirement": "typing-inspection>=0.4.2",
+        "role": "runtime"
+      },
+      {
+        "from": "fastapi",
+        "to": "annotated-doc",
+        "requirement": "annotated-doc>=0.0.2",
+        "role": "runtime"
+      },
+      {
+        "from": "fastapi",
+        "to": "opentelemetry-api",
+        "requirement": "opentelemetry-api>=1.44.0",
+        "role": "runtime"
+      },
+      {
+        "from": "uvicorn",
+        "to": "click",
+        "requirement": "click>=7.0",
+        "role": "runtime"
+      },
+      {
+        "from": "uvicorn",
+        "to": "h11",
+        "requirement": "h11>=0.8",
+        "role": "runtime"
+      },
+      {
+        "from": "pydantic",
+        "to": "annotated-types",
+        "requirement": "annotated-types>=0.6.0",
+        "role": "runtime"
+      },
+      {
+        "from": "pydantic",
+        "to": "pydantic-core",
+        "requirement": "pydantic-core==2.46.5",
+        "role": "runtime"
+      },
+      {
+        "from": "pydantic",
+        "to": "typing-extensions",
+        "requirement": "typing-extensions>=4.14.1",
+        "role": "runtime"
+      },
+      {
+        "from": "pydantic",
+        "to": "typing-inspection",
+        "requirement": "typing-inspection>=0.4.2",
+        "role": "runtime"
+      },
+      {
+        "from": "httpx",
+        "to": "anyio",
+        "requirement": "anyio",
+        "role": "runtime"
+      },
+      {
+        "from": "httpx",
+        "to": "certifi",
+        "requirement": "certifi",
+        "role": "runtime"
+      },
+      {
+        "from": "httpx",
+        "to": "httpcore",
+        "requirement": "httpcore==1.*",
+        "role": "runtime"
+      },
+      {
+        "from": "httpx",
+        "to": "idna",
+        "requirement": "idna",
+        "role": "runtime"
+      },
+      {
+        "from": "boto3",
+        "to": "botocore",
+        "requirement": "botocore (<1.44.0,>=1.43.106)",
+        "role": "runtime"
+      },
+      {
+        "from": "boto3",
+        "to": "jmespath",
+        "requirement": "jmespath (<2.0.0,>=0.7.1)",
+        "role": "runtime"
+      },
+      {
+        "from": "boto3",
+        "to": "s3transfer",
+        "requirement": "s3transfer (<0.20.0,>=0.19.0)",
+        "role": "runtime"
+      },
+      {
+        "from": "mangum",
+        "to": "typing-extensions",
+        "requirement": "typing-extensions",
+        "role": "runtime"
+      },
+      {
+        "from": "pytest",
+        "to": "colorama",
+        "requirement": "colorama>=0.4; sys_platform == \"win32\"",
+        "role": "development"
+      },
+      {
+        "from": "pytest",
+        "to": "iniconfig",
+        "requirement": "iniconfig>=1.0.1",
+        "role": "development"
+      },
+      {
+        "from": "pytest",
+        "to": "packaging",
+        "requirement": "packaging>=22",
+        "role": "development"
+      },
+      {
+        "from": "pytest",
+        "to": "pluggy",
+        "requirement": "pluggy<2,>=1.5",
+        "role": "development"
+      },
+      {
+        "from": "pytest",
+        "to": "pygments",
+        "requirement": "pygments>=2.7.2",
+        "role": "development"
+      },
+      {
+        "from": "playwright",
+        "to": "pyee",
+        "requirement": "pyee<14,>=13",
+        "role": "development"
+      },
+      {
+        "from": "playwright",
+        "to": "greenlet",
+        "requirement": "greenlet<4.0.0,>=3.1.1",
+        "role": "development"
+      },
+      {
+        "from": "starlette",
+        "to": "anyio",
+        "requirement": "anyio<5,>=4.0.0",
+        "role": "runtime"
+      },
+      {
+        "from": "typing-inspection",
+        "to": "typing-extensions",
+        "requirement": "typing-extensions>=4.15.0",
+        "role": "runtime"
+      },
+      {
+        "from": "opentelemetry-api",
+        "to": "typing-extensions",
+        "requirement": "typing-extensions>=4.5.0",
+        "role": "runtime"
+      },
+      {
+        "from": "pydantic-core",
+        "to": "typing-extensions",
+        "requirement": "typing-extensions>=4.14.1",
+        "role": "runtime"
+      },
+      {
+        "from": "anyio",
+        "to": "idna",
+        "requirement": "idna>=2.8",
+        "role": "runtime"
+      },
+      {
+        "from": "anyio",
+        "to": "typing-extensions",
+        "requirement": "typing_extensions>=4.16.0; python_version < \"3.15\"",
+        "role": "runtime"
+      },
+      {
+        "from": "httpcore",
+        "to": "certifi",
+        "requirement": "certifi",
+        "role": "runtime"
+      },
+      {
+        "from": "httpcore",
+        "to": "h11",
+        "requirement": "h11>=0.16",
+        "role": "runtime"
+      },
+      {
+        "from": "botocore",
+        "to": "jmespath",
+        "requirement": "jmespath (<2.0.0,>=0.7.1)",
+        "role": "runtime"
+      },
+      {
+        "from": "botocore",
+        "to": "python-dateutil",
+        "requirement": "python-dateutil (<3.0.0,>=2.1)",
+        "role": "runtime"
+      },
+      {
+        "from": "botocore",
+        "to": "urllib3",
+        "requirement": "urllib3 (!=2.2.0,<3,>=1.25.4)",
+        "role": "runtime"
+      },
+      {
+        "from": "s3transfer",
+        "to": "botocore",
+        "requirement": "botocore (<2.0a.0,>=1.37.4)",
+        "role": "runtime"
+      },
+      {
+        "from": "pyee",
+        "to": "typing-extensions",
+        "requirement": "typing-extensions",
+        "role": "development"
+      },
+      {
+        "from": "python-dateutil",
+        "to": "six",
+        "requirement": "six >=1.5",
+        "role": "runtime"
+      }
+    ],
+    "missing_dependencies": [],
+    "marker_environment": "Current interpreter and platform; optional extras only when declared. Not a Linux Lambda inventory."
+  },
+  "npm": {
+    "manifest": "frontend/package.json",
+    "lockfile": "frontend/package-lock.json",
+    "lockfile_sha256": "e638fd4ad69866a20bd49177f31c35201dd385408af1e10bd7a4dae18a5ff931",
+    "lockfile_version": 3,
+    "packages": [
+      {
+        "name": "@oxc-project/types",
+        "installed_version": "0.152.0",
+        "lock_path": "node_modules/@oxc-project/types",
+        "locked_version": "0.152.0",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/oxc-project/oxc.git",
+          "directory": "npm/oxc-types"
+        },
+        "resolved_archive": "https://registry.npmjs.org/@oxc-project/types/-/types-0.152.0.tgz",
+        "integrity": "sha512-oM/5rLBm2tPkg0iBgkH/FOeR3PCDpY19GTgAZjMFM8h9WI9VW7cLgzp6nwtarYKmovavIQZ+Fe/RKX/8C8O/Rw==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1119,
+            "sha256": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "@rolldown/binding-win32-x64-msvc",
+        "installed_version": "1.2.12",
+        "lock_path": "node_modules/@rolldown/binding-win32-x64-msvc",
+        "locked_version": "1.2.12",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": true,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/rolldown/rolldown.git",
+          "directory": "packages/rolldown"
+        },
+        "resolved_archive": "https://registry.npmjs.org/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.2.12.tgz",
+        "integrity": "sha512-WIw2haVKwjuYdXkHaoC0mF8Le71TuCBxjrdKqLbJGctbBABj+ClfmNvtbOnzpq3RokNo5+V1qhtSzJyXorsklQ==",
+        "license_files": [],
+        "evidence_status": "METADATA_ONLY"
+      },
+      {
+        "name": "@rolldown/pluginutils",
+        "installed_version": "1.0.1",
+        "lock_path": "node_modules/@rolldown/pluginutils",
+        "locked_version": "1.0.1",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/rolldown/plugins.git",
+          "directory": "packages/pluginutils"
+        },
+        "resolved_archive": "https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.0.1.tgz",
+        "integrity": "sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1106,
+            "sha256": "e1919b3b98b8bf6c1b99fcc60a0ed46027c97ac947432e1278446c9606f50161"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "@types/react",
+        "installed_version": "19.3.0",
+        "lock_path": "node_modules/@types/react",
+        "locked_version": "19.3.0",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": true,
+        "lock_development_flag": false,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+          "directory": "types/react"
+        },
+        "resolved_archive": "https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz",
+        "integrity": "sha512-N0rFCuH9YoxG9/m61l9MfpJKfmLOVU0em7ipIz6TRgSSkvReLB9vL85GB+yr8Bs5leqpvg96JSwF4ZS1s4viQg==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1141,
+            "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+            "included_notice": "docs/licenses/npm-_types_react-19.3.0/LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "@types/react-dom",
+        "installed_version": "19.3.0",
+        "lock_path": "node_modules/@types/react-dom",
+        "locked_version": "19.3.0",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": true,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+          "directory": "types/react-dom"
+        },
+        "resolved_archive": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz",
+        "integrity": "sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1141,
+            "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+            "included_notice": "docs/licenses/npm-_types_react-dom-19.3.0/LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "@typescript/typescript-win32-x64",
+        "installed_version": "7.0.2",
+        "lock_path": "node_modules/@typescript/typescript-win32-x64",
+        "locked_version": "7.0.2",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": true,
+        "license_field": "Apache-2.0",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/microsoft/TypeScript.git"
+        },
+        "resolved_archive": "https://registry.npmjs.org/@typescript/typescript-win32-x64/-/typescript-win32-x64-7.0.2.tgz",
+        "integrity": "sha512-0BQ3HkAHHlKLSp1qRvf3SUhGpGsDuhB/jgFw75guyqbxJqEaS0Cw/VFO8i2nHglJUzQCRtMMR/IBAKE3ETMC4g==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 9197,
+            "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+          },
+          {
+            "package_path": "NOTICE.txt",
+            "bytes": 48860,
+            "sha256": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "@vitejs/plugin-react",
+        "installed_version": "6.1.1",
+        "lock_path": "node_modules/@vitejs/plugin-react",
+        "locked_version": "6.1.1",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": true,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/vitejs/vite-plugin-react.git",
+          "directory": "packages/plugin-react"
+        },
+        "resolved_archive": "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-6.1.1.tgz",
+        "integrity": "sha512-yxLaQV9gkhS8ezJqCM6+ndU7mDY6gqAg75NQ+0IjwEI8IYOmQCgkRwHKVSfWXW076DsqMo0Dk+0FK1U+M5RgFw==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1103,
+            "sha256": "29b68325fe026047d13e187b44c33b2acacf7dc647dec4583702e59f235e13b5",
+            "included_notice": "docs/licenses/npm-_vitejs_plugin-react-6.1.1/LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "csstype",
+        "installed_version": "3.2.3",
+        "lock_path": "node_modules/csstype",
+        "locked_version": "3.2.3",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": false,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": "https://github.com/frenic/csstype",
+        "resolved_archive": "https://registry.npmjs.org/csstype/-/csstype-3.2.3.tgz",
+        "integrity": "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1062,
+            "sha256": "11d55bd4541c75ee7879547ac49089c489163dae49551389713c3d026cab383e"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "detect-libc",
+        "installed_version": "2.1.2",
+        "lock_path": "node_modules/detect-libc",
+        "locked_version": "2.1.2",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "Apache-2.0",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git://github.com/lovell/detect-libc.git"
+        },
+        "resolved_archive": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz",
+        "integrity": "sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 11357,
+            "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "fdir",
+        "installed_version": "6.5.0",
+        "lock_path": "node_modules/fdir",
+        "locked_version": "6.5.0",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/thecodrr/fdir.git"
+        },
+        "resolved_archive": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
+        "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1053,
+            "sha256": "9a39f2aadab11a3697edd668ff2d8ad885b649737b7ab4d3bf12b34e5ada0c86"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "lightningcss",
+        "installed_version": "1.33.0",
+        "lock_path": "node_modules/lightningcss",
+        "locked_version": "1.33.0",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MPL-2.0",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/parcel-bundler/lightningcss.git"
+        },
+        "resolved_archive": "https://registry.npmjs.org/lightningcss/-/lightningcss-1.33.0.tgz",
+        "integrity": "sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 15648,
+            "sha256": "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "lightningcss-win32-x64-msvc",
+        "installed_version": "1.33.0",
+        "lock_path": "node_modules/lightningcss-win32-x64-msvc",
+        "locked_version": "1.33.0",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": true,
+        "license_field": "MPL-2.0",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/parcel-bundler/lightningcss.git"
+        },
+        "resolved_archive": "https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz",
+        "integrity": "sha512-OlEICDx/Xl0FqSp4bry8zFnCvGpig3Gl4gCquvYwHuqJKEC1+n9NgDniFvqHGmMv1ZkqDJrDqKKSykTDX+ehuA==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 15648,
+            "sha256": "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "lucide-react",
+        "installed_version": "1.49.0",
+        "lock_path": "node_modules/lucide-react",
+        "locked_version": "1.49.0",
+        "installed_matches_lock": true,
+        "direct_runtime": true,
+        "direct_development": false,
+        "lock_development_flag": false,
+        "optional": false,
+        "license_field": "ISC",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/lucide-icons/lucide.git",
+          "directory": "packages/lucide-react"
+        },
+        "resolved_archive": "https://registry.npmjs.org/lucide-react/-/lucide-react-1.49.0.tgz",
+        "integrity": "sha512-ApfaNM4/7jBrVopqLJ84Jz8TMQ1Q1JeZ1PmKh25aeS3E1FTVcMkSh1bEQB7dfzdIrwXRP8p3z4AJjTIHHb5IIA==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 3208,
+            "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+            "included_notice": "docs/licenses/npm-lucide-react-1.49.0/LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "nanoid",
+        "installed_version": "3.3.19",
+        "lock_path": "node_modules/nanoid",
+        "locked_version": "3.3.19",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": "ai/nanoid",
+        "resolved_archive": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.19.tgz",
+        "integrity": "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1095,
+            "sha256": "da4db1480d9beea3483a2eda5c53b22238d0827d57da162b48f122e04d2d9987"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "picocolors",
+        "installed_version": "1.1.1",
+        "lock_path": "node_modules/picocolors",
+        "locked_version": "1.1.1",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "ISC",
+        "license_in_lock": null,
+        "repository": "alexeyraspopov/picocolors",
+        "resolved_archive": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
+        "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 787,
+            "sha256": "6582629e2979466878f6014313dcc2f3756c9616148682227ce3063dde310750"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "picomatch",
+        "installed_version": "4.0.7",
+        "lock_path": "node_modules/picomatch",
+        "locked_version": "4.0.7",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": "micromatch/picomatch",
+        "resolved_archive": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
+        "integrity": "sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1091,
+            "sha256": "d0cd141b0c322fded5dfad1d4645bb2fedfc05b7321fe1009469638190d59ef9"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "postcss",
+        "installed_version": "8.5.28",
+        "lock_path": "node_modules/postcss",
+        "locked_version": "8.5.28",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": "postcss/postcss",
+        "resolved_archive": "https://registry.npmjs.org/postcss/-/postcss-8.5.28.tgz",
+        "integrity": "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1095,
+            "sha256": "5be1f3465bba68a626777f984878814aaf35e7ef8e9fd314d469bcf887050fb8"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "react",
+        "installed_version": "19.3.0",
+        "lock_path": "node_modules/react",
+        "locked_version": "19.3.0",
+        "installed_matches_lock": true,
+        "direct_runtime": true,
+        "direct_development": false,
+        "lock_development_flag": false,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/react/react.git",
+          "directory": "packages/react"
+        },
+        "resolved_archive": "https://registry.npmjs.org/react/-/react-19.3.0.tgz",
+        "integrity": "sha512-E8LUcbtBWt20bbl2YoHfx4ZDBdxVTfOKtCZn9cDSJ4l6/nuoApcpIBcj47t2wZoVX8g2ZHuMHbiShgCR1T5Sog==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1088,
+            "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+            "included_notice": "docs/licenses/npm-react-19.3.0/LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "react-dom",
+        "installed_version": "19.3.0",
+        "lock_path": "node_modules/react-dom",
+        "locked_version": "19.3.0",
+        "installed_matches_lock": true,
+        "direct_runtime": true,
+        "direct_development": false,
+        "lock_development_flag": false,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/react/react.git",
+          "directory": "packages/react-dom"
+        },
+        "resolved_archive": "https://registry.npmjs.org/react-dom/-/react-dom-19.3.0.tgz",
+        "integrity": "sha512-JDk8dgif51OjFoDE70+OT9ICyYr+69HlmihNwp1+Nsfbna3t5sIiCa9ZJktDmQ4/1b/rn26hIAR2uYXDMr5r0Q==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1088,
+            "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+            "included_notice": "docs/licenses/npm-react-dom-19.3.0/LICENSE"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "rolldown",
+        "installed_version": "1.2.12",
+        "lock_path": "node_modules/rolldown",
+        "locked_version": "1.2.12",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/rolldown/rolldown.git",
+          "directory": "packages/rolldown"
+        },
+        "resolved_archive": "https://registry.npmjs.org/rolldown/-/rolldown-1.2.12.tgz",
+        "integrity": "sha512-8wafseiaG80xmXSfqidUNqZcylTlhmPZZt+za2m+js2sFZ8dTNlhIOV2WcbIPx2hgwPBJpEUGFAMZ9bgBBLTSQ==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1302,
+            "sha256": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734"
+          },
+          {
+            "package_path": "THIRD-PARTY-LICENSE",
+            "bytes": 2209,
+            "sha256": "a877291d800ed43692f3f9ae09d8e01cc6f7293ad39d43896059c188ffbb8b7c"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "scheduler",
+        "installed_version": "0.28.0",
+        "lock_path": "node_modules/scheduler",
+        "locked_version": "0.28.0",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": false,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/react/react.git",
+          "directory": "packages/scheduler"
+        },
+        "resolved_archive": "https://registry.npmjs.org/scheduler/-/scheduler-0.28.0.tgz",
+        "integrity": "sha512-juorfCmIkIw8tT+p5BXSm6PJjQF/ycEYmKyzURCIt/RaZIhL+PulbQ9Yu2z1HdOJDdqDTlxA1+xKBmHXJsczAw==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1088,
+            "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "source-map-js",
+        "installed_version": "1.2.2",
+        "lock_path": "node_modules/source-map-js",
+        "locked_version": "1.2.2",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "BSD-3-Clause",
+        "license_in_lock": null,
+        "repository": "7rulnik/source-map-js",
+        "resolved_archive": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.2.tgz",
+        "integrity": "sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1526,
+            "sha256": "6cb0631f71c7749763fd3dd1d5bee52dd1070ec17f2edc1710079ad070bd2fbd"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "tinyglobby",
+        "installed_version": "0.2.17",
+        "lock_path": "node_modules/tinyglobby",
+        "locked_version": "0.2.17",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": false,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/SuperchupuDev/tinyglobby.git"
+        },
+        "resolved_archive": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
+        "integrity": "sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 1076,
+            "sha256": "22c68811e174cbbfb3813d4135918df4f540959c14d872e601d9abe83d3cde8f"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "typescript",
+        "installed_version": "7.0.2",
+        "lock_path": "node_modules/typescript",
+        "locked_version": "7.0.2",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": true,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "Apache-2.0",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/microsoft/TypeScript.git"
+        },
+        "resolved_archive": "https://registry.npmjs.org/typescript/-/typescript-7.0.2.tgz",
+        "integrity": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==",
+        "license_files": [
+          {
+            "package_path": "LICENSE",
+            "bytes": 9197,
+            "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+            "included_notice": "docs/licenses/npm-typescript-7.0.2/LICENSE"
+          },
+          {
+            "package_path": "NOTICE.txt",
+            "bytes": 48860,
+            "sha256": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b",
+            "included_notice": "docs/licenses/npm-typescript-7.0.2/NOTICE.txt"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      },
+      {
+        "name": "vite",
+        "installed_version": "8.3.2",
+        "lock_path": "node_modules/vite",
+        "locked_version": "8.3.2",
+        "installed_matches_lock": true,
+        "direct_runtime": false,
+        "direct_development": true,
+        "lock_development_flag": true,
+        "optional": false,
+        "license_field": "MIT",
+        "license_in_lock": null,
+        "repository": {
+          "type": "git",
+          "url": "git+https://github.com/vitejs/vite.git",
+          "directory": "packages/vite"
+        },
+        "resolved_archive": "https://registry.npmjs.org/vite/-/vite-8.3.2.tgz",
+        "integrity": "sha512-SQr1x6W5vVSbROg7vsyXIaxK9b0G7zsT68acdWWRmnBUsgDieLCRG+Rep9WdZgcposvv/GSnr4GUUBqB3vXq6w==",
+        "license_files": [
+          {
+            "package_path": "LICENSE.md",
+            "bytes": 108786,
+            "sha256": "a47172e44a86a7e2cd1c16282341f7726ec60caafe3a6166fe3e0602005b6fa6",
+            "included_notice": "docs/licenses/npm-vite-8.3.2/LICENSE.md"
+          }
+        ],
+        "evidence_status": "TEXT_AND_METADATA"
+      }
+    ],
+    "lock_entries_not_installed_here": [
+      {
+        "lock_path": "node_modules/@rolldown/binding-android-arm-eabi",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "android"
+        ],
+        "cpu": [
+          "arm"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-android-arm64",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "android"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-darwin-arm64",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "darwin"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-darwin-x64",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "darwin"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-freebsd-x64",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "freebsd"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-linux-arm-gnueabihf",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-linux-arm64-gnu",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-linux-arm64-musl",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-linux-ppc64-gnu",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "ppc64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-linux-s390x-gnu",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "s390x"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-linux-x64-gnu",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-linux-x64-musl",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-openharmony-arm64",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "openharmony"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@rolldown/binding-win32-arm64-msvc",
+        "locked_version": "1.2.12",
+        "optional": true,
+        "os": [
+          "win32"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-aix-ppc64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "aix"
+        ],
+        "cpu": [
+          "ppc64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-darwin-arm64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "darwin"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-darwin-x64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "darwin"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-freebsd-arm64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "freebsd"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-freebsd-x64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "freebsd"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-arm",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-arm64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-loong64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "loong64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-mips64el",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "mips64el"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-ppc64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "ppc64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-riscv64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "riscv64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-s390x",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "s390x"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-linux-x64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-netbsd-arm64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "netbsd"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-netbsd-x64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "netbsd"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-openbsd-arm64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "openbsd"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-openbsd-x64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "openbsd"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-sunos-x64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "sunos"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/@typescript/typescript-win32-arm64",
+        "locked_version": "7.0.2",
+        "optional": true,
+        "os": [
+          "win32"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/fsevents",
+        "locked_version": "2.3.3",
+        "optional": true,
+        "os": [
+          "darwin"
+        ],
+        "cpu": null
+      },
+      {
+        "lock_path": "node_modules/lightningcss-android-arm64",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "android"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-darwin-arm64",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "darwin"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-darwin-x64",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "darwin"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-freebsd-x64",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "freebsd"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-linux-arm-gnueabihf",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-linux-arm64-gnu",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-linux-arm64-musl",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-linux-x64-gnu",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-linux-x64-musl",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "linux"
+        ],
+        "cpu": [
+          "x64"
+        ]
+      },
+      {
+        "lock_path": "node_modules/lightningcss-win32-arm64-msvc",
+        "locked_version": "1.33.0",
+        "optional": true,
+        "os": [
+          "win32"
+        ],
+        "cpu": [
+          "arm64"
+        ]
+      }
+    ],
+    "missing_direct_dependencies": [],
+    "license_scan_scope": "Package-root license/notice files and package.json metadata; not an exhaustive bundled-code or browser-binary audit."
+  },
+  "license_evidence_gaps": [
+    {
+      "ecosystem": "npm",
+      "name": "@rolldown/binding-win32-x64-msvc",
+      "version": "1.2.12",
+      "status": "METADATA_ONLY"
+    }
+  ],
+  "not_used": [
+    "Strands Agents SDK",
+    "OpenAI API",
+    "Bedrock model",
+    "WNTR",
+    "EPANET",
+    "copied reference-project source"
+  ],
+  "limits": [
+    "Metadata and observed text are evidence, not a legal determination or security audit.",
+    "Current Windows installation differs from Linux Lambda/native npm optional packages; audit the built Linux artifact separately.",
+    "Unavailable npm optional/OS-specific lock entries are listed, not claimed installed or text-audited.",
+    "Direct dependency license/notice files are copied verbatim; transitive file hashes/paths are recorded but their full texts are not all bundled here.",
+    "Embedded third-party notices may cover additional bundled code; package-root scanning cannot certify every embedded asset or browser binary."
+  ]
+}

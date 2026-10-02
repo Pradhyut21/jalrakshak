@@ -1,0 +1,78 @@
+{
+  "checked_on": "2026-10-01",
+  "scope": "license and notice text only",
+  "records": [
+    {
+      "file": "fastapi--fastapi-LICENSE.txt",
+      "repository": "fastapi/fastapi",
+      "revision": "33d411dbc3236275dd64d200bfe18d5d60a49b2e",
+      "license": "MIT",
+      "source_url": "https://raw.githubusercontent.com/fastapi/fastapi/33d411dbc3236275dd64d200bfe18d5d60a49b2e/LICENSE",
+      "bytes": 1086,
+      "sha256": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e"
+    },
+    {
+      "file": "vitejs--vite-LICENSE.txt",
+      "repository": "vitejs/vite",
+      "revision": "10033218d239c927cdc375970b5741cce408e81b",
+      "license": "MIT",
+      "source_url": "https://raw.githubusercontent.com/vitejs/vite/10033218d239c927cdc375970b5741cce408e81b/LICENSE",
+      "bytes": 1101,
+      "sha256": "692057af3d664cbb79ac38293eb50aa3c4987f8182e2a440136e59e08f1b4a54"
+    },
+    {
+      "file": "Strands-python-LICENSE-45c2ffd.txt",
+      "repository": "strands-agents/harness-sdk",
+      "revision": "45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19",
+      "license": "Apache-2.0",
+      "source_url": "https://raw.githubusercontent.com/strands-agents/harness-sdk/45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19/strands-py/LICENSE",
+      "bytes": 10142,
+      "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b"
+    },
+    {
+      "file": "Strands-python-NOTICE-45c2ffd.txt",
+      "repository": "strands-agents/harness-sdk",
+      "revision": "45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19",
+      "license": "Apache-2.0",
+      "source_url": "https://raw.githubusercontent.com/strands-agents/harness-sdk/45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19/strands-py/NOTICE",
+      "bytes": 66,
+      "sha256": "120d77a203a6708ec9a4c8f19e2167286f35bf05375fc5fb3ff225a6f560e515"
+    },
+    {
+      "file": "SAM-transform-LICENSE-ebcce200.txt",
+      "repository": "aws/serverless-application-model",
+      "revision": "ebcce20004bff9d43149eaeda3ca8204a5a2ae14",
+      "license": "Apache-2.0",
+      "source_url": "https://raw.githubusercontent.com/aws/serverless-application-model/ebcce20004bff9d43149eaeda3ca8204a5a2ae14/LICENSE",
+      "bytes": 11386,
+      "sha256": "af6e2028e23c25f283ae56e87af1dcc07050a0f9cdb01d189fca3f2ebf72d82a"
+    },
+    {
+      "file": "SAM-transform-NOTICE-ebcce200.txt",
+      "repository": "aws/serverless-application-model",
+      "revision": "ebcce20004bff9d43149eaeda3ca8204a5a2ae14",
+      "license": "Apache-2.0",
+      "source_url": "https://raw.githubusercontent.com/aws/serverless-application-model/ebcce20004bff9d43149eaeda3ca8204a5a2ae14/NOTICE",
+      "bytes": 102,
+      "sha256": "8473a6244c7ff7955ab08bc670bbbc9a8b81cc965fa8646d305b4ddcae464a31"
+    },
+    {
+      "file": "SAM-CLI-LICENSE-64822701.txt",
+      "repository": "aws/aws-sam-cli",
+      "revision": "648227013498ae16af8ea139fe9112fe6c52f5f8",
+      "license": "Apache-2.0",
+      "source_url": "https://raw.githubusercontent.com/aws/aws-sam-cli/648227013498ae16af8ea139fe9112fe6c52f5f8/LICENSE",
+      "bytes": 11387,
+      "sha256": "6712007d607ef80acdd4cbe5604346b57f85778e28abdff57d5d8036c7d7f7b6"
+    },
+    {
+      "file": "SAM-CLI-NOTICE-64822701.txt",
+      "repository": "aws/aws-sam-cli",
+      "revision": "648227013498ae16af8ea139fe9112fe6c52f5f8",
+      "license": "Apache-2.0",
+      "source_url": "https://raw.githubusercontent.com/aws/aws-sam-cli/648227013498ae16af8ea139fe9112fe6c52f5f8/NOTICE",
+      "bytes": 89,
+      "sha256": "7bfd5f6c5cf420edc8fd3b1064684131c758d5b2b9469abc2003528ddaa5331f"
+    }
+  ]
+}

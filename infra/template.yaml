@@ -1,0 +1,123 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: JalRakshak simulated-session API; deployment has not been verified.
+
+Parameters:
+  AllowedOrigin:
+    Type: String
+    Default: http://localhost:5173
+    AllowedPattern: '^https?://[A-Za-z0-9][A-Za-z0-9.-]*(?::[0-9]{1,5})?$'
+    Description: Exact frontend origin, without a path or trailing slash.
+  SessionTtlHours:
+    Type: Number
+    Default: 24
+    MinValue: 1
+    MaxValue: 168
+    Description: Lifetime of disposable simulated sessions; no real-site data.
+
+Resources:
+  SessionTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: session_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: session_id
+          KeyType: HASH
+      TimeToLiveSpecification:
+        AttributeName: expires_at
+        Enabled: true
+      SSESpecification:
+        SSEEnabled: true
+      Tags:
+        - Key: Project
+          Value: JalRakshak
+        - Key: DataKind
+          Value: SimulatedDemo
+
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: '$default'
+      CorsConfiguration:
+        AllowOrigins:
+          - Ref: AllowedOrigin
+        AllowCredentials: true
+        AllowHeaders:
+          - Content-Type
+          - X-CSRF-Token
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        MaxAge: 300
+      DefaultRouteSettings:
+        ThrottlingBurstLimit: 20
+        ThrottlingRateLimit: 5
+
+  JalApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../backend
+      Handler: app.main.handler
+      Runtime: python3.13
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Timeout: 15
+      ReservedConcurrentExecutions: 4
+      Environment:
+        Variables:
+          JAL_STORAGE: dynamodb
+          JAL_TABLE_NAME:
+            Ref: SessionTable
+          ALLOWED_ORIGINS:
+            Ref: AllowedOrigin
+          JAL_COOKIE_SECURE: 'true'
+          JAL_DEMO_ONLY: 'true'
+          JAL_SESSION_TTL_HOURS:
+            Ref: SessionTtlHours
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName:
+              Ref: SessionTable
+      Events:
+        ProxyRoute:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: HttpApi
+            Path: '/{proxy+}'
+            Method: ANY
+            PayloadFormatVersion: '2.0'
+        RootRoute:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: HttpApi
+            Path: '/'
+            Method: ANY
+            PayloadFormatVersion: '2.0'
+
+  ApiLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName:
+        Fn::Sub: '/aws/lambda/${JalApiFunction}'
+      RetentionInDays: 7
+
+Outputs:
+  ApiBaseUrl:
+    Description: API base URL; check /api/health after an actual deployment.
+    Value:
+      Fn::Sub: 'https://${HttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}'
+  SessionsTableName:
+    Value:
+      Ref: SessionTable
+  ApiFunctionName:
+    Value:
+      Ref: JalApiFunction
+  DeploymentMode:
+    Value: SIMULATED_DEMO_ONLY_NO_EXTERNAL_NOTIFICATIONS

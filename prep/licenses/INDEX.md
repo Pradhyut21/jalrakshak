@@ -1,0 +1,12 @@
+# Reviewed dependency license texts
+
+These pinned license/notice snapshots are reference documents, not installed packages or a complete audit of future dependencies. No third-party application source is included in the preparation ZIP.
+
+- [fastapi--fastapi-LICENSE.txt](fastapi--fastapi-LICENSE.txt): fastapi/fastapi, `33d411dbc3236275dd64d200bfe18d5d60a49b2e`, MIT. [Upstream source](https://raw.githubusercontent.com/fastapi/fastapi/33d411dbc3236275dd64d200bfe18d5d60a49b2e/LICENSE).
+- [vitejs--vite-LICENSE.txt](vitejs--vite-LICENSE.txt): vitejs/vite, `10033218d239c927cdc375970b5741cce408e81b`, MIT. [Upstream source](https://raw.githubusercontent.com/vitejs/vite/10033218d239c927cdc375970b5741cce408e81b/LICENSE).
+- [Strands-python-LICENSE-45c2ffd.txt](Strands-python-LICENSE-45c2ffd.txt): strands-agents/harness-sdk, `45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19`, Apache-2.0. [Upstream source](https://raw.githubusercontent.com/strands-agents/harness-sdk/45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19/strands-py/LICENSE).
+- [Strands-python-NOTICE-45c2ffd.txt](Strands-python-NOTICE-45c2ffd.txt): strands-agents/harness-sdk, `45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19`, Apache-2.0. [Upstream source](https://raw.githubusercontent.com/strands-agents/harness-sdk/45c2ffd3333cdb67c1dd9f4f208639ce3b89aa19/strands-py/NOTICE).
+- [SAM-transform-LICENSE-ebcce200.txt](SAM-transform-LICENSE-ebcce200.txt): aws/serverless-application-model, `ebcce20004bff9d43149eaeda3ca8204a5a2ae14`, Apache-2.0. [Upstream source](https://raw.githubusercontent.com/aws/serverless-application-model/ebcce20004bff9d43149eaeda3ca8204a5a2ae14/LICENSE).
+- [SAM-transform-NOTICE-ebcce200.txt](SAM-transform-NOTICE-ebcce200.txt): aws/serverless-application-model, `ebcce20004bff9d43149eaeda3ca8204a5a2ae14`, Apache-2.0. [Upstream source](https://raw.githubusercontent.com/aws/serverless-application-model/ebcce20004bff9d43149eaeda3ca8204a5a2ae14/NOTICE).
+- [SAM-CLI-LICENSE-64822701.txt](SAM-CLI-LICENSE-64822701.txt): aws/aws-sam-cli, `648227013498ae16af8ea139fe9112fe6c52f5f8`, Apache-2.0. [Upstream source](https://raw.githubusercontent.com/aws/aws-sam-cli/648227013498ae16af8ea139fe9112fe6c52f5f8/LICENSE).
+- [SAM-CLI-NOTICE-64822701.txt](SAM-CLI-NOTICE-64822701.txt): aws/aws-sam-cli, `648227013498ae16af8ea139fe9112fe6c52f5f8`, Apache-2.0. [Upstream source](https://raw.githubusercontent.com/aws/aws-sam-cli/648227013498ae16af8ea139fe9112fe6c52f5f8/NOTICE).

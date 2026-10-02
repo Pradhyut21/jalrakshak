@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "verified_on": "2026-10-02",
+  "timezone": "Asia/Kolkata",
+  "backend": {
+    "command": ".venv/Scripts/python.exe -m pytest -q backend/tests",
+    "passed": 57,
+    "failed": 0,
+    "warnings": [
+      "Starlette httpx testclient deprecation",
+      "Mangum event-loop deprecation"
+    ],
+    "elapsed_seconds": 21.05
+  },
+  "frontend": {
+    "command": "npm run build",
+    "status": "PASS",
+    "source": "frontend worker run; production interface additionally observed with Playwright"
+  },
+  "infrastructure": {
+    "command": ".venv/Scripts/python.exe infra/check_template.py --check-source",
+    "status": "PASS",
+    "scope": "Offline YAML/wiring/static AST; no SAM transform, Linux build or deployment"
+  },
+  "browser": {
+    "artifact": "artifacts/browser-verification.json",
+    "checks": 12,
+    "status": "PASS",
+    "unexpected_page_errors": 0
+  },
+  "evaluation": {
+    "artifact": "artifacts/evaluation.json",
+    "data_kind": "SIMULATED",
+    "holdout_origins": 166,
+    "target": "Next-hour consumption (L)",
+    "mae_l": 149.097767,
+    "method": "Last interval; selected on validation only"
+  },
+  "limits": [
+    "No live AWS deployment",
+    "No real sensors or caretaker pilot",
+    "No external notification",
+    "No calibrated 48h forecast or measured savings",
+    "No actual LLM calls"
+  ],
+  "source_sha256": {
+    "backend/app/main.py": "e1f01c554cdc5ad333dda8b6fc638ecdadf62f88b0c3f60c2d21af3276fc3d1c",
+    "backend/app/domain.py": "d41057967fb3aabe3bea9b9023f6c4b19613d1106e59e721abfbdc0ad9f55b42",
+    "backend/app/operations.py": "c47eaae99d7ab29ba5c1c0af48b2e85c138f7f099aea40e84ceff62a2ad970f1",
+    "backend/app/repository.py": "483711ca793a3f781df6e705d32f73bb6e9bdfc70fe9992b7593847c07f7af79",
+    "frontend/src/App.tsx": "a015908d6057018260b2deec030bb6d21df41785cb0df14e2e682f380e375641",
+    "frontend/src/api.ts": "9c807071c1e2bc7ed44879af4a91a46518e47f12adfd930d1cda97d204b66447",
+    "frontend/src/styles.css": "3473f9217bc565389106abf73f9eddd86e4836684efc630dc77979c84f36a64c",
+    "frontend/src/readability.css": "37f9cfbb89a1fdd0d2a41442c3395d4f43a1290b9438aeb1fc97341fcee6ee60",
+    "frontend/package-lock.json": "e638fd4ad69866a20bd49177f31c35201dd385408af1e10bd7a4dae18a5ff931"
+  }
+}

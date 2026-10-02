@@ -1,0 +1,130 @@
+{
+  "anomaly_final_test": {
+    "definition": "A false alert is a new active transition during a labeled-normal monitored hour; continuing alerts count once.",
+    "episodes": [
+      {
+        "delay_hours": 2,
+        "detected": true,
+        "duration_hours": 7,
+        "onset_at": "2026-09-27T08:00:00+00:00"
+      }
+    ],
+    "false_alert_events": 0,
+    "false_alerts_per_site_hour": 0.0,
+    "labeled_episodes": 1,
+    "missed_episodes": 0,
+    "monitored_site_hours": 166,
+    "normal_site_hours": 159
+  },
+  "data_kind": "SIMULATED",
+  "data_sha256": "688ad1143797468282f2e051acd7bc9a870f5272633a6ce9164143393f4e23c0",
+  "evaluated_on": "2026-10-02",
+  "final_test": {
+    "earlier_median": {
+      "bias_l": -34.769874,
+      "mae_l": 266.059506,
+      "rmse_l": 393.709213,
+      "samples": 166
+    },
+    "last_rate": {
+      "bias_l": 2.313825,
+      "mae_l": 149.097767,
+      "rmse_l": 227.340444,
+      "samples": 166
+    },
+    "recent_mean_selected": {
+      "bias_l": 2.313825,
+      "mae_l": 149.097767,
+      "rmse_l": 227.340444,
+      "samples": 166
+    }
+  },
+  "generator": {
+    "baseline_lph": 960,
+    "demand_jitter_lph": 40,
+    "diurnal_amplitude_lph": 320,
+    "excess_multiplier": 2.5,
+    "reading_error_l": 180,
+    "refill_policy": "Simulated 20,000 L arrival when physical storage drops below 10,000 L; future arrivals unavailable at origin.",
+    "total_hours": 504
+  },
+  "limitations": [
+    "Synthetic assumptions and a single fixed seed; no field validation or real campus readings.",
+    "Final test is reporting only; selection uses validation, never holdout results.",
+    "Reading and demand error bounds are simulator assumptions, not calibrated confidence intervals.",
+    "No measured water savings, physical leak localization, supplier response or health effect is established.",
+    "Detector threshold 1.5× and persistence three intervals are fixed rules; not fitted or calibrated on this holdout.",
+    "The baseline comparison reports unfavorable results if a simpler method wins."
+  ],
+  "purging": "One-hour target windows are disjoint; one boundary origin is omitted on each side. Features may use earlier observed history.",
+  "reserve_timing": {
+    "reason": "Next-hour demand metrics do not validate 48-hour reserve timing under uncertain future supply. Arithmetic behavior is covered separately by domain tests.",
+    "status": "not_evaluated"
+  },
+  "seed": 42,
+  "selection": {
+    "candidate_windows": [
+      1,
+      3,
+      6
+    ],
+    "criterion": "Lowest validation MAE; shorter window breaks ties",
+    "interpretation": "A one-interval recent mean is exactly the last-rate baseline; no complexity advantage is claimed.",
+    "matches_operational_method": true,
+    "method": "recent_mean",
+    "operational_method_label": "last_interval_rate",
+    "operational_window_intervals": 1,
+    "selected_window_intervals": 1,
+    "validation": {
+      "1": {
+        "bias_l": 0.514837,
+        "mae_l": 144.616818,
+        "rmse_l": 230.66544,
+        "samples": 166
+      },
+      "3": {
+        "bias_l": 2.114365,
+        "mae_l": 151.311576,
+        "rmse_l": 253.783164,
+        "samples": 166
+      },
+      "6": {
+        "bias_l": 3.59961,
+        "mae_l": 226.587385,
+        "rmse_l": 341.571916,
+        "samples": 166
+      }
+    }
+  },
+  "source_sha256": {
+    "backend/app/domain.py": "d41057967fb3aabe3bea9b9023f6c4b19613d1106e59e721abfbdc0ad9f55b42",
+    "scripts/evaluate.py": "27b661474ba288be3429b044f7b8b5baf8b91129afcb9eb0f43aa329607de5d5"
+  },
+  "splits": {
+    "test": {
+      "first_origin": "2026-09-25T01:00:00+00:00",
+      "last_origin": "2026-10-01T22:00:00+00:00",
+      "last_target_end": "2026-10-01T23:00:00+00:00",
+      "samples": 166
+    },
+    "train": {
+      "first_origin": "2026-09-14T00:00:00+00:00",
+      "last_origin": "2026-09-17T22:00:00+00:00",
+      "last_target_end": "2026-09-17T23:00:00+00:00",
+      "samples": 95
+    },
+    "validation": {
+      "first_origin": "2026-09-18T01:00:00+00:00",
+      "last_origin": "2026-09-24T22:00:00+00:00",
+      "last_target_end": "2026-09-24T23:00:00+00:00",
+      "samples": 166
+    }
+  },
+  "status": "complete",
+  "summary": "Synthetic holdout: recent-mean (1 intervals) next-hour demand MAE 149.1 L across 166 origins. No real sensor data or calibrated probability.",
+  "target": {
+    "horizon_hours": 1,
+    "name": "next_hour_consumption",
+    "unit": "litres"
+  }
+}

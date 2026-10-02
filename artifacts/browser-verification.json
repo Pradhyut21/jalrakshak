@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-02T15:51:57.699551+00:00",
+  "tool": "Playwright / Chromium",
+  "url": "http://127.0.0.1:8000",
+  "checks": [
+    "initial API-backed healthy state",
+    "24h delayed supply preview creates 8.7h projected physical shortage without mutation",
+    "deterministic assistant explains computed deadline",
+    "excess scenario updates readings, volume, risk and incident",
+    "explicit exact-request confirmation produces truthful local receipt",
+    "repair does not resolve low-margin incident; extra simulated delivery and fresh readings verify recovery",
+    "manual simulated reading advances virtual clock and persists",
+    "evaluation page renders generated artifact",
+    "reset restores isolated healthy demo",
+    "390px mobile viewport has no horizontal overflow",
+    "unknown inflow produces UNKNOWN, disables proposal and preserves truthful assistant fallback",
+    "API failure shows reconnect, with no invented tank values"
+  ],
+  "unexpected_page_errors": [],
+  "screenshots": [
+    "approval.png",
+    "desktop.png",
+    "evaluation.png",
+    "excess-usage.png",
+    "mobile.png",
+    "scenario-preview.png",
+    "unknown-mobile.png",
+    "verified-recovery.png"
+  ],
+  "limits": "Local simulated prototype only; no AWS, external recipient or real sensor verification."
+}
