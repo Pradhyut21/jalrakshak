@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-11T18:10:08.916321+00:00",
+  "url": "https://youtu.be/zM4BsdQfPdg",
+  "signed_in": false,
+  "player_metadata": {
+    "title": "JalRakshak",
+    "video_id": "zM4BsdQfPdg",
+    "length_seconds": 174,
+    "author": "Bunny",
+    "is_private": false,
+    "playability_status": "OK",
+    "playability_reason": null
+  },
+  "playback_initial": {
+    "video_element": true,
+    "current_time": 1.40296,
+    "duration": 174.041,
+    "ready_state": 4,
+    "paused": false
+  },
+  "playback_later": {
+    "current_time": 3.405405,
+    "duration": 174.041,
+    "ready_state": 4,
+    "paused": false
+  },
+  "human_listening_performed": false,
+  "status": "PASS",
+  "signed_out_playback_verified": true,
+  "duration_under_three_minutes": true,
+  "visibility_mode": "Not separately queried; supplied URL is accessible while signed out",
+  "observed_scene": "JalRakshak opening scene matches the generated demo"
+}

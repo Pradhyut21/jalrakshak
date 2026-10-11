@@ -6,6 +6,14 @@ Updated October 11, 2026 · Asia/Kolkata. **Version 0.2.2: WORKING_LOCAL_OBSERVE
 
 The user asked to fix the independent review and continue the original water-operations app in this workspace. Scope remains one caretaker, one tank and one incident loop. Winner repositories informed research; their restricted or unlicensed code was not copied. Preserve actual October 1–3 development dates and unresolved event-start eligibility.
 
+## October 11 user-supplied YouTube demo
+
+- User supplied https://youtu.be/zM4BsdQfPdg after publishing the strengthened repository. Fresh signed-out Chromium confirmed title JalRakshak, video ID zM4BsdQfPdg, player status OK and advancing playback from 1.40s to 3.41s. Metadata reports 174 seconds; media element 174.041 seconds, below three minutes. The first scene matches the generated JalRakshak demo. Human listening was not performed; playback was muted. Evidence: artifacts/youtube-demo-verification.json.
+- Linked YouTube as the main README/hero demo and populated the required URL in docs/SUBMISSION_DRAFT.md. Updated demo/title-description docs, current status and chronology notes in historical reviews. The user-provided upload addresses the previously missing hosted-demo URL; old review ratings and hashed render/media evidence remain unchanged.
+- GitHub About website link was updated from the demo document to this verified YouTube URL and read back successfully. No authenticated YouTube account edits, upload by Codex, event submission, AWS execution or organizer message were performed. Optional deployed/blog links remain blank. Source code, dependencies, forecasts and video bytes are unchanged.
+- Independent document review passed. Checks passed for 79 local Markdown links, verification/status JSON consistency, all eight existing image hashes, all eight existing media hashes and Git whitespace. Application tests were not rerun for this documentation-only change. Publication is the final delivery action.
+- Historical entries below describe their own milestone-time state; this entry supersedes their old pending-YouTube next action. Next: apply the prepared title/description/chapters in the channel if useful; actual organizer acceptance and product field evidence remain unresolved.
+
 ## October 11 GitHub front-page refinement
 
 - Reworked README with an original branded SVG header, locally hosted version/license/dated-CI badges, current actual-interface hero and expandable incident/recovery/UNKNOWN captures. Added a compact incident table, clone/setup instructions, a local-versus-unexecuted-AWS architecture diagram and a document/source map. Synthetic data, source-only AWS, alert costs, actual dates and eligibility limits remain explicit.

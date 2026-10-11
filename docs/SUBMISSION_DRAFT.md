@@ -20,7 +20,9 @@ https://github.com/Pradhyut21/jalrakshak
 
 ## YouTube video demo link
 
-**Required field still missing — do not paste a placeholder:** upload the [2:54 demo](media/JalRakshak-Demo.mp4) and enter its published or unlisted YouTube URL. The user explicitly confirmed on October 11 that it has not been uploaded. Use the [ready upload pack](YOUTUBE_UPLOAD.md); a GitHub MP4 URL cannot fill this field.
+https://youtu.be/zM4BsdQfPdg
+
+**Verification note — do not paste this note:** the user supplied this link after the two-round draft review. Signed-out playback and its 2:54 duration were verified on October 11; [verification record](../artifacts/youtube-demo-verification.json). The [title/description pack](YOUTUBE_UPLOAD.md) remains available.
 
 ## What does your project do?
 
@@ -60,7 +62,7 @@ The SAM template makes the DynamoDB table, API Gateway routes, Lambda configurat
 
 ## Readiness and primary sources
 
-- The public repository and [174-second video](media/JalRakshak-Demo.mp4) exist. YouTube upload and event submission have not occurred. No deployment or blog link exists.
+- The public repository and [2:54 YouTube demo](https://youtu.be/zM4BsdQfPdg) exist; signed-out playback was verified. The user supplied the YouTube link after the review. No event submission has been performed or verified. No deployment or blog link exists.
 - [The event overview](https://www.wemakedevs.org/aws/env) names Heat and Water as the relevant track and permits AWS open-source tools or AWS deployment. The acceptability of this optional SDK integration is an organizer decision, not a verified eligibility result.
 - [The rules](https://www.wemakedevs.org/aws/env/rules) exclude projects started before the event, require the video to show AWS use, allow disclosed AI coding tools, and require a public/unlisted YouTube demo. This October 1 build does not satisfy the published start rule without an explicit organizer exception.
 - [The organizer's October 6 announcement](https://www.wemakedevs.org/blogs/what-is-happening-in-delhi-on-10-october) states October 11, 8 PM IST as the submission deadline. That time had passed when this draft was prepared. The [schedule](https://www.wemakedevs.org/aws/env/schedule) still leaves the exact deadline unspecified; no public extension was found. The signed-out submission page requires sign-in, so form closure has not been observed.

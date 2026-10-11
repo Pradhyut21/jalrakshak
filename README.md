@@ -6,13 +6,13 @@
 
 **A tank can still contain water when it is already time to arrange the next delivery.** JalRakshak helps one hostel caretaker turn storage readings and supply lead time into a planning deadline, then follow an abnormal-depletion incident through approval and fresh-reading recovery.
 
-**[Watch the 2:54 demo](docs/media/JalRakshak-Demo.mp4)** · [Run locally](#quick-start) · [Architecture](#architecture) · [Inspect evidence](#verification-you-can-inspect) · [Project guide](#find-your-way-around)
+**[Watch the 2:54 demo on YouTube](https://youtu.be/zM4BsdQfPdg)** · [Run locally](#quick-start) · [Architecture](#architecture) · [Inspect evidence](#verification-you-can-inspect) · [Project guide](#find-your-way-around)
 
 Working local prototype with a simulated demo and an empty workspace for operator-entered logs. Field usefulness and sensor accuracy remain unvalidated; AWS integration is source/offline-tested only.
 
-[![Actual JalRakshak dashboard showing storage, reserve outlook and supply-action deadline in a simulated session](docs/images/dashboard.png)](docs/media/JalRakshak-Demo.mp4)
+[![Actual JalRakshak dashboard showing storage, reserve outlook and supply-action deadline in a simulated session](docs/images/dashboard.png)](https://youtu.be/zM4BsdQfPdg)
 
-*Actual interface captured October 11, 2026. Fictional site and simulated readings; the October 1 screen date is the demo clock. [Video, transcript and provenance](docs/DEMO_VIDEO.md) · [22-second launch clip](docs/media/JalRakshak-Launch.mp4). Download the MP4 if GitHub does not play it inline. Narration is synthetic.*
+*Actual interface captured October 11, 2026. Fictional site and simulated readings; the October 1 screen date is the demo clock. [Transcript and provenance](docs/DEMO_VIDEO.md) · [Download the full MP4](docs/media/JalRakshak-Demo.mp4) · [22-second launch clip](docs/media/JalRakshak-Launch.mp4). YouTube playback was verified signed out. Narration is synthetic.*
 
 ## One complete incident
 
@@ -125,13 +125,13 @@ Untuned stress cases still contain **12 late predictions among 1,232 true crossi
 
 | Start here | What it contains |
 |---|---|
-| [Video and transcript](docs/DEMO_VIDEO.md) | 2:54 narrated demo, short clip, real UI recording, synthetic-media disclosure and provenance. |
+| [Video and transcript](docs/DEMO_VIDEO.md) | Signed-out-accessible [2:54 YouTube demo](https://youtu.be/zM4BsdQfPdg), short clip, real UI recording, synthetic-media disclosure and provenance. |
 | [Project brief](docs/PROJECT_BRIEF.md) | The one-caretaker, one-tank scope and explicit assumptions. |
 | [API contract](docs/API_CONTRACT.md) | Inputs, validation, settings, imports and workflow behavior. |
 | [Independent review entry](REVIEW_THIS_PROJECT.md) | How to inspect the implementation and challenge the evidence. |
 | [Review fixes](docs/REVIEW_RESPONSE.md) | Reported defects, implemented corrections and remaining gaps. |
 | [Backend](backend/app) · [frontend](frontend/src) · [infrastructure](infra) | Domain and workflow code, interface and optional AWS definitions. |
-| [Solo submission draft](docs/SUBMISSION_DRAFT.md) | Prepared answers, [two-round AI critique](docs/SUBMISSION_REVIEW.md), and [YouTube upload pack](docs/YOUTUBE_UPLOAD.md). No submission or upload has occurred. |
+| [Solo submission draft](docs/SUBMISSION_DRAFT.md) | Prepared answers with the YouTube URL, [two-round AI critique](docs/SUBMISSION_REVIEW.md), and [YouTube title/description pack](docs/YOUTUBE_UPLOAD.md). No event submission has occurred. |
 | [Handoff](AI_HANDOFF.md) · [checkpoint](docs/PROJECT_STATE.md) | Resume instructions, dated checks and the next evidence milestone. |
 
 <details>

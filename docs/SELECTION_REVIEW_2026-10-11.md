@@ -2,6 +2,8 @@
 
 This is an assessment of the existing v0.2.2 application, not a new application release. Three separate AI review agents within Codex reviewed judging merit, technical evidence and submission compliance. They are additional perspectives from the same system, not independent model vendors or official judges. Their conclusions are summarized below without a selection probability or promised award.
 
+**Chronology note:** the status table records the original review. Public source and a recorded demo were subsequently published, and the user later supplied [a 2:54 YouTube link](https://youtu.be/zM4BsdQfPdg) that plays signed out. See [current video evidence](DEMO_VIDEO.md) and [active checkpoint](PROJECT_STATE.md). These later deliverables do not alter the original findings about eligibility, AWS execution or field validation.
+
 ## Verdict
 
 JalRakshak is a credible local prototype with a focused caretaker workflow. It has not satisfied every competition requirement, and real-world usefulness remains unproven. The strongest pitch is a supply decision tied to reserve and delivery lead time, followed by approval and recovery supported by subsequent readings.

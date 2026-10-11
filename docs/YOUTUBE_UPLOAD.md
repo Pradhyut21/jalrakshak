@@ -1,6 +1,8 @@
 # JalRakshak YouTube upload pack
 
-Prepared October 11, 2026. The video file is complete; no upload has occurred. Uploading it does not establish event eligibility or acceptance.
+Prepared October 11, 2026. **[The user-supplied YouTube demo is now available](https://youtu.be/zM4BsdQfPdg)**; signed-out playback and its 2:54 duration were verified. This pack remains useful for its title, description, chapters, thumbnail and captions. Video publication does not establish event eligibility or acceptance.
+
+At the signed-out check, the title was “JalRakshak” and the page showed no description. The suggested title and description below can be applied in the channel's YouTube Studio; Codex has not edited that account or published the upload.
 
 ## Ready assets
 
@@ -40,10 +42,10 @@ Solo project with AI-assisted development and review using OpenAI Codex. Narrati
 2:22 AWS integration source
 2:38 Next evidence milestone
 
-## Upload and return the link
+## Optional updates in YouTube Studio
 
-1. Listen to the finished video, particularly the narration and service names; human listening and accent quality have not yet been independently verified. The audio is synthetic, not a real human recording.
-2. Upload the full MP4 to your YouTube account. Apply the title and description above, optionally add the thumbnail and SRT, and set visibility to **Unlisted** or **Public**. Answer YouTube's audience/content prompts truthfully for this video.
-3. Open the final YouTube URL in a signed-out browser. Confirm it plays with audio and shows 2:54. Use that URL in the submission form; a private video, local path or GitHub MP4 cannot fill the required YouTube field.
+1. Listen to the uploaded video, particularly the narration and service names; human listening and accent quality have not yet been independently verified. The audio is synthetic, not a real human recording.
+2. Open the existing video in your channel's YouTube Studio. Apply the title and description above, optionally add the thumbnail and SRT, and keep visibility **Unlisted** or **Public**. Answer YouTube's audience/content prompts truthfully for this video.
+3. After any edits, open https://youtu.be/zM4BsdQfPdg in a signed-out browser. Confirm it plays with audio and shows 2:54. Use that URL in the submission form; a private video, local path or GitHub MP4 cannot fill the required YouTube field.
 
-The [event rules](https://www.wemakedevs.org/aws/env/rules) require a public/unlisted YouTube demo under three minutes. [Submission draft and remaining eligibility gaps](SUBMISSION_DRAFT.md) are separate from uploading this file. An authorized YouTube channel has not been verified in this session, and no video was published on the user's behalf.
+The [event rules](https://www.wemakedevs.org/aws/env/rules) require a public/unlisted YouTube demo under three minutes. The user supplied the hosted URL and its signed-out playback was verified; no authenticated channel-management session has been provided. Codex did not publish or edit the video on the user's behalf. [Submission draft and remaining eligibility gaps](SUBMISSION_DRAFT.md) are separate from video publication.

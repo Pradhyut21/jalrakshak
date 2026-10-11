@@ -1,16 +1,18 @@
 # JalRakshak demonstration videos
 
-The [2:54 narrated demo](media/JalRakshak-Demo.mp4) and [22-second launch clip](media/JalRakshak-Launch.mp4) use the actual October 11 application interface in isolated simulated sessions. Both are 1080p at 30 fps, with quiet original music, narrated audio and captions. Download a file if GitHub does not play it in the page.
+**[Watch the 2:54 narrated demo on YouTube](https://youtu.be/zM4BsdQfPdg)**. The user supplied this published link on October 11. Fresh signed-out Chromium playback was observed, with advancing video time, an OK player status and a duration of 174.041 seconds (2:54). [Verification record](../artifacts/youtube-demo-verification.json). Visibility mode was not separately queried; the known URL plays without signing in.
+
+The [downloadable full demo](media/JalRakshak-Demo.mp4) and [22-second launch clip](media/JalRakshak-Launch.mp4) use the actual October 11 application interface in isolated simulated sessions. Both source files are 1080p at 30 fps, with quiet original music, narrated audio and captions. YouTube transcoding is separate from these local-file properties.
 
 ![Demo thumbnail](media/demo-poster.jpg)
 
-The narration is synthetic Kokoro `hm_omega` (a Hindi male preset) with English phonemization. It is not a human recording. Timing/signal checks passed; human listening, naturalness, pronunciation and exact accent quality have not been independently assessed. Listen before uploading. The [SRT captions](media/JalRakshak-Demo.srt) use approximate phrase alignment.
+The narration is synthetic Kokoro `hm_omega` (a Hindi male preset) with English phonemization. It is not a human recording. Timing/signal checks passed; human listening, naturalness, pronunciation and exact accent quality have not been independently assessed. The signed-out playback check was muted and did not assess narration quality. The [SRT captions](media/JalRakshak-Demo.srt) use approximate phrase alignment.
 
 The [raw 47-second interface recording](media/actual-ui-walkthrough.webm) supplements the edited narrative. The repair-claim-only and recorded-arrival setup used bounded local API calls; no claim-only UI button is implied. Actual reading workflow supplied the recovery evidence. All tank readings and site identity are fictional; no real log was imported.
 
 The complete local editable HyperFrames projects, script, voice files, capture evidence and licenses are in `deliverables/brag-output-2026-10-11-182558/` on the creation workspace; that directory is intentionally excluded from Git. The rendered web copies are included here. [Verification](media/video-verification.json) and [media hashes](media/manifest.json) cover these presentation files, not an application ZIP.
 
-The event requires an under-three-minute YouTube video. These files have not been uploaded to YouTube or submitted to the event. Development began October 1; organizer eligibility clarification is still required. Live AWS execution, field accuracy and caretaker usefulness remain unverified. The README links to actual source checks and evaluation limits.
+The supplied YouTube link addresses the missing hosted-demo URL and runs under three minutes. No event submission has been performed or verified. Development began October 1; organizer eligibility clarification is still required. Live AWS execution, field accuracy and caretaker usefulness remain unverified. The README links to actual source checks and evaluation limits. The original hashed render report retains its creation-time “no YouTube upload” note; it predates the user-supplied upload and its bytes remain unchanged. Codex did not publish the video on the user's behalf.
 
 Production used [Brag](https://github.com/latent-spaces/brag) (MIT), [HyperFrames](https://github.com/heygen-com/hyperframes) (Apache 2.0) and [GSAP](https://gsap.com/standard-license/) (its custom No Charge license). Typography uses Manrope and Instrument Serif under their SIL Open Font Licenses. The instrumental music is original; [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) supplied synthesized narration. The local editable delivery retains the exact software/font notices and media provenance; these videos do not bundle model weights or rendering software.
 

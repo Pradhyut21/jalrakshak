@@ -35,7 +35,7 @@ Each criterion uses a subjective 1–10 scale. The mean gives equal weight to cl
 
 The unrounded average across reviewers improved from 8.67 to 8.97, displayed as **8.7 → 9.0/10**. This is an editorial comparison of two drafts, not a validated scoring system.
 
-## Round 2 outcome and unchanged project gaps
+## Round 2 outcome and project gaps at review time
 
 All three reviewers passed the revised draft and upload pack with no remaining must-fix wording. The pitch reviewer required the review-record link to exist before publication; this file satisfies that document dependency.
 
@@ -45,7 +45,9 @@ Separate evidence assessments did **not** rise because of improved prose:
 - Pitch reviewer: demonstrated local-product evidence **7.5/10** and real-world readiness **3/10**; no real tank log or caretaker usefulness study exists.
 - Rules reviewer: formal readiness is **incomplete and not demonstrably eligible**. The required YouTube URL is missing. October 1 development conflicts with the published October 8 start rule absent an actual exception. The organizer's published October 11, 8 PM IST deadline had passed, with no public extension found. Acceptance of this particular offline SDK integration is unconfirmed.
 
-Optional deployment and blog fields remain blank. No event submission, YouTube publication, blog publication, organizer message or AWS deployment was performed. Stronger wording cannot establish those missing facts.
+At that review milestone, optional deployment and blog fields remained blank, and no event submission, YouTube publication, blog publication, organizer message or AWS deployment had been performed. Stronger wording could not establish those missing facts.
+
+**Later October 11 update:** the user supplied [the 2:54 YouTube demo](https://youtu.be/zM4BsdQfPdg). Signed-out playback and duration were verified, so the missing video URL is now addressed in the submission draft. [Verification record](../artifacts/youtube-demo-verification.json). Original reviewer ratings and observations above remain historical; they have not been recalculated. Event acceptance, deadline/eligibility exception, AWS execution and field evidence remain unresolved.
 
 ## References and observed boundaries
 
