@@ -1,21 +1,99 @@
 {
   "status": "PASS",
-  "version": "0.2.0",
-  "verified_on": "2026-10-02",
-  "platform": "Windows / Python3.13.5 / Node22.18.0",
-  "setup_command": "python scripts/run.py --setup --no-browser --port 8014",
-  "python_environment": "New virtual environment in fresh extracted folder; locked35-distribution install succeeded",
-  "npm_install": "Fresh npm ci succeeded;0 reported vulnerabilities at this run",
+  "version": "0.2.1",
+  "verified_on": "2026-10-03",
+  "verification_completed_at_utc": "2026-10-03T05:59:40.434756+00:00",
+  "platform": "Windows / Python3.13.5 / Node22.18.0 / npm10.2.5",
+  "portable_payload": "New candidate ZIP built with scripts.package.selected_files(), manifest verified before extraction; no installed dependencies, runtime records or Git directory copied. This candidate is not the final published ZIP.",
+  "candidate_archive_verification": {
+    "status": "PASS",
+    "manifest_entries": 106,
+    "archive_entries": 107,
+    "paths": "safe",
+    "hashes": "match",
+    "secrets_and_session_state": "excluded_by_allowlist_not_a_content_audit"
+  },
+  "snapshot_at_utc": "2026-10-03T05:53:28.750774+00:00",
+  "commands": [
+    {
+      "purpose": "venv",
+      "command": "python -m venv .venv",
+      "working_directory": "extracted application root",
+      "exit_code": 0,
+      "elapsed_seconds": 16.694
+    },
+    {
+      "purpose": "pip-install",
+      "command": ".venv/Scripts/python.exe -m pip install -r backend/requirements-lock.txt",
+      "working_directory": "extracted application root",
+      "exit_code": 0,
+      "elapsed_seconds": 47.054
+    },
+    {
+      "purpose": "npm-ci",
+      "command": "npm.cmd ci",
+      "working_directory": "frontend",
+      "exit_code": 0,
+      "elapsed_seconds": 18.988
+    },
+    {
+      "purpose": "frontend-build",
+      "command": "npm.cmd run build",
+      "working_directory": "frontend",
+      "exit_code": 0,
+      "elapsed_seconds": 5.933
+    },
+    {
+      "purpose": "backend-tests",
+      "command": ".venv/Scripts/python.exe -m pytest -q backend/tests",
+      "working_directory": "extracted application root",
+      "exit_code": 0,
+      "elapsed_seconds": 87.906
+    },
+    {
+      "purpose": "browser",
+      "command": ".venv/Scripts/python.exe scripts/browser_check.py http://127.0.0.1:8014",
+      "working_directory": "extracted application root",
+      "exit_code": 0,
+      "elapsed_seconds": 50.93
+    },
+    {
+      "purpose": "evaluation",
+      "command": ".venv/Scripts/python.exe scripts/evaluate.py",
+      "working_directory": "extracted application root",
+      "exit_code": 0,
+      "elapsed_seconds": 30.038
+    }
+  ],
+  "python_environment": {
+    "python_version": "3.13.5",
+    "venv": true,
+    "locked_distributions": 35,
+    "installed_locked_distributions": 35,
+    "locked_versions_match": true,
+    "additional_bootstrap_distributions": {
+      "pip": "25.1.1"
+    }
+  },
+  "npm_install": {
+    "status": "PASS",
+    "fresh_npm_ci": true,
+    "installed_packages": 25,
+    "reported_vulnerabilities": 0,
+    "npm_version": "10.2.5"
+  },
+  "fresh_environment_note": "A new venv and node_modules were created in the extracted folder. Host download caches may be reused; installed application environments were not copied. Chromium uses the existing host Playwright browser cache. No dependency versions were changed.",
   "frontend_build": "PASS",
   "backend_tests": {
-    "passed": 124,
+    "passed": 166,
     "failed": 0,
     "warnings": 2,
-    "elapsed_seconds": 54.86
+    "elapsed_seconds": 85.97,
+    "process_exit_code": 0
   },
   "browser": {
     "status": "PASS",
-    "checked_at_utc": "2026-10-02T17:16:08.645489+00:00",
+    "checked_at_utc": "2026-10-03T05:57:16.741656+00:00",
     "tool": "Playwright / Chromium",
     "url": "http://127.0.0.1:8014",
     "checks": [
@@ -29,6 +107,8 @@
       "Evaluation separates actual legacy demand metrics from reserve timing, stress failures and passed deadlines",
       "390px demo overview has no horizontal overflow",
       "Unrecorded inflow is UNKNOWN, blocks proposals, and preserves truthful assistant fallback",
+      "Observed setup starts with blank error and basis; native required validation preserves the demo",
+      "Zero error and whitespace-only basis are rejected in the UI without creating records",
       "Observed transition needs explicit consent, clears demo history, starts null/UNKNOWN and hides demo controls",
       "Actual observation form starts blank with an editable IST observation time",
       "Generated E2E fixture imports logs and arrivals atomically with correct inflow-adjusted demand",
@@ -40,6 +120,8 @@
       "Browser downloads backup with evidence/settings, excluding credentials; retention limits remain visible",
       "390px observed overview and settings/import/export forms have no horizontal overflow",
       "Observed workspace keeps synthetic evaluation separate; artifact tables remain responsive",
+      "Mocked legacy workspace retains displayed storage, blocks proposals and opens blank redeclaration fields on mobile",
+      "Saved declaration restores after reload and calibration warning persists in settings and overview",
       "Actual 30-second timer accepts mocked stale-clock response, blocks proposals and preserves measured volume",
       "Refresh failure visibly preserves last-known data without invented current values",
       "Initial API failure shows reconnect without fabricated readings or metrics"
@@ -74,21 +156,42 @@
       "generated_arrivals": 1,
       "browser_sessions": 1
     },
-    "limits": "Local browser and HTTP integration only. No AWS execution, external recipient, calibrated sensor or field accuracy claim. Stale browser polling uses an explicitly mocked dashboard snapshot; actual clock/domain freshness is tested separately."
+    "limits": "Local browser and HTTP integration only. No AWS execution, external recipient, calibrated sensor or field accuracy claim. Stale polling and legacy declaration UI use explicitly mocked dashboard snapshots; backend regressions test actual clock/freshness and saved-workspace declaration gating separately."
   },
-  "tested_preliminary_archive_sha256": "fa6fefedaa8e06223f5c40203b2070d9d639dcf4b59e00bd31d1cae6f8031aeb",
+  "browser_check_count": 28,
+  "evaluation_reproduction": {
+    "status": "PASS",
+    "reproduction_command": ".venv/Scripts/python.exe scripts/evaluate.py",
+    "elapsed_seconds": 30.038,
+    "regenerated_files": [
+      "artifacts/evaluation.json",
+      "backend/app/data/evaluation.json"
+    ],
+    "regenerated_copies_identical": true,
+    "regenerated_copies_match_current_root": true,
+    "sha256": "84a9887a14da3ac3141e25d350f445813ca9cd71fc1c27b040a287492aac7b67",
+    "limits": "All evaluation data remains synthetic; forecasting and anomaly parameters were not tuned."
+  },
+  "server": {
+    "verified_health_version": "0.2.1",
+    "command": ".venv/Scripts/python.exe -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8014",
+    "url": "http://127.0.0.1:8014",
+    "cleanup": "Stopped only the extracted verification server after checking its executable identity."
+  },
+  "tested_preliminary_archive_sha256": "0774f18d1abc940a7b018402b1d90f148f682a941125afa252cc7af3f218a763",
   "source_and_lock_bytes_match_tested_archive": true,
-  "checked_application_files": 49,
+  "current_root_matches_tested_application": true,
+  "checked_application_files": 51,
   "application_source_and_lock_sha256": {
     ".env.example": "8a3e764d8ea02c709d561e97ee118efcbd55779d393976c1b9834f270d3e079c",
     ".github/workflows/ci.yml": "2fd6a8238f645fd3836e293b329d22d50bff1ecb3a27481d20a6b38f85573385",
     "START_APP.cmd": "1a633fd75383583a05e584f284d85b713a5aa4a036b2feb40e4d6d4946e16296",
     "backend/app/__init__.py": "82bf440b72adfb0410fa71775fecfe4aad0f944cf5ddecf1de5f4dfb536b12db",
-    "backend/app/data/evaluation.json": "51f26accdee2355ae9a3b54052a221336537a4335ea7b3ac8207d97af79aa132",
-    "backend/app/domain.py": "577de3c1b87dc38a8e26fbda7f0b6229d92c3e43508bcc8f9f5beaaf23d2d2e7",
-    "backend/app/main.py": "2e72cab1cf0402982cf986f77a7f8d62fb5a98689e7a90643a57440d987b677b",
+    "backend/app/data/evaluation.json": "84a9887a14da3ac3141e25d350f445813ca9cd71fc1c27b040a287492aac7b67",
+    "backend/app/domain.py": "ca0f70ffd36bf55000b782a049e46975f41f76c70b026d1fb48729206012a5d8",
+    "backend/app/main.py": "6c99b3f02e1af7f73b200fe088844da989ddbedc7f23c108b1e5b64e348405e4",
     "backend/app/notifiers.py": "02d65bb371e4bc981d3072ef0f0d0af29dfa9d1d9de66c3c9dbd54325050356a",
-    "backend/app/operations.py": "34fcfb85c85acf8a3bc2f243a66947947c7c270345d6cce2645e706640b6e826",
+    "backend/app/operations.py": "aca013cfa6515646934b9a7d48e5a1515cd2844d9e34a6a511b9d329a94ce91d",
     "backend/app/repository.py": "9d8518c565bb17cbf8fb92a1bebe779df860808840de3616fb0cd48aa5d6217d",
     "backend/pyproject.toml": "6d7cd4157ad488b231b3759cd94ef8af8fb2e3599e9e58f030d06e914f5e3b0c",
     "backend/requirements-dev.txt": "1554a449289d532140de1e446ce14564e6c20c110e23b0b28b70f4f8fa193c32",
@@ -97,25 +200,27 @@
     "backend/tests/test_domain.py": "87b4613de9021e870d5cb34c1553911dac9ad44e5f810fbb7b69d43a8a036427",
     "backend/tests/test_evaluation.py": "5db462b6c74fec3b0f9ab54cbad88e72a04333fa76333eef7e9fd1b3282f7437",
     "backend/tests/test_notifier.py": "b774588bec1ae86e06a3e3a28f03e81c06f4a555669ea5b30bf5ff333aab3294",
-    "backend/tests/test_observed_workspace.py": "651fd893987d2c06da0132705cad5214040985dd4fa8f32178034e296ac29bfb",
+    "backend/tests/test_observed_workspace.py": "85f0022d19adb766cea355d5e4ebd8052dd7658cc430f72f8a4080e7577cb65b",
     "backend/tests/test_reserve_backtest.py": "d35b656d29efaeb6a89303a4560c933b4b9f4b911f952f8e42cdd0e9184c6ce2",
     "backend/tests/test_session_limits.py": "827f1e3045f6585ffd9b93c06ebecdd27c9dce955e4d14dbe76a8dcc7009d50d",
     "backend/tests/test_workflow.py": "110b0b4221d0fd8a2e01d087d71c724dd71f1e96684500e646005f84f9a8f057",
-    "frontend/dist/assets/index-Cq-oZL4N.css": "233da3d03e4e58b860f3be1b8d299a7c527c3fd9e89435415c61a064d61ea1f3",
-    "frontend/dist/assets/index-DCrW4g84.js": "5f915a6ec75371a5997d70776a731f4cf70e30630693eafe3b988770d3f0dc5b",
+    "frontend/.env.example": "a31f7fab9a7dfcdf25402c33743e2726c36f76166b478ded911f785600ff92a0",
+    "frontend/README.md": "dd3803ad27c67a418e38febdca74e350e9688b11cc6fa286851e57dbdc581688",
+    "frontend/dist/assets/index-Cgy786XM.css": "7b467f6cc997274adb9e3e2e3692a766d6fa59ccf928051aa9a4426f940d9244",
+    "frontend/dist/assets/index-DVm0WBXn.js": "3d33bcd1eb0fac346015adc3cb82aaf9570a288004529e71d6b14952470ab8dd",
     "frontend/dist/favicon.svg": "befaa418f3cad69708c06d33df7746a5be23b061cad83dc72eec5704591ae194",
-    "frontend/dist/index.html": "3fcb95c12e0d4f3c28c3592793686e22cd22ce6d77cb28991ecbe69e083b382d",
+    "frontend/dist/index.html": "a453b93db103789b0a96ddacbd66ff968bfc42bff211b503ac112873c86f98d4",
     "frontend/index.html": "e1e6796c1a4dd0b7c4347d3fee03ee58e70a391a439f66017f9c5e7cb5b598f6",
-    "frontend/package-lock.json": "37b8898a9c0e3e1917b8fad95cd14b5d6e5ffc16ba47fe4b7730535f76729836",
-    "frontend/package.json": "add0c3d9f656adbb3ebad3b4846bede13793637bdc666b49e9275d8287b7c656",
+    "frontend/package-lock.json": "2a701da0a6f3bd1f8749f72bfbe9b92bb405615217ec1441222093e1666098f3",
+    "frontend/package.json": "fc227cd9ae67b096b296ba021ca0f1088d881123fe27281250f6a8abaee20fef",
     "frontend/public/favicon.svg": "befaa418f3cad69708c06d33df7746a5be23b061cad83dc72eec5704591ae194",
-    "frontend/src/App.tsx": "eb20112a8472afa024e54529af7b38b37c326bdc24bc81c90eae2a13a93f4e89",
-    "frontend/src/DataWorkspace.tsx": "60389e1001f9bedb9054466d02f147a8e84f4476cccf33a24bb90d7f90a0f768",
-    "frontend/src/api.ts": "a216a9b13cead55ecaac5122a89a41f7a68f54ba1d78cdedea99b7e0bf555775",
+    "frontend/src/App.tsx": "130769f0c7a9c98e90342d4bb3211981a01593bd67f10faf4b8791face1f88b1",
+    "frontend/src/DataWorkspace.tsx": "b4cdee56c02e8c5039267b3a1844dc7d952d37ec0334429e8d9fa68f370d45cd",
+    "frontend/src/api.ts": "dc5a9040f94445c2f33c3c04c84089e2ac69dbdb19ab576d38317f656702096b",
     "frontend/src/main.tsx": "e9333bad6b4bed217f50653fe8d0c1107a4925ec8d9f0e5b89d7207b2c1d2711",
     "frontend/src/readability.css": "856530928fa153f40ca3a45495a0cc4a0a38b7055e52dae4168174087de7a86e",
     "frontend/src/styles.css": "3473f9217bc565389106abf73f9eddd86e4836684efc630dc77979c84f36a64c",
-    "frontend/src/workspace.css": "0aa6f40fe3029e6a1737cee35160aab401777b533feaaa8c3252e6af4570f69b",
+    "frontend/src/workspace.css": "33c962d2a27e4ee2552880990088f84c8a233347ad9f98f68fe1154e2fc698c8",
     "frontend/tsconfig.json": "d57f3941c728ff038080604ea813c20777f024720931bf75d808b06578997d42",
     "frontend/vite.config.ts": "8e1fb48065e78672f695ac41e5c21b6667b56048ead80d7261993b3990e48fe5",
     "infra/amplify.yml": "90a5d9a4078526263a2e4e98cb12c6480fae66e2f1390a8ca6f75a59a29a391e",
@@ -123,18 +228,24 @@
     "infra/requirements-validation.txt": "0969da99a0bc2a1b71ed50584560f4588a37567ac63af3ddbaf3c4617ca5621a",
     "infra/template.yaml": "37e2762e57a53f05f2c0f6478340fa93cb5d37551529dc6b947d0072d2cf3228",
     "scripts/backtest_reserve.py": "95b05dc07a7bd228324290ff97893584cbfd72a6dc175c47999e0c2acea96d1a",
-    "scripts/browser_check.py": "b686356a6494dc1390ffdd056879114a0cbeded6eb56c61b034b38955212989d",
+    "scripts/browser_check.py": "f82d64718998110386bd154cbb44dae1ecb9c04537e688dc9eb2738b56cdd544",
     "scripts/evaluate.py": "f9d3862e994b198050249ce4d7000aca8241829483ab0fc0b9fa2067d37cdddd",
     "scripts/license_inventory.py": "a14178d1dadb8ec75721d61c1ca89f8159807857dab3dd10fc509d4330f0adc5",
-    "scripts/package.py": "c1066b7ae7fde6effd42740cce6bdc5a84c3082cbf7e2412eb545612b4c7dc67",
+    "scripts/package.py": "2d99169e2c01bfe5a1e0a1c3c3f0ef0fbb4b631f37cd4ebf4fe48cc07a6fd0c6",
     "scripts/run.py": "7c33f65e28280d5bff873c707f7e68d0a9aa198296319287536aec1d209bfcdd",
     "scripts/verify_archive.py": "7e92ef74055bee947f42e4b58cf436ce8c37bf7e804ddb727faf2d281f76c84a"
   },
-  "final_archive_note": "Final ZIP adds current verification/checkpoint documents only; application-source, built-UI and lock hashes remain those tested here.",
+  "hash_equivalence_checked_at_utc": "2026-10-03T05:59:40.434756+00:00",
+  "current_root_mismatches": [],
+  "rebuilt_extracted_mismatches": [],
+  "final_archive_note": "Final archive verification is separate. Documentation and verification artifacts may be refreshed after this candidate snapshot; application source, scripts, infrastructure, CI, dependency locks and rebuilt interface must retain these tested hashes.",
   "limits": [
     "No live AWS or Linux Lambda verification",
-    "Generated browser data is not field logs",
+    "Generated browser inputs are not field logs",
     "All forecast evaluation data is synthetic",
-    "Stale browser polling uses a declared mock; backend wall-time aging is independently tested"
-  ]
+    "Stale browser polling and legacy declaration UI use declared mocks; backend regressions test actual clock aging and saved-workspace declaration gating."
+  ],
+  "historical": true,
+  "superseded_by_version": "0.2.2",
+  "scope_for_current_release": "Historical v0.2.1 fresh installation only. Changed v0.2.2 application bytes are verified separately; no fresh0.2.2 install is claimed."
 }

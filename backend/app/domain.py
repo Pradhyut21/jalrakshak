@@ -300,9 +300,24 @@ def _analyze(site: dict, readings: list[dict], deliveries: list[dict], now: date
     historical_rates = [interval["rate"] for interval in intervals
                         if interval["at"] <= now - timedelta(hours=4) and interval["rate"] is not None]
     baseline = float(median(historical_rates)) if historical_rates else None
+    requires_declaration = site.get("require_measurement_error_declaration") is True
+    error_basis = site.get("measurement_error_basis")
+    declaration_complete = (measurement_error > 0 and isinstance(error_basis, str)
+                            and bool(error_basis.replace("\ufeff", "").strip()))
+    calibration_note = (f"Declared per-reading error: ±{measurement_error:g} L. Operator-entered basis: {error_basis}. "
+                        "Declaration is not calibration; an understated bound can produce late warnings. "
+                        "A tank-level log alone cannot establish a reliable sensor-error bound.")
     def unknown(reason: str) -> dict:
-        return _unknown(reason, history, supply_at, supply_status, baseline,
-                        config=config, measurement_error=measurement_error)
+        result = _unknown(reason, history, supply_at, supply_status, baseline,
+                          config=config, measurement_error=measurement_error)
+        if requires_declaration and declaration_complete:
+            result["facts"].append(calibration_note)
+            result["forecast_assumptions"].append(calibration_note)
+        return result
+    if requires_declaration and not declaration_complete:
+        result = unknown("Declare a positive per-reading error bound in litres and its basis in Data & settings. Older saved defaults are not an explicit declaration; existing records are retained.")
+        result["recommendation"].update(type="CONFIGURE_SITE", title="Declare the reading-error bound")
+        return result
     if bad_supply or bad_reading:
         return unknown("Invalid or conflicting reading/inflow ledger.")
     if not rows:
@@ -389,6 +404,8 @@ def _analyze(site: dict, readings: list[dict], deliveries: list[dict], now: date
         facts.append("Daily-profile history is limited: unsupported hours use an earlier historical median, or the latest interval when none exists. Long-horizon accuracy is unvalidated.")
     if measurement_error:
         facts.append(f"Declared per-reading error is ±{measurement_error:g} L; recent interval demand is bounded from {rate_lower:.1f} to {rate_upper:.1f} L/h. This bound is an operator assumption, not calibration.")
+    if requires_declaration:
+        facts.append(calibration_note)
     if central["breach"] is None:
         facts.append("No central reserve breach within the 48-hour modeled horizon; this is not an unlimited guarantee.")
     if supply_status == "OVERDUE":
@@ -422,6 +439,7 @@ def _analyze(site: dict, readings: list[dict], deliveries: list[dict], now: date
             "Central supply arrivals are conditional; the lower-demand path assumes 20% below the central profile and is sensitivity only.",
             "Demand patterns may change; neither profile nor envelope provides calibrated probability or guaranteed reserve protection.",
             "A sustained three-interval anomaly scales central demand until new observations change the measured evidence.",
+            *([calibration_note] if requires_declaration else []),
         ],
         "measurement_bounds": {"per_reading_l": measurement_error, "latest_rate_lower_lph": round(rate_lower, 3),
                                "latest_rate_upper_lph": round(rate_upper, 3),

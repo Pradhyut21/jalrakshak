@@ -1,14 +1,38 @@
 # Active JalRakshak checkpoint
 
-Updated October 2, 2026 Â· Asia/Kolkata. **Version 0.2: WORKING_LOCAL_OBSERVED_PROTOTYPE. Local repair and portable packaging milestone complete.**
+Updated October 11, 2026 · Asia/Kolkata. **Version 0.2.2: WORKING_LOCAL_OBSERVED_PROTOTYPE. October 3 application milestone unchanged; selection review complete, feature scope frozen pending real evidence.**
 
 ## Objective and decisions
 
-The user asked to fix the independent review and continue the original water-operations app in this workspace. Scope remains one caretaker, one tank and one incident loop. Winner repositories informed research; their restricted or unlicensed code was not copied. Preserve actual October 1â€“2 development dates and unresolved event-start eligibility.
+The user asked to fix the independent review and continue the original water-operations app in this workspace. Scope remains one caretaker, one tank and one incident loop. Winner repositories informed research; their restricted or unlicensed code was not copied. Preserve actual October 1–3 development dates and unresolved event-start eligibility.
 
-## Completed
+## October 11 selection review
 
-- Replaced constant last-rate Ã— 1.2 forecasting with historical local-hour medians, empirical upper-demand bounds and a recent upper-rate floor. Parameters were frozen using validation only. Forecasts account for arrivals once, preserve measured rates, separate reserve crossing from emptiness and expose sparse history and reading-error assumptions.
+- Completed three separate Codex AI reviews of judging merit, technical evidence and current submission requirements. Full findings and primary sources: `docs/SELECTION_REVIEW_2026-10-11.md`. These are additional AI perspectives, not different model vendors or official judges.
+- Current rules still exclude pre-event projects, including rewrites. User confirmed no written organizer acceptance, public repository, YouTube demo or AWS execution proof. The organizer's October 6 announcement specifies October 11 at8PM IST; the schedule remains less precise. Account eligibility and submission receipt remain unverified.
+- The user authorized GitHub committing/publishing. Preserve the October2 commits and October1 implementation record. An October11 commit cannot make the project event-eligible; concealing or rewriting these dates is not an authorized implementation path. No organizer message or submission is sent by this review.
+- Fresh read-only targeted checks: `.venv/Scripts/python.exe -B -m pytest -q -p no:cacheprovider backend/tests/test_domain.py backend/tests/test_evaluation.py backend/tests/test_reserve_backtest.py`: **41 passed in58.25 seconds**. Exact evaluation reproduction and an in-memory incident loop were observed. Offline infrastructure checker passes static AST only. Full backend/browser suites, installation and AWS execution were not rerun; October3 results below remain historical.
+- Newly reproduced, unfixed UI issue: IncidentProgress marks request approval from an unrelated historical action. A pre-incident notice can make a new OPEN incident appear approved; backend incident binding remains correct. See App.tsx:164. Address this before using that indicator as workflow evidence. No application source or frozen parameters changed in this review.
+- Next: organizer eligibility ruling; if accepted, actual AWS demonstration and truthful public repository/video/writeup/submission receipt. Real tank evidence and caretaker usefulness remain the later product milestone. No selection odds or award promised. Existing October3 ZIPs are unchanged; no new archive is delivered.
+
+## October 3 plausibility-warning patch
+
+- Added a nonblocking warning strictly below 0.5% of capacity in typed settings, observed analysis, preview, assistant text/facts and new local notices. The cutoff is the reviewer's suggested heuristic, not a minimum safe error, calibrated noise estimate or probability. Smaller rated bounds can be legitimate; raising the declaration can warn too early and does not certify it.
+- Kept the declaration gate, inputs, forecasts, detector and approval rules unchanged. 1 L with basis “x” remains accepted with a conspicuous review prompt. Missing declarations remain UNKNOWN. No reading/error value is changed automatically and no extra confirmation is required.
+- Core domain.py and both evaluation JSON files are byte-identical to the delivered v0.2.1 ZIP. Full numerical result equality is tested after removing only appended disclosure. Twenty new HTTP cases cover strict/scaled boundaries, empty/stale UNKNOWN, propagation, local approval and export/restart preservation.
+- The user explicitly instructed stopping feature expansion after this small patch. Next work requires actual tank logs, the sensor datasheet and caretaker feedback; no new features, detector tuning or confidence claim follows automatically.
+
+## October 3 sensor-error hardening
+
+- Removed the observed API/form's guessed 100 L default. Both settings routes require a positive finite JSON number below capacity and a nonblank operator-entered basis (maximum 300 characters). Omitted/null/blank/zero/boolean/string/nonfinite bounds and invisible BOM-only bases are rejected atomically.
+- Observed setup starts blank. Persistent calibration warnings explain that an understated bound may warn late. An estimate can be honestly identified as unverified; declaration does not certify accuracy. A single tank-level log cannot establish a reliable upper sensor-error bound.
+- Older observed sessions lacking the new basis retain logs, deliveries and incident facts but return UNKNOWN with no projection/deadlines until settings are saved. Dashboard, preview, assistant, proposals and approvals share this gate. Redeclaration changes evidence revision and clears recovery credit after an intervention.
+- Bound, basis and server-owned declaration timestamp persist in the site/JSON backup. Observed local notice messages carry bound/basis/calibration limits.
+- API, brief, architecture, review response, handoff and entry docs match the change. Package names use explicit version/date, preserving older delivered archives. Frozen forecast and anomaly parameters were not retuned.
+
+## Retained v0.2 implementation
+
+- Replaced constant last-rate × 1.2 forecasting with historical local-hour medians, empirical upper-demand bounds and a recent upper-rate floor. Parameters were frozen using validation only. Forecasts account for arrivals once, preserve measured rates, separate reserve crossing from emptiness and expose sparse history and reading-error assumptions.
 - Separated incident lifecycle facts from UNKNOWN data quality. Valid readings restore prior workflow state; older saved approval receipts are preserved on upgrade. Approval remains bound to session, action, evidence revision, expiry and a strict boolean.
 - Recovery requires three independent fresh normal post-intervention readings plus adequate modeled margin. Claims alone cannot resolve incidents. Changed imports, ambiguous intervals and historical revisions invalidate recovery credit. No intervention event is created without an incident.
 - Added an empty local observed workspace, editable tank settings, timestamped manual entries, atomic CSV/arrival imports, actual/planned delivery records, wall-time freshness and JSON backups. Demo fixtures cannot carry into actual records. Inputs remain unverified operator entries, available only on loopback SQLite; cloud guests remain simulated.
@@ -20,13 +44,13 @@ Observed records retain the newest1,000 readings and at most200 supply records. 
 
 ## Verified
 
-- **124 backend tests pass**, zero failures and two upstream deprecation warnings, in a new environment from the extracted archive.
-- **24 Chromium checks pass**, zero JavaScript errors, covering the demo, observed data path, imports, local approval/recovery, backups,390px mobile pages, polling and error flows. Generated E2E inputs are explicitly test data; stale polling uses a declared mock, while backend wall-clock aging is independently tested.
-- Fresh locked Python install, npm ci and production build pass on Windows. All49 application-source, built-interface and lock files checked match the tested archive bytes. See artifacts/portable-install-verification.json.
-- Exact synthetic evaluation reproduction passes; both packaged JSON copies match. Original generator hash remains688ad1143797468282f2e051acd7bc9a870f5272633a6ce9164143393f4e23c0.
+- **186 backend tests pass**, zero failures and two existing upstream deprecation warnings; 52.01 seconds in the workspace virtual environment. Includes the 20 new warning cases plus earlier declaration/incident/workflow regressions.
+- **31 Chromium checks pass**, zero unexpected JavaScript errors. Added typed/scaled/boundary warning checks, visible propagation and above-threshold calibration disclosure; existing demo/observed/import/export/mobile/refresh checks pass. Generated entries are test data. Legacy declaration UI and stale polling use declared mocks; backend regressions test actual saved-session gating and aging. The first browser run used an older mocked evidence revision after new settings checks; the app correctly rejected it. The mock was repaired and the rerun passes.
+- TypeScript/production frontend build passes; locked dependency versions are unchanged except the app's own version. No fresh installation is claimed for v0.2.2. The v0.2.1 portable report is historical (35 locked Python distributions, npm ci/build,166 tests and28 browser checks); it cannot prove the changed v0.2.2 application bytes. Current archive integrity/source checks bind the delivered ZIP to this tested workspace.
+- Exact synthetic evaluation reproduction passes; both packaged JSON copies match current domain source hashes. Numerical results, original October2 protocol date and frozen parameters are unchanged; reproduction occurred October3. Original generator hash remains688ad1143797468282f2e051acd7bc9a870f5272633a6ce9164143393f4e23c0.
 - Offline infrastructure structure/static AST checks pass. SAM transform, Linux Lambda build and deployment were not run.
 - Dependency inventory remains35 Python distributions,25 installed npm packages and44 platform-specific/uninstalled lock entries. One optional native development dependency has metadata-only license evidence; notices and scope remain documented.
-- Archive manifests verify safe paths, full coverage, hashes and CRC. Runtime records, installed dependencies, credentials and Git internals are excluded.
+- Delivered ZIP: `deliverables/JalRakshak-App-v0.2.2-2026-10-03.zip`. Adjacent verification JSON and .sha256 record safe paths, complete manifest coverage, hashes and CRC; PACKAGE_FILES.json is current. App/build/lock bytes are compared with current runtime verification, and domain/evaluation with the earlier ZIP. Runtime records, installed dependencies, credentials and Git internals are excluded. Earlier delivered archives remain historical.
 
 ## Forecast evidence and limits
 
@@ -36,7 +60,7 @@ Twelve predeclared untuned stress cases contain1,440 windows,1,232 true crossing
 
 ## Run and resume
 
-From this root: `python scripts/run.py --setup`; later `python scripts/run.py`. Initial setup needs Python3.13, Node22.18+ and internet. Default URL is http://127.0.0.1:8000. Another project currently uses8000; the final root app is running at **http://127.0.0.1:8012**, launched with `python scripts/run.py --no-browser --port 8012`.
+From this root: `python scripts/run.py --setup`; later `python scripts/run.py`. Initial setup needs Python3.13, Node22.18+ and internet. Default URL is http://127.0.0.1:8000; choose a free port with `--port 8012` if occupied. On October3 the workspace app was running at **http://127.0.0.1:8012**, launched with `python scripts/run.py --no-browser --port 8012`; runtime availability was not rechecked in the October11 review.
 
 Tests: `.venv/Scripts/python.exe -m pytest -q backend/tests`. Reproduce evaluation: `.venv/Scripts/python.exe scripts/evaluate.py`. Browser check accepts the running URL. Packaging: `python scripts/package.py` and optional `--full-context`.
 
@@ -44,4 +68,6 @@ Read AI_HANDOFF.md, PROJECT_BRIEF.md, API_CONTRACT.md, EVALUATION.md and REVIEW_
 
 ## Next evidence milestone
 
-Actual caretaker tank logs and a usefulness check have not been supplied. There is no calibrated sensor, real caretaker pilot, live AWS execution, external supplier send, model call or measured water saving. Cloud work needs concrete account, region and cost scope; external transport needs an authorized destination. No universal rating or award is promised. No required local work remains for this milestone.
+Actual caretaker tank logs and a usefulness check have not been supplied. There is no calibrated sensor, real caretaker pilot, live AWS execution, external supplier send, model call or measured water saving. Cloud work needs concrete account, region and cost scope; external transport needs an authorized destination. No universal rating or award is promised.
+
+Next: one authorized real tank log, about seven days of hourly timezone-aware litre readings, capacity/reserve, actual arrivals and the sensor's rated error/datasheet. Keep historical logs historical; stale records remain UNKNOWN. Retrospective accuracy needs independent reference storage or a declared truth protocol. Ask a caretaker whether warnings change an action and what early/repeated alerts would cause them to ignore it. The supplied re-review's backtests remain reviewer-reported evidence. No alert-fatigue reduction is claimed. No required local work remains for this milestone; stop without expanding scope.

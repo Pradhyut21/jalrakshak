@@ -9,6 +9,9 @@ from uuid import uuid4
 from .domain import analyze, analyze_preview
 
 
+MEASUREMENT_ERROR_REVIEW_PERCENT = 0.5  # Advisory heuristic, not a sensor accuracy requirement.
+
+
 def iso(value: datetime) -> str:
     return value.astimezone(timezone.utc).isoformat()
 
@@ -45,8 +48,40 @@ def seed(csrf_token: str | None = None) -> dict:
     return context
 
 
+def analysis_site(context: dict) -> dict:
+    # Older observed sessions may contain the former silent 100 L default.
+    # Require the new declaration without rewriting their records or demo sites.
+    return {**context["site"], "require_measurement_error_declaration": context["mode"] == "LOCAL_OBSERVED"}
+
+
 def analysis_for(context: dict) -> dict:
-    return analyze(context["site"], context["readings"], context["deliveries"], parse(context["clock"]))
+    result = analyze(analysis_site(context), context["readings"], context["deliveries"], parse(context["clock"]))
+    return attach_measurement_error_warning(context, result)
+
+
+def attach_measurement_error_warning(context: dict, analysis: dict) -> dict:
+    """Add an advisory without changing computed risk, deadlines or evidence."""
+    site = context["site"]
+    bound, capacity = site.get("measurement_error_l", 0), site["capacity_l"]
+    basis = site.get("measurement_error_basis")
+    threshold_l = capacity * (MEASUREMENT_ERROR_REVIEW_PERCENT / 100)
+    warning = None
+    if (context["mode"] == "LOCAL_OBSERVED" and 0 < bound < threshold_l
+            and isinstance(basis, str) and basis.replace("\ufeff", "").strip()):
+        message = (f"Check this small reading-error bound: it is below {MEASUREMENT_ERROR_REVIEW_PERCENT:g}% "
+                   f"of tank capacity (about {threshold_l:g} L). An understated bound can produce late warnings. "
+                   "This is a review heuristic, not a minimum safe error "
+                   "or calibration. Verify the sensor datasheet or independent reference measurements. "
+                   "Accurate sensors may legitimately have smaller bounds; a larger declaration does not "
+                   "establish accuracy and can produce early warnings.")
+        warning = {"code": "LOW_DECLARED_ERROR", "message": message, "declared_error_l": bound,
+                   "capacity_percent": bound / capacity * 100,
+                   "review_threshold_percent": MEASUREMENT_ERROR_REVIEW_PERCENT,
+                   "review_threshold_l": threshold_l}
+        analysis["facts"].append(message)
+        analysis["forecast_assumptions"].append(message)
+    analysis["measurement_error_warning"] = warning
+    return analysis
 
 
 def refresh_clock(context: dict) -> None:
@@ -73,7 +108,8 @@ def restore_incident_facts(context: dict) -> None:
 def observed_workspace(context: dict, settings: dict) -> None:
     version, token = context["version"] + 1, context["csrf_token"]
     context.clear()
-    context.update(site={"id": str(uuid4()), "location": "Local records · Operator entered", "freshness_minutes": 90, **settings}, clock=iso(datetime.now(timezone.utc)), mode="LOCAL_OBSERVED", version=version, csrf_token=token, readings=[], deliveries=[], incident=None, actions=[], events=[], excess_active=False)
+    now = iso(datetime.now(timezone.utc))
+    context.update(site={"id": str(uuid4()), "location": "Local records · Operator entered", "freshness_minutes": 90, **settings, "measurement_error_declared_at": now}, clock=now, mode="LOCAL_OBSERVED", version=version, csrf_token=token, readings=[], deliveries=[], incident=None, actions=[], events=[], excess_active=False)
     event(context, "WORKSPACE", "Local observed workspace started", "Empty records; no simulated data copied. Operator entries are unverified. Stored on this computer; export backups. Records expire after 30 days without a write.")
 
 
@@ -83,11 +119,12 @@ def update_site(context: dict, settings: dict) -> None:
     if any(row["volume_l"] > settings["capacity_l"] for row in context["readings"]):
         raise ValueError("Capacity is below a stored reading; correct the records before reducing capacity")
     context["site"].update(settings)
+    context["site"]["measurement_error_declared_at"] = context["clock"]
     context["version"] += 1
     incident = context["incident"]
     if incident and incident.get("intervention_at"):
         incident.update(status="VERIFYING", verified_at=None, verification_count=0, verification_reading_ids=[])
-    event(context, "SETTINGS", "Tank settings updated", "New capacity, reserve, lead time, buffer and measurement error invalidate earlier proposals.")
+    event(context, "SETTINGS", "Tank settings updated", "New capacity, reserve, lead time, buffer and declared measurement error/basis invalidate earlier proposals. Declaration is not sensor calibration.")
     reconcile(context)
 
 
@@ -283,6 +320,12 @@ def propose(context: dict, action_type: str) -> dict:
     purpose = "Inspect site-level usage and the inlet/outlet ledger; abnormal depletion does not confirm a physical leak." if action_type == "REQUEST_INSPECTION" else analysis["recommendation"]["body"]
     provenance = "SIMULATED DEMO" if context["mode"] == "SIMULATED_DEMO" else "LOCAL OPERATOR RECORDS · UNVERIFIED"
     message = f"{provenance} — {context['site']['name']}. {purpose} Planning deadline: {deadline or 'not established'} under the stated demand envelope. This request does not book a tanker or confirm a repair."
+    if context["mode"] == "LOCAL_OBSERVED":
+        message += (f" Declared per-reading error: ±{context['site']['measurement_error_l']:g} L."
+                    f" Operator-entered basis: {context['site']['measurement_error_basis']}."
+                    " Declaration is not calibration; an understated bound can produce late warnings.")
+        if warning := analysis["measurement_error_warning"]:
+            message += " " + warning["message"]
     action = {"id": str(uuid4()), "type": action_type, "status": "PROPOSED", "created_at": context["clock"], "approved_at": None, "published_at": None, "receipt_at": None, "evidence_version": context["version"], "incident_id": context["incident"]["id"] if context["incident"] else None, "message": message, "destination": "This session's local notice inbox", "expires_at": iso(parse(context["clock"]) + timedelta(hours=1))}
     context["actions"].append(action)
     event(context, "PROPOSAL", "Notice ready for review", "Explicit approval is required. Destination: this session's local inbox.")
@@ -321,7 +364,8 @@ def preview(context: dict, delay_hours: float, added_supply_l: float, demand_cha
             delivery["scheduled_at"] = iso(parse(delivery["scheduled_at"]) + timedelta(hours=delay_hours))
     if added_supply_l:
         changed["deliveries"].append({"id": "hypothetical-supply", "scheduled_at": iso(now + timedelta(hours=changed["site"]["lead_hours"])), "arrived_at": None, "amount_l": added_supply_l, "status": "PLANNED"})
-    result = analyze_preview(changed["site"], changed["readings"], changed["deliveries"], now, demand_change_percent)
+    result = analyze_preview(analysis_site(changed), changed["readings"], changed["deliveries"], now, demand_change_percent)
+    attach_measurement_error_warning(changed, result)
     summary = f"Preview only: supply delayed by {delay_hours:g} h, extra planned supply {added_supply_l:,.0f} L, demand change {demand_change_percent:+g}%. Unconfirmed supply is excluded from the assumption-dependent planning envelope deadline."
     return {"analysis": result, "before": before, "summary": summary, "simulated": True}
 

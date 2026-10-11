@@ -156,16 +156,62 @@ def run(url="http://127.0.0.1:8000"):
             open_workspace = page.get_by_role("button", name="Open empty observed workspace")
             expect(open_workspace).to_be_disabled()
             expect(page.locator(".workspace-confirmation input")).not_to_be_checked()
+            error_bound = page.get_by_label("Reading error bound · ± litres per reading")
+            error_basis = page.get_by_label("Basis for reading error bound", exact=True)
+            expect(error_bound).to_have_value("")
+            expect(error_basis).to_have_value("")
+            expect(page.locator(".measurement-plausibility-warning")).to_have_count(0)
             page.get_by_label("Tank / site name").fill("GENERATED E2E TEST TANK — NOT FIELD DATA")
             page.get_by_label("Supply lead time · hours").fill("4")
             page.get_by_label("Planning buffer · hours").fill("2")
-            page.get_by_label("Reading error assumption · litres").fill("10")
             page.locator(".workspace-confirmation input").check()
+            version_before_declaration = dashboard()["version"]
+            open_workspace.click()
+            assert error_bound.evaluate("element => element.validity.valueMissing")
+            assert dashboard()["mode"] == "SIMULATED_DEMO"
+            assert dashboard()["version"] == version_before_declaration
+            checks.append("Observed setup starts with blank error and basis; native required validation preserves the demo")
+            error_bound.fill("0")
+            error_basis.fill("GENERATED E2E TEST FIXTURE — unverified bound, not a calibrated sensor")
+            open_workspace.click()
+            expect(page.locator(".data-workspace [role=alert]")).to_contain_text("positive reading error bound")
+            error_bound.fill("10")
+            expect(page.locator(".measurement-plausibility-warning")).to_contain_text("<0.5%")
+            expect(page.locator(".measurement-plausibility-warning")).to_contain_text("not a minimum safe error")
+            page.get_by_label("Capacity · litres", exact=True).fill("10000")
+            error_bound.fill("49")
+            expect(page.locator(".measurement-plausibility-warning")).to_contain_text("about 50 L")
+            error_bound.fill("50")
+            expect(page.locator(".measurement-plausibility-warning")).to_have_count(0)
+            page.get_by_label("Capacity · litres", exact=True).fill("50000")
+            error_bound.fill("249.99")
+            expect(page.locator(".measurement-plausibility-warning")).to_contain_text("±249.99 L is <0.5%")
+            error_bound.fill("250")
+            expect(page.locator(".measurement-plausibility-warning")).to_have_count(0)
+            error_bound.fill("251")
+            expect(page.locator(".measurement-plausibility-warning")).to_have_count(0)
+            assert dashboard()["version"] == version_before_declaration
+            checks.append("Typing shows a nonblocking capacity-scaled warning strictly below0.5%, including unrounded near-boundary values")
+            error_bound.fill("10")
+            error_basis.fill("   ")
+            open_workspace.click()
+            expect(page.locator(".data-workspace [role=alert]")).to_contain_text("basis for your reading error bound")
+            assert dashboard()["version"] == version_before_declaration
+            assert dashboard()["mode"] == "SIMULATED_DEMO"
+            checks.append("Zero error and whitespace-only basis are rejected in the UI without creating records")
+            declared_basis = "GENERATED E2E TEST FIXTURE — unverified bound, not a calibrated sensor"
+            error_basis.fill(declared_basis)
             live = click_api(open_workspace, "/workspace/live")
+            assert live["site"]["measurement_error_l"] == 10
+            assert live["site"]["measurement_error_basis"] == declared_basis
+            assert live["site"]["measurement_error_declared_at"]
+            assert live["analysis"]["measurement_error_warning"]["review_threshold_l"] == 250
             assert live["mode"] == "LOCAL_OBSERVED" and live["state"]["volume_l"] is None
             assert live["state"]["percentage"] is None and live["analysis"]["status"] == "UNKNOWN"
             assert live["analysis"]["history"] == [] and live["state"]["simulated"] is False
             page.get_by_role("button", name="Overview", exact=True).click()
+            expect(page.locator(".calibration-warning")).to_contain_text("may produce late warnings")
+            expect(page.locator(".measurement-plausibility-warning")).to_contain_text("not a minimum safe error")
             expect(page.locator(".tank-copy h2")).to_contain_text("No reading yet")
             expect(page.locator(".tank-illustration")).to_contain_text("NO OBSERVATION")
             assert page.get_by_role("button", name="Excess usage", exact=True).count() == 0
@@ -259,6 +305,21 @@ def run(url="http://127.0.0.1:8000"):
             capture("local-observed.png")
             checks.append("Manual entry saves exact timestamp without advancing wall clock; provenance and assumptions remain explicit")
 
+            warning_message = actual["analysis"]["measurement_error_warning"]["message"]
+            page.get_by_role("button", name="What if?", exact=True).click()
+            low_preview = click_api(page.get_by_role("button", name="Compare this plan"), "/simulate")
+            assert low_preview["analysis"]["measurement_error_warning"]["message"] == warning_message
+            expect(page.locator("dialog .measurement-plausibility-warning")).to_have_text(warning_message)
+            page.get_by_role("button", name="Close dialog").click()
+            guide = click_api(page.get_by_role("button", name="Why is this the action deadline?"), "/assistant")
+            assert warning_message in guide["answer"]
+            expect(page.locator(".assistant-answer")).to_contain_text("review heuristic")
+            low_action = click_api(page.get_by_role("button", name="Review supply request"), "/actions/propose")
+            assert warning_message in low_action["message"]
+            expect(page.locator("dialog")).to_contain_text("review heuristic")
+            page.get_by_role("button", name="Close dialog").click()
+            checks.append("Observed overview, preview, assistant and proposed local notice retain the same low-bound heuristic warning")
+
             page.get_by_role("button", name="Data & settings", exact=True).first.click()
             expect(page.locator(".backup-card")).to_contain_text("30 days")
             with page.expect_download() as download_pending:
@@ -269,6 +330,9 @@ def run(url="http://127.0.0.1:8000"):
                 backup = json.loads(backup_path.read_text(encoding="utf-8"))
             assert backup["mode"] == "LOCAL_OBSERVED" and len(backup["readings"]) == 10
             assert len(backup["deliveries"]) == 2 and backup["schema_version"]
+            assert backup["site"]["measurement_error_l"] == 10
+            assert backup["site"]["measurement_error_basis"] == declared_basis
+            assert backup["site"]["measurement_error_declared_at"]
             forbidden_keys = {"csrf_token", "session_id", "jal_session", "cookie", "cookies", "authorization"}
 
             def inspect_keys(value):
@@ -297,10 +361,53 @@ def run(url="http://127.0.0.1:8000"):
             checks.append("Observed workspace keeps synthetic evaluation separate; artifact tables remain responsive")
             page.get_by_role("button", name="Overview", exact=True).click()
 
+            # Legacy UI rendering uses an explicitly mocked snapshot. Backend
+            # regressions exercise the actual persisted-record upgrade boundary.
+            legacy = deepcopy(actual)
+            legacy["site"].pop("measurement_error_basis")
+            legacy["site"].pop("measurement_error_declared_at")
+            legacy["site"]["measurement_error_l"] = 100
+            legacy["analysis"].update(status="UNKNOWN", current_rate_lph=None, latest_action_at=None, action_margin_hours=None, hours_to_reserve=None, reserve_breach_at=None, conservative_breach_at=None, empty_at=None, projection=[], shortage_hours=None, unmet_demand_l=None, overflow_l=None)
+            legacy["analysis"]["recommendation"] = {"type": "CONFIGURE_SITE", "title": "Declare the reading-error bound", "body": "Generated legacy UI test: declare a positive error bound and its basis.", "deadline": None}
+            page.route("**/api/dashboard", lambda route: route.fulfill(json=legacy))
+            page.reload()
+            expect(page.get_by_role("button", name="Declare reading error", exact=True)).to_be_visible()
+            expect(page.get_by_role("button", name="Review supply request")).to_be_disabled()
+            assert_volume(actual["state"]["volume_l"])
+            page.get_by_role("button", name="Declare reading error", exact=True).click()
+            expect(page.locator(".declaration-required")).to_contain_text("Redeclare")
+            expect(page.get_by_label("Reading error bound · ± litres per reading")).to_have_value("")
+            expect(page.get_by_label("Basis for reading error bound", exact=True)).to_have_value("")
+            no_overflow()
+            checks.append("Mocked legacy workspace retains displayed storage, blocks proposals and opens blank redeclaration fields on mobile")
+            page.unroute("**/api/dashboard")
+            page.reload()
+            page.get_by_role("button", name="Data & settings", exact=True).first.click()
+            expect(page.get_by_label("Reading error bound · ± litres per reading")).to_have_value("10")
+            expect(page.get_by_label("Basis for reading error bound", exact=True)).to_have_value(declared_basis)
+            expect(page.locator(".calibration-warning")).to_contain_text("not calibration")
+            expect(page.locator(".measurement-plausibility-warning")).to_contain_text("larger value does not establish accuracy")
+            page.get_by_label("Reading error bound · ± litres per reading").fill("1000")
+            expect(page.locator(".measurement-plausibility-warning")).to_have_count(0)
+            high_bound = click_api(page.get_by_role("button", name="Save tank settings"), "/site")
+            assert high_bound["site"]["measurement_error_l"] == 1000
+            assert high_bound["analysis"]["measurement_error_warning"] is None
+            expect(page.locator(".calibration-warning")).to_contain_text("not calibration")
+            page.get_by_role("button", name="Overview", exact=True).click()
+            expect(page.locator(".calibration-warning")).to_contain_text("not calibration")
+            expect(page.locator(".measurement-plausibility-warning")).to_have_count(0)
+            checks.append("Above-threshold declaration removes only the specific warning; persistent calibration disclosure remains")
+            page.get_by_role("button", name="Data & settings", exact=True).first.click()
+            page.get_by_label("Reading error bound · ± litres per reading").fill("10")
+            restored = click_api(page.get_by_role("button", name="Save tank settings"), "/site")
+            assert restored["analysis"]["measurement_error_warning"]
+            page.get_by_role("button", name="Overview", exact=True).click()
+            checks.append("Saved declaration restores after reload and calibration warning persists in settings and overview")
+
             # Coherent mocked stale response exercises the actual browser timer.
             # Backend tests independently verify real clock/domain freshness.
-            stale = deepcopy(actual)
-            stale["clock"] = (datetime.fromisoformat(actual["clock"]) + timedelta(hours=2)).isoformat()
+            stale = deepcopy(restored)
+            stale["clock"] = (datetime.fromisoformat(restored["clock"]) + timedelta(hours=2)).isoformat()
             stale["state"]["data_state"] = "stale"
             stale["analysis"].update(status="UNKNOWN", current_rate_lph=None, latest_action_at=None, action_margin_hours=None, hours_to_reserve=None, reserve_breach_at=None, conservative_breach_at=None, empty_at=None, projection=[], shortage_hours=None, unmet_demand_l=None, overflow_l=None)
             stale["analysis"]["anomaly"].update(active=False, observed_rate_lph=None, ratio=None, evidence_count=0, reason="Generated stale-observation UI test")
@@ -338,7 +445,7 @@ def run(url="http://127.0.0.1:8000"):
         finally:
             browser.close()
 
-    report = {"status": "FAIL" if failure else "PASS", "checked_at_utc": datetime.now(UTC).isoformat(), "tool": "Playwright / Chromium", "url": url, "checks": checks, "unexpected_page_errors": errors, "failure": failure, "screenshots": screenshots, "observations": observations, "test_inputs": {"label": "GENERATED E2E TEST INPUTS — NOT FIELD OBSERVATIONS", "purpose": "Generated E2E numbers and recent timestamps exercise observed ingestion; these are not field logs or field deployment evidence.", "generated_readings": 9, "generated_arrivals": 1, "browser_sessions": 1}, "limits": "Local browser and HTTP integration only. No AWS execution, external recipient, calibrated sensor or field accuracy claim. Stale browser polling uses an explicitly mocked dashboard snapshot; actual clock/domain freshness is tested separately."}
+    report = {"status": "FAIL" if failure else "PASS", "checked_at_utc": datetime.now(UTC).isoformat(), "tool": "Playwright / Chromium", "url": url, "checks": checks, "unexpected_page_errors": errors, "failure": failure, "screenshots": screenshots, "observations": observations, "test_inputs": {"label": "GENERATED E2E TEST INPUTS — NOT FIELD OBSERVATIONS", "purpose": "Generated E2E numbers and recent timestamps exercise observed ingestion; these are not field logs or field deployment evidence.", "generated_readings": 9, "generated_arrivals": 1, "browser_sessions": 1}, "limits": "Local browser and HTTP integration only. No AWS execution, external recipient, calibrated sensor or field accuracy claim. Stale polling and legacy declaration UI use explicitly mocked dashboard snapshots; backend regressions test actual clock/freshness and saved-workspace declaration gating separately."}
     (ROOT / "artifacts/browser-verification.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(report, indent=2))
     if failure:

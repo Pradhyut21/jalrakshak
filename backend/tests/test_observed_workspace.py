@@ -12,7 +12,9 @@ from backend.app.repository import SQLiteRepository
 
 NOW = datetime(2026, 10, 2, 12, tzinfo=UTC)
 SETTINGS = {"name": "Test operator tank", "capacity_l": 50000, "reserve_l": 5000,
-            "lead_hours": 14, "buffer_hours": 3, "measurement_error_l": 0, "time_zone": "UTC"}
+            "lead_hours": 14, "buffer_hours": 3, "measurement_error_l": 1,
+            "measurement_error_basis": "GENERATED TEST FIXTURE: a declared synthetic bound; no field calibration.",
+            "time_zone": "UTC"}
 
 
 @pytest.fixture
@@ -321,3 +323,134 @@ def test_import_containing_unknown_interval_invalidates_earlier_recovery_batch(l
     subsequent = post(client, "/readings", reading(clock["now"], volume + 100 - 960, "one-independent-after"))
     assert subsequent["incident"]["verification_count"] == 1
     assert subsequent["incident"]["status"] != "RESOLVED"
+
+
+@pytest.mark.parametrize("path", ["/workspace/live", "/site"])
+@pytest.mark.parametrize("field, value", [
+    ("measurement_error_l", "omitted"),
+    ("measurement_error_l", None),
+    ("measurement_error_l", ""),
+    ("measurement_error_l", "100"),
+    ("measurement_error_l", True),
+    ("measurement_error_l", False),
+    ("measurement_error_l", 0),
+    ("measurement_error_l", -1),
+    ("measurement_error_l", float("nan")),
+    ("measurement_error_l", float("inf")),
+    ("measurement_error_l", float("-inf")),
+    ("measurement_error_l", 50000),
+    ("measurement_error_basis", "omitted"),
+    ("measurement_error_basis", None),
+    ("measurement_error_basis", ""),
+    ("measurement_error_basis", " \t\n "),
+    ("measurement_error_basis", "\ufeff"),
+    ("measurement_error_basis", " \ufeff\t\ufeff "),
+    ("measurement_error_basis", True),
+    ("measurement_error_basis", "x" * 301),
+])
+def test_sensor_error_declaration_is_required_and_rejected_settings_are_atomic(local, path, field, value):
+    client, _, _ = local
+    if path == "/site":
+        observed(local)
+        post(client, "/readings", reading(NOW, 32000, "retained-on-invalid-settings"))
+    before = persisted(local)
+    body = {**SETTINGS, field: value}
+    if value == "omitted":
+        del body[field]
+    # HTTP JSON can contain nonstandard nonfinite values; reject them without
+    # leaking an exception or changing the saved workspace.
+    response = client.post("/api" + path, content=json.dumps(body), headers={"Content-Type": "application/json"})
+    assert response.status_code == 422, response.text
+    assert persisted(local) == before
+
+
+def test_declared_sensor_error_basis_persists_and_is_disclosed_without_claiming_calibration(local):
+    basis = "GENERATED TEST FIXTURE: simulator readings were bounded by 180 L; not a real sensor calibration."
+    settings = {**SETTINGS, "measurement_error_l": 180, "measurement_error_basis": "  " + basis + "  "}
+    observed(local, settings)
+    client, repository, _ = local
+    dashboard = known_demand(client)
+    assert dashboard["site"]["measurement_error_l"] == 180
+    assert dashboard["site"]["measurement_error_basis"] == basis
+    assert dashboard["site"]["measurement_error_declared_at"] == NOW.isoformat()
+    assert dashboard["analysis"]["status"] != "UNKNOWN"
+    disclosure = " ".join(dashboard["analysis"]["facts"] + dashboard["analysis"]["forecast_assumptions"])
+    assert basis in disclosure
+    assert "180" in disclosure and "operator" in disclosure.lower()
+    action = post(client, "/actions/propose", {"type": "REQUEST_SUPPLY"})
+    assert basis in action["message"] and "180" in action["message"]
+    assert "±" in action["message"] or "+/-" in action["message"]
+    exported = post(client, "/export", {})
+    assert exported["site"]["measurement_error_l"] == 180
+    assert exported["site"]["measurement_error_basis"] == basis
+    assert exported["site"]["measurement_error_declared_at"] == NOW.isoformat()
+    restarted = TestClient(create_app(SQLiteRepository(repository.path)))
+    restarted.cookies.update(client.cookies)
+    restored = restarted.get("/api/dashboard").json()
+    assert restored["site"]["measurement_error_l"] == 180
+    assert restored["site"]["measurement_error_basis"] == basis
+    assert restored["site"]["measurement_error_declared_at"] == NOW.isoformat()
+    assert restored["analysis"]["projection"] == dashboard["analysis"]["projection"]
+
+
+def test_legacy_undeclared_workspace_cannot_plan_or_approve_and_redeclaration_preserves_evidence(local):
+    observed(local)
+    client, repository, _ = local
+    rows = [reading(NOW - timedelta(hours=hour), 32000 + 960 * hour) for hour in range(12, 2, -1)]
+    volume = rows[-1]["volume_l"]
+    rows.extend(reading(NOW - timedelta(hours=3 - number), volume - 2400 * number)
+                for number in range(1, 4))
+    danger = post(client, "/import", {"readings": rows})
+    assert danger["incident"]["status"] == "OPEN"
+    action = post(client, "/actions/propose", {"type": "REQUEST_INSPECTION"})
+    session_id = client.cookies.get("jal_session")
+    # Simulate a stored v0.2 workspace, which predates the basis requirement.
+    # No migration should supply an invented operator declaration.
+    repository.mutate(session_id, lambda context: context["site"].pop("measurement_error_basis"))
+    before = persisted(local)
+    dashboard = client.get("/api/dashboard").json()
+    assert "measurement_error_basis" not in persisted(local)["site"]
+    assert dashboard["state"]["data_state"] == "fresh"
+    assert dashboard["state"]["volume_l"] == rows[-1]["volume_l"]
+    assert dashboard["analysis"]["status"] == "UNKNOWN"
+    assert dashboard["analysis"]["projection"] == []
+    for field in ("reserve_breach_at", "conservative_breach_at", "latest_action_at", "action_margin_hours", "shortage_hours"):
+        assert dashboard["analysis"].get(field) is None
+    assert dashboard["incident"]["status"] == "UNKNOWN"
+    assert dashboard["incident"]["lifecycle_status"] == "OPEN"
+    for body in ({"type": "REQUEST_SUPPLY"}, {"type": "REQUEST_INSPECTION"}):
+        assert client.post("/api/actions/propose", json=body).status_code == 409
+        assert persisted(local) == before
+    refused = client.post(f"/api/actions/{action['id']}/approve", json={"evidence_version": action["evidence_version"], "confirmed": True})
+    assert refused.status_code == 409
+    assert persisted(local) == before
+
+    preview = post(client, "/simulate", {"delay_hours": 0, "added_supply_l": 50000, "demand_change_percent": -50})
+    for analysis in (preview["analysis"], preview["before"]):
+        assert analysis["status"] == "UNKNOWN"
+        assert analysis["projection"] == []
+        assert analysis["latest_action_at"] is None
+    for question in ("deadline", "delay", "buffer"):
+        answer = post(client, "/assistant", {"question": question})
+        assert "unknown" in answer["answer"].lower()
+        assert any("declar" in fact.lower() for fact in answer["facts"])
+    assert persisted(local) == before
+
+    declared = post(client, "/site", {**SETTINGS, "measurement_error_basis": "GENERATED TEST FIXTURE: redeclared +/−1 L bound, uncalibrated."})
+    after = persisted(local)
+    assert declared["analysis"]["status"] != "UNKNOWN"
+    assert declared["analysis"]["projection"]
+    assert declared["version"] > action["evidence_version"]
+    assert after["readings"] == before["readings"]
+    assert after["deliveries"] == before["deliveries"]
+    assert after["actions"] == before["actions"]
+    assert after["incident"] == before["incident"]
+    assert declared["incident"]["id"] == danger["incident"]["id"]
+    assert declared["incident"]["status"] == "OPEN"
+    old_approval = client.post(f"/api/actions/{action['id']}/approve", json={"evidence_version": action["evidence_version"], "confirmed": True})
+    assert old_approval.status_code == 409
+    assert "Evidence changed" in old_approval.json()["detail"]
+    fresh_action = post(client, "/actions/propose", {"type": "REQUEST_INSPECTION"})
+    assert fresh_action["evidence_version"] == declared["version"]
+    approved = post(client, f"/actions/{fresh_action['id']}/approve", {"evidence_version": fresh_action["evidence_version"], "confirmed": True})
+    assert approved["actions"][-1]["status"] == "LOCAL_RECEIVED"

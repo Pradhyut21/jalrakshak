@@ -2,7 +2,20 @@ export type RiskStatus = 'SAFE' | 'WATCH' | 'ACT_NOW' | 'UNKNOWN';
 export interface Site {
   id: string; name: string; location: string; capacity_l: number; reserve_l: number;
   lead_hours: number; buffer_hours: number; freshness_minutes: number;
-  measurement_error_l?: number; time_zone?: string;
+  measurement_error_l?: number; measurement_error_basis?: string; time_zone?: string;
+}
+export interface SiteRequest {
+  name: string; capacity_l: number; reserve_l: number; lead_hours: number; buffer_hours: number;
+  measurement_error_l: number; measurement_error_basis: string; time_zone: string;
+}
+export function hasMeasurementDeclaration(site: Site): boolean {
+  const bound = site.measurement_error_l;
+  const basis = site.measurement_error_basis?.trim() ?? '';
+  return typeof bound === 'number' && Number.isFinite(bound) && bound > 0 && bound < site.capacity_l && basis.length > 0 && basis.length <= 300;
+}
+export interface MeasurementErrorWarning {
+  code: 'LOW_DECLARED_ERROR'; message: string; declared_error_l: number; capacity_percent: number;
+  review_threshold_percent: 0.5; review_threshold_l: number;
 }
 export interface Analysis {
   status: RiskStatus; current_rate_lph: number | null; baseline_rate_lph: number | null;
@@ -19,6 +32,7 @@ export interface Analysis {
   sufficient_forecast_history?: boolean; forecast_config?: Record<string, unknown>;
   demand_profile?: { local_hour: number; rate_lph: number; upper_rate_lph: number; supported: boolean }[];
   measurement_bounds?: { per_reading_l: number; latest_rate_lower_lph: number; latest_rate_upper_lph: number; latest_storage_lower_l: number; latest_storage_upper_l: number };
+  measurement_error_warning: MeasurementErrorWarning | null;
 }
 export interface Action {
   id: string; type: string; status: string; created_at: string; approved_at: string | null;

@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checked_at_utc": "2026-10-02T17:05:45.987225+00:00",
+  "checked_at_utc": "2026-10-03T06:25:08.195127+00:00",
   "tool": "Playwright / Chromium",
   "url": "http://127.0.0.1:8012",
   "checks": [
@@ -14,6 +14,9 @@
     "Evaluation separates actual legacy demand metrics from reserve timing, stress failures and passed deadlines",
     "390px demo overview has no horizontal overflow",
     "Unrecorded inflow is UNKNOWN, blocks proposals, and preserves truthful assistant fallback",
+    "Observed setup starts with blank error and basis; native required validation preserves the demo",
+    "Typing shows a nonblocking capacity-scaled warning strictly below0.5%, including unrounded near-boundary values",
+    "Zero error and whitespace-only basis are rejected in the UI without creating records",
     "Observed transition needs explicit consent, clears demo history, starts null/UNKNOWN and hides demo controls",
     "Actual observation form starts blank with an editable IST observation time",
     "Generated E2E fixture imports logs and arrivals atomically with correct inflow-adjusted demand",
@@ -22,9 +25,13 @@
     "Planned supply is conditional and does not increase measured tank volume",
     "Editable tank settings recompute forecasts and retain stored observations",
     "Manual entry saves exact timestamp without advancing wall clock; provenance and assumptions remain explicit",
+    "Observed overview, preview, assistant and proposed local notice retain the same low-bound heuristic warning",
     "Browser downloads backup with evidence/settings, excluding credentials; retention limits remain visible",
     "390px observed overview and settings/import/export forms have no horizontal overflow",
     "Observed workspace keeps synthetic evaluation separate; artifact tables remain responsive",
+    "Mocked legacy workspace retains displayed storage, blocks proposals and opens blank redeclaration fields on mobile",
+    "Above-threshold declaration removes only the specific warning; persistent calibration disclosure remains",
+    "Saved declaration restores after reload and calibration warning persists in settings and overview",
     "Actual 30-second timer accepts mocked stale-clock response, blocks proposals and preserves measured volume",
     "Refresh failure visibly preserves last-known data without invented current values",
     "Initial API failure shows reconnect without fabricated readings or metrics"
@@ -33,6 +40,7 @@
   "failure": null,
   "screenshots": [
     "desktop.png",
+    "desktop-preview.png",
     "scenario-preview.png",
     "excess-usage.png",
     "approval.png",
@@ -44,8 +52,7 @@
     "local-observed.png",
     "local-data-mobile.png",
     "local-observed-mobile.png",
-    "local-stale-mobile.png",
-    "desktop-preview.png"
+    "local-stale-mobile.png"
   ],
   "observations": {
     "24h_delay_shortage_hours_from_api": 8.666667,
@@ -59,14 +66,5 @@
     "generated_arrivals": 1,
     "browser_sessions": 1
   },
-  "limits": "Local browser and HTTP integration only. No AWS execution, external recipient, calibrated sensor or field accuracy claim. Stale browser polling uses an explicitly mocked dashboard snapshot; actual clock/domain freshness is tested separately.",
-  "additional_screenshot_capture": {
-    "checked_at_utc": "2026-10-02T17:09:34.528914+00:00",
-    "filename": "desktop-preview.png",
-    "viewport": {
-      "width": 1440,
-      "height": 1000
-    },
-    "scope": "Current built app screenshot only; the 24 integration checks retain their original checked_at_utc."
-  }
+  "limits": "Local browser and HTTP integration only. No AWS execution, external recipient, calibrated sensor or field accuracy claim. Stale polling and legacy declaration UI use explicitly mocked dashboard snapshots; backend regressions test actual clock/freshness and saved-workspace declaration gating separately."
 }

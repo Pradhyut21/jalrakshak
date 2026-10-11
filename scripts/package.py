@@ -47,7 +47,8 @@ def main():
     args = parser.parse_args()
     if not (ROOT / "frontend/dist/index.html").is_file():
         raise SystemExit("Build the frontend before packaging.")
-    if json.loads((ROOT / "PACKAGE_STATUS.json").read_text(encoding="utf-8-sig"))["package_kind"] != "WORKING_LOCAL_OBSERVED_PROTOTYPE":
+    status = json.loads((ROOT / "PACKAGE_STATUS.json").read_text(encoding="utf-8-sig"))
+    if status["package_kind"] != "WORKING_LOCAL_OBSERVED_PROTOTYPE":
         raise SystemExit("Update actual package status before packaging.")
     files = selected_files(args.full_context)
     manifest = {"schema_version": 2, "hash_algorithm": "SHA-256", "scope": "Every archive entry except this manifest", "files": []}
@@ -56,7 +57,13 @@ def main():
         manifest["files"].append({"path": path.relative_to(ROOT).as_posix(), "bytes": len(data), "sha256": digest(data)})
     encoded = (json.dumps(manifest, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
     (ROOT / "PACKAGE_FILES.json").write_bytes(encoded)
-    name = "JalRakshak-Full-Context-v0.2-2026-10-02" if args.full_context else "JalRakshak-App-v0.2-2026-10-02"
+    version = status["version"]
+    date = status["updated_on"]
+    import re
+    if not re.fullmatch(r"\d+\.\d+\.\d+", version) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+        raise SystemExit("Package version/date must be explicit semantic version and ISO date")
+    kind = "Full-Context" if args.full_context else "App"
+    name = f"JalRakshak-{kind}-v{version}-{date}"
     destination = ROOT / "deliverables" / (name + ".zip")
     destination.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:

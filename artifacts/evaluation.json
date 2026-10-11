@@ -6298,7 +6298,7 @@
     }
   },
   "source_sha256": {
-    "backend/app/domain.py": "577de3c1b87dc38a8e26fbda7f0b6229d92c3e43508bcc8f9f5beaaf23d2d2e7",
+    "backend/app/domain.py": "ca0f70ffd36bf55000b782a049e46975f41f76c70b026d1fb48729206012a5d8",
     "scripts/backtest_reserve.py": "95b05dc07a7bd228324290ff97893584cbfd72a6dc175c47999e0c2acea96d1a",
     "scripts/evaluate.py": "f9d3862e994b198050249ce4d7000aca8241829483ab0fc0b9fa2067d37cdddd"
   },

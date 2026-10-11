@@ -3,25 +3,25 @@
   "product": "JalRakshak",
   "workspace_name": "SAANS",
   "package_kind": "WORKING_LOCAL_OBSERVED_PROTOTYPE",
-  "updated_on": "2026-10-02",
+  "updated_on": "2026-10-03",
   "timezone": "Asia/Kolkata",
   "implementation_started_on": "2026-10-01",
   "application_implemented": true,
   "data_kind": "SIMULATED_DEMO_OR_UNVERIFIED_LOCAL_OPERATOR_RECORDS",
   "local_workflow_verified": true,
   "backend_tests": {
-    "passed": 124,
+    "passed": 186,
     "failed": 0,
     "dependency_deprecation_warnings": 2
   },
   "browser_checks": {
     "status": "PASS",
-    "passed": 24,
+    "passed": 31,
     "unexpected_page_errors": 0
   },
   "frontend_build_verified": true,
   "synthetic_evaluation_reproducible": true,
-  "archive_fresh_install_verified": true,
+  "archive_fresh_install_verified": false,
   "aws_infrastructure_check": "OFFLINE_STRUCTURE_AND_STATIC_AST_PASS",
   "aws_deployment_verified": false,
   "linux_lambda_build_verified": false,
@@ -36,9 +36,15 @@
   "portable_root": "directory containing this file and AI_HANDOFF.md",
   "build_authorization": "Immediate original implementation was explicitly authorized by the user; preserve actual pre-event dates.",
   "event_eligibility": "This early prototype cannot be claimed eligible under the previously reviewed project-start rule without organizer clarification.",
-  "next_milestone": "Actual caretaker log and usefulness validation; then account-scoped cloud execution. Local version0.2 milestone complete.",
+  "next_milestone": "Feature scope frozen. Obtain one authorized real tank log, sensor rated-error datasheet and caretaker usefulness feedback. Local0.2.2 warning patch complete.",
   "review_instruction": "Independently verify implementation, runtime and limits. No guaranteed score or award.",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "local_observed_input_path_implemented": true,
-  "wall_clock_freshness_implemented": true
+  "wall_clock_freshness_implemented": true,
+  "measurement_error_declaration_required": true,
+  "measurement_error_calibration_verified": false,
+  "measurement_error_plausibility_warning_implemented": true,
+  "measurement_error_review_threshold_percent": 0.5,
+  "measurement_error_review_threshold_kind": "NONBLOCKING_UNCALIBRATED_HEURISTIC",
+  "feature_scope_frozen": true
 }

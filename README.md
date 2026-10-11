@@ -2,7 +2,7 @@
 
 A working local water-operations app for one caretaker and one tank: record storage, account for arrivals, plan reserve protection, review a notice and verify recovery with fresh readings.
 
-**Version 0.2.** Start with the simulated demonstration, or open an empty local workspace for operator-entered tank logs. Actual entries remain unverified; no connected sensor, validated caretaker pilot or cloud deployment is claimed.
+**Version 0.2.2.** Start with the simulated demonstration, or open an empty local workspace for operator-entered tank logs. Actual entries remain unverified; no connected sensor, validated caretaker pilot or cloud deployment is claimed.
 
 ## Run
 
@@ -18,7 +18,11 @@ If another application uses port8000, run `python scripts/run.py --port 8012` an
 
 ## Use actual logs
 
-Open **Data & settings**, enter your tank capacity, reserve, supply lead time, buffer and reading-error assumption, and explicitly choose an empty observed workspace. Demo records are cleared. Add observations with actual timestamps, or preview and import CSV with `observed_at,volume_l` and optional `reading_id`. Import recorded arrivals together with logs when necessary to explain level increases. Future plans are separate from actual arrivals.
+Open **Data & settings**, enter your tank capacity, reserve, supply lead time, buffer and a positive per-reading error bound in litres with its documented basis, and explicitly choose an empty observed workspace. There is no preset error; zero is rejected. A supplier specification or independent reference measurements can inform the bound; identify an estimate as unverified. Declaration is not calibration, and an understated bound can produce late warnings. A tank-level log alone cannot establish reliable sensor accuracy.
+
+Demo records are cleared. Add observations with actual timestamps, or preview and import CSV with `observed_at,volume_l` and optional `reading_id`. Import recorded arrivals together with logs when necessary to explain level increases. Future plans are separate from actual arrivals. Older observed workspaces retain their logs but remain UNKNOWN until you save the new error declaration in **Data & settings**.
+
+A bound below 0.5% of capacity shows a prompt to check the datasheet or independent reference measurements. This cutoff is a review heuristic, not a minimum safe error; smaller accurate bounds can be legitimate. A larger value does not establish accuracy and can warn too early. The advisory does not change your bound or forecast. Feature scope is frozen pending real logs and caretaker feedback.
 
 Observed workspaces use server wall time and become UNKNOWN when observations are stale or inadequate. Storage remains on this computer, behind a browser session cookie. Export JSON backups. The latest 1,000 readings and at most 200 supply records are retained; the session expires after 30 days without a write. This is local record collection, not a production identity system. Cloud guest deployments accept simulated data only.
 

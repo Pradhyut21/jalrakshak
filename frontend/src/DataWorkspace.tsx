@@ -1,8 +1,23 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import { AlertTriangle, ArrowRight, CheckCircle2, Database, Download, FileUp, Info, Save, SlidersHorizontal, Truck } from 'lucide-react';
-import { request } from './api';
-import type { Dashboard } from './api';
+import { hasMeasurementDeclaration, request } from './api';
+import type { Dashboard, SiteRequest } from './api';
+
+export function MeasurementWarning() {
+  return <div className="data-info calibration-warning"><AlertTriangle size={16} /><p><strong>Reading accuracy affects the warning time.</strong> An understated error bound may produce late warnings. Declaring a bound is not calibration; tank logs alone cannot establish sensor accuracy. Use a supplier specification in litres or independently checked measurements, and record whether the basis is an unverified estimate.</p></div>;
+}
+
+export function MeasurementPlausibilityWarning({ message }: { message: string }) {
+  return <div className="data-info measurement-plausibility-warning" role="status"><AlertTriangle size={16} /><p>{message}</p></div>;
+}
+
+function smallErrorAdvisory(capacity: string, measurement: string): string | null {
+  const capacityL = Number(capacity), boundL = Number(measurement);
+  if (!capacity.trim() || !measurement.trim() || !Number.isFinite(capacityL) || capacityL <= 0 || !Number.isFinite(boundL) || boundL <= 0 || boundL >= capacityL * 0.005) return null;
+  const litres = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 6 });
+  return `Check this small reading-error bound: ±${String(boundL)} L is <0.5% of capacity (about ${litres.format(capacityL * 0.005)} L). This is a review heuristic, not a minimum safe error or calibration. Verify the sensor datasheet or independent reference measurements; accurate sensors may legitimately have smaller bounds. A larger value does not establish accuracy and can warn too early.`;
+}
 
 export function localTimestamp(iso = new Date().toISOString()): string {
   return new Date(new Date(iso).getTime() + 330 * 60000).toISOString().slice(0, 16);
@@ -78,12 +93,14 @@ interface Props { dashboard: Dashboard; onDashboard: (value: Dashboard) => void;
 export default function DataWorkspace({ dashboard, onDashboard, onBusy, busy }: Props) {
   const live = dashboard.mode === 'LOCAL_OBSERVED';
   const available = dashboard.features?.local_observed_mode === true;
+  const declared = live && hasMeasurementDeclaration(dashboard.site);
   const [name, setName] = useState(dashboard.site.name);
   const [capacity, setCapacity] = useState(String(dashboard.site.capacity_l));
   const [reserve, setReserve] = useState(String(dashboard.site.reserve_l));
   const [lead, setLead] = useState(String(dashboard.site.lead_hours));
   const [buffer, setBuffer] = useState(String(dashboard.site.buffer_hours));
-  const [measurement, setMeasurement] = useState(String(dashboard.site.measurement_error_l ?? 100));
+  const [measurement, setMeasurement] = useState(declared ? String(dashboard.site.measurement_error_l) : '');
+  const [measurementBasis, setMeasurementBasis] = useState(declared ? dashboard.site.measurement_error_basis!.trim() : '');
   const [confirmed, setConfirmed] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
@@ -94,16 +111,25 @@ export default function DataWorkspace({ dashboard, onDashboard, onBusy, busy }: 
   const [amount, setAmount] = useState('');
   const [arrivalAt, setArrivalAt] = useState(localTimestamp());
   const [deliveryId, setDeliveryId] = useState<string>(crypto.randomUUID());
+  const measurementAdvisory = smallErrorAdvisory(capacity, measurement);
   useEffect(() => {
     setName(dashboard.site.name); setCapacity(String(dashboard.site.capacity_l)); setReserve(String(dashboard.site.reserve_l));
     setLead(String(dashboard.site.lead_hours)); setBuffer(String(dashboard.site.buffer_hours));
-    setMeasurement(String(dashboard.site.measurement_error_l ?? 100)); setConfirmed(false);
-  }, [dashboard.site.id, dashboard.mode]);
+    setMeasurement(declared ? String(dashboard.site.measurement_error_l) : '');
+    setMeasurementBasis(declared ? dashboard.site.measurement_error_basis!.trim() : ''); setConfirmed(false);
+  }, [dashboard.site.id, dashboard.mode, dashboard.site.measurement_error_l, dashboard.site.measurement_error_basis]);
   const run = async (label: string, action: () => Promise<void>) => {
     setError(''); setNotice(''); onBusy(label);
     try { await action(); } catch (err) { setError(err instanceof Error ? err.message : 'The operation failed. Nothing is assumed saved.'); } finally { onBusy(''); }
   };
-  const settings = () => ({ name: name.trim(), capacity_l: Number(capacity), reserve_l: Number(reserve), lead_hours: Number(lead), buffer_hours: Number(buffer), measurement_error_l: Number(measurement), time_zone: 'Asia/Kolkata' });
+  const settings = (): SiteRequest => {
+    const bound = measurement.trim() === '' ? NaN : Number(measurement);
+    const capacityL = Number(capacity);
+    if (!Number.isFinite(bound) || bound <= 0 || bound >= capacityL) throw new Error('Declare a positive reading error bound in litres, below tank capacity. Blank or zero does not establish accurate readings.');
+    const basis = measurementBasis.trim();
+    if (!basis || basis.length > 300) throw new Error('Describe the basis for your reading error bound in 1–300 characters. An estimate must be identified as unverified.');
+    return { name: name.trim(), capacity_l: capacityL, reserve_l: Number(reserve), lead_hours: Number(lead), buffer_hours: Number(buffer), measurement_error_l: bound, measurement_error_basis: basis, time_zone: 'Asia/Kolkata' };
+  };
   const configure = (event: FormEvent) => {
     event.preventDefault();
     if (!live && !confirmed) return;
@@ -150,7 +176,10 @@ export default function DataWorkspace({ dashboard, onDashboard, onBusy, busy }: 
     <section className="card workspace-intro"><div className="card-heading"><div><span className="eyebrow">YOUR INPUTS, CLEARLY IDENTIFIED</span><h2>{live ? 'Local observations, not demo fixtures.' : 'Start from the tank you actually manage.'}</h2></div><Database size={23} /></div><p>{live ? 'This private local session stores operator-entered logs. The app does not certify their accuracy or imply connected sensors. Risk uses wall-clock freshness and recorded inflow.' : 'The demonstration stays separate from actual logs. On a local backend, you can replace this session with an empty observed workspace and enter your tank settings. Cloud guest deployments cannot open observed workspaces.'}</p></section>
     <section className="card"><div className="card-heading"><div><h3>{live ? 'Tank settings' : 'Configure a local observed workspace'}</h3><p className="muted">{live ? 'Change documented assumptions; historical readings remain intact.' : 'Replace the sample settings with actual tank parameters. This transition clears this session’s demo observations.'}</p></div><SlidersHorizontal size={19} /></div>
       {!available && <div className="data-info"><Info size={16} /><p>Observed workspaces are disabled on this deployment. Use the local application with private storage.</p></div>}
-      <form onSubmit={configure}><div className="data-fields"><label className="data-field wide-field">Tank / site name<input required maxLength={100} value={name} onChange={event => setName(event.target.value)} /></label><label className="data-field">Capacity · litres<input type="number" required min="1" step="1" value={capacity} onChange={event => setCapacity(event.target.value)} /></label><label className="data-field">Unusable reserve · litres<input type="number" required min="0" max={Number(capacity) - 1} step="1" value={reserve} onChange={event => setReserve(event.target.value)} /></label><label className="data-field">Supply lead time · hours<input type="number" required min="0" max="48" step="0.5" value={lead} onChange={event => setLead(event.target.value)} /></label><label className="data-field">Planning buffer · hours<input type="number" required min="0" max="48" step="0.5" value={buffer} onChange={event => setBuffer(event.target.value)} /></label><label className="data-field">Reading error assumption · litres<input type="number" required min="0" max={Number(capacity)} step="1" value={measurement} onChange={event => setMeasurement(event.target.value)} /></label><div className="data-field timezone-field">Time zone<span>Asia/Kolkata · IST (UTC+05:30)</span></div></div>
+      <MeasurementWarning />
+      {live && !declared && <div className="data-info declaration-required" role="status"><AlertTriangle size={16} /><p><strong>Redeclare the reading error before using forecasts.</strong> This saved workspace has no valid bound and documented basis. Enter both below and save tank settings. Forecasts and supply proposals remain UNKNOWN until you do.</p></div>}
+      <form onSubmit={configure}><div className="data-fields"><label className="data-field wide-field">Tank / site name<input required maxLength={100} value={name} onChange={event => setName(event.target.value)} /></label><label className="data-field">Capacity · litres<input type="number" required min="1" step="1" value={capacity} onChange={event => setCapacity(event.target.value)} /></label><label className="data-field">Unusable reserve · litres<input type="number" required min="0" max={Number(capacity) - 1} step="1" value={reserve} onChange={event => setReserve(event.target.value)} /></label><label className="data-field">Supply lead time · hours<input type="number" required min="0" max="48" step="0.5" value={lead} onChange={event => setLead(event.target.value)} /></label><label className="data-field">Planning buffer · hours<input type="number" required min="0" max="48" step="0.5" value={buffer} onChange={event => setBuffer(event.target.value)} /></label><label className="data-field">Reading error bound · ± litres per reading<input type="number" required max={Number(capacity)} step="any" value={measurement} onChange={event => setMeasurement(event.target.value)} /><span className="small-note">Required: greater than zero and below capacity. ± means each recorded volume may be this many litres above or below the true volume.</span></label><div className="data-field timezone-field">Time zone<span>Asia/Kolkata · IST (UTC+05:30)</span></div><label className="data-field wide-field">Basis for reading error bound<textarea aria-label="Basis for reading error bound" required maxLength={300} rows={3} value={measurementBasis} onChange={event => setMeasurementBasis(event.target.value)} /><span className="small-note">Describe a supplier specification in litres or independently checked measurements. If you only have an estimate, say “estimate / unverified” and explain it. Saving this declaration does not certify accuracy.</span></label></div>
+        {measurementAdvisory && <MeasurementPlausibilityWarning message={measurementAdvisory} />}
         {!live && <label className="confirmation workspace-confirmation"><input type="checkbox" checked={confirmed} onChange={event => setConfirmed(event.target.checked)} /><span>I want to discard this session’s simulated observations and open an empty local workspace with these tank settings. I will enter actual observations rather than label demo data as real.</span></label>}
         <div className="data-form-actions"><span className="small-note">Supply lead time + planning buffer must total at most 48 hours, the forecast horizon. No shared public real-site data or production identity system is implied.</span><button className="button primary" disabled={busy || !available || (!live && !confirmed)} type="submit">{live ? 'Save tank settings' : 'Open empty observed workspace'}{live ? <Save size={16} /> : <ArrowRight size={16} />}</button></div>
       </form>

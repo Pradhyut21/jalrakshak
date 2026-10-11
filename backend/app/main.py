@@ -62,8 +62,17 @@ class SiteRequest(StrictModel):
     reserve_l: float = Field(ge=0, allow_inf_nan=False)
     lead_hours: float = Field(ge=0, le=168, allow_inf_nan=False)
     buffer_hours: float = Field(ge=0, le=48, allow_inf_nan=False)
-    measurement_error_l: float = Field(default=100, ge=0, allow_inf_nan=False)
+    measurement_error_l: float = Field(gt=0, strict=True, allow_inf_nan=False)
+    measurement_error_basis: str = Field(min_length=1, max_length=300, strict=True)
     time_zone: str = Field(default="Asia/Kolkata", max_length=100)
+
+    @field_validator("measurement_error_basis")
+    @classmethod
+    def declared_error_basis(cls, value: str):
+        value = value.replace("\ufeff", "").strip()
+        if not value:
+            raise ValueError("Explain the basis for the per-reading error bound; declaration is not calibration")
+        return value
 
     def settings(self):
         if self.reserve_l >= self.capacity_l or self.measurement_error_l >= self.capacity_l:
@@ -131,7 +140,7 @@ def evaluation_data() -> dict:
 
 
 def create_app(repository=None) -> FastAPI:
-    app = FastAPI(title="JalRakshak", description="Local tank records, reserve planning and evidence-based incident recovery.", version="0.2.0")
+    app = FastAPI(title="JalRakshak", description="Local tank records, reserve planning and evidence-based incident recovery.", version="0.2.2")
     app.state.repository = repository or make_repository()
     creations: OrderedDict[str, deque] = OrderedDict()
     creation_lock = Lock()
@@ -215,7 +224,7 @@ def create_app(repository=None) -> FastAPI:
 
     @app.get("/api/health")
     def health():
-        return {"status": "ok", "mode": "local_records_and_isolated_demo", "storage": os.getenv("JAL_STORAGE", "sqlite"), "external_notifications": "disabled", "version": "0.2.0"}
+        return {"status": "ok", "mode": "local_records_and_isolated_demo", "storage": os.getenv("JAL_STORAGE", "sqlite"), "external_notifications": "disabled", "version": app.version}
 
     @app.get("/api/dashboard")
     def get_dashboard(request: Request, response: Response):
@@ -351,7 +360,9 @@ def create_app(repository=None) -> FastAPI:
         context = session[1]
         analysis = operations.analysis_for(context)
         facts = analysis["facts"]
-        if body.question == "deadline":
+        if analysis["status"] == "UNKNOWN":
+            answer = "Planning impact is unknown. " + analysis["recommendation"]["body"]
+        elif body.question == "deadline":
             answer = f"The planning deadline is {analysis.get('latest_action_at') or 'unknown'}. It uses the observed-demand planning envelope minus {context['site']['lead_hours']} hours of supply lead time and {context['site']['buffer_hours']} hours of buffer. Unconfirmed supply is excluded. It is assumption-dependent, not a guarantee."
         elif body.question == "delay":
             result = operations.preview(context, 6, 0, 0)
@@ -359,6 +370,8 @@ def create_app(repository=None) -> FastAPI:
             answer = result["summary"] + (f" The central projected shortage is {shortage:.1f} hours within the modeled horizon." if shortage is not None else " Supply impact is unknown until sufficient fresh readings are available.")
         else:
             answer = f"Current planning margin: {analysis.get('action_margin_hours')} hours. Extra planned supply is conditional; it does not improve the planning envelope deadline until actual arrival records exist. Check recorded volumes, delivery lead time, buffer and measurement error before deciding."
+        if warning := analysis["measurement_error_warning"]:
+            answer += " " + warning["message"]
         return {"answer": answer, "facts": facts, "provider": "deterministic", "simulated": context["mode"] == "SIMULATED_DEMO"}
 
     @app.get("/api/evaluation")
