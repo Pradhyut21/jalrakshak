@@ -1,0 +1,157 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-11T17:28:12.098770+00:00",
+  "main": {
+    "file": "JalRakshak-Demo.mp4",
+    "duration_seconds": 174.0,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video_codec": "h264",
+    "frames": 5220,
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "bytes": 20045775,
+    "sha256": "2bc638d531e798de06ff151e82425cdab39a5bbc6ee2cea79112a373f16a3714"
+  },
+  "launch": {
+    "file": "JalRakshak-Launch.mp4",
+    "duration_seconds": 22.0,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "video_codec": "h264",
+    "frames": 660,
+    "audio_codec": "aac",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "bytes": 3906290,
+    "sha256": "2b0b102a907ce8c2863829faa1cba7fd2e92c60f6f6317d71f73efe7b660db67",
+    "source_file": "brag.mp4"
+  },
+  "composition_checks": {
+    "main": {
+      "lint": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 14,
+        "checked": null
+      },
+      "runtime": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "checked": null
+      },
+      "layout": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 4,
+        "checked": null
+      },
+      "motion": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "checked": null
+      },
+      "contrast": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "checked": 56
+      }
+    },
+    "launch": {
+      "lint": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 4,
+        "checked": null
+      },
+      "runtime": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "checked": null
+      },
+      "layout": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "checked": null
+      },
+      "motion": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "checked": null
+      },
+      "contrast": {
+        "ok": true,
+        "errorCount": 0,
+        "warningCount": 0,
+        "checked": 31
+      }
+    }
+  },
+  "actual_ui_capture": "PASS: isolated generated sessions, zero page errors, empty observed workspace unchanged",
+  "voice": "Synthetic Kokoro hm_omega Hindi preset with English phonemization. Human listening/accent quality unverified.",
+  "caption_alignment": "Approximate phrase timing from measured speech duration; not ASR word alignment",
+  "poster": "Settled hook at 3 seconds baked into frame zero; same video duration/frame count, original mixed audio copied",
+  "audio": "Measured with FFmpeg loudnorm analysis; narration streams present. See per-video analysis logs.",
+  "limits": [
+    "No real tank data or caretaker validation",
+    "No live AWS execution",
+    "Development began October 1; organizer eligibility clarification unresolved",
+    "No YouTube upload or event submission"
+  ],
+  "final_encoded_frame_audio_checks": {
+    "main": {
+      "poster_frame0_thumbnail_mae": 3.5916460905349794,
+      "poster_frame0_psnr_db": 36.47555764971371,
+      "decoded_audio_unchanged": true,
+      "decoded_audio_hash": "SHA256=6e866129b66676ad0de88d54d3631737f082b325e4bdeb4d5154071196b916c6",
+      "sampled_frames": [
+        0,
+        3,
+        18,
+        32,
+        48,
+        64,
+        80,
+        97,
+        110,
+        115,
+        122,
+        133,
+        150,
+        165,
+        173.5
+      ]
+    },
+    "launch": {
+      "poster_frame0_thumbnail_mae": 3.5407227366255145,
+      "poster_frame0_psnr_db": 36.547032082303105,
+      "decoded_audio_unchanged": true,
+      "decoded_audio_hash": "SHA256=de2c2d381ceb35d0f3fcaa0eeda4feaa58a0f044f0bbcb74ce881a38290f3749",
+      "sampled_frames": [
+        0,
+        3,
+        10,
+        18,
+        21.5
+      ]
+    },
+    "status": "PASS"
+  },
+  "audio_loudness_lufs": {
+    "main": -16.38,
+    "launch": -15.43
+  },
+  "audio_true_peak_dbtp": {
+    "main": -1.47,
+    "launch": -2.48
+  }
+}

@@ -1,0 +1,183 @@
+1
+00:00:00,500 --> 00:00:05,326
+A tank can still have water when it is already time to arrange
+
+2
+00:00:05,326 --> 00:00:09,409
+the next supply. Jal Rakshak helps one hostel caretaker see that
+
+3
+00:00:09,409 --> 00:00:11,636
+decision before the tank runs empty.
+
+4
+00:00:12,500 --> 00:00:16,278
+This is a working local prototype for one site.
+
+5
+00:00:16,278 --> 00:00:20,056
+The dashboard connects the latest reading, reserve level, delivery
+
+6
+00:00:20,056 --> 00:00:22,995
+lead time and a clear next action.
+
+7
+00:00:22,995 --> 00:00:25,513
+Every demonstration reading is labeled simulated.
+
+8
+00:00:26,500 --> 00:00:29,694
+The planning deadline comes before the reserve crossing.
+
+9
+00:00:29,694 --> 00:00:33,287
+It subtracts supply lead time and an operating buffer.
+
+10
+00:00:33,287 --> 00:00:37,679
+Reserve breach and empty tank time stay separate, so the caretaker
+
+11
+00:00:37,679 --> 00:00:40,473
+can understand the reason for the recommendation.
+
+12
+00:00:42,500 --> 00:00:44,589
+An observed workspace starts empty.
+
+13
+00:00:44,589 --> 00:00:47,096
+Missing or stale readings stay unknown.
+
+14
+00:00:47,096 --> 00:00:51,691
+The operator must declare a reading error bound and its basis.
+
+15
+00:00:51,691 --> 00:00:56,287
+A small bound prompts review, and the interface explains that declaration
+
+16
+00:00:56,287 --> 00:00:57,540
+is not calibration.
+
+17
+00:00:58,500 --> 00:01:01,557
+What if the next supply arrives late?
+
+18
+00:01:01,557 --> 00:01:05,487
+A preview compares that plan without changing the readings.
+
+19
+00:01:05,487 --> 00:01:08,980
+Historical hourly demand informs the outlook, while unconfirmed
+
+20
+00:01:08,980 --> 00:01:12,473
+delivery plans cannot extend the conservative planning deadline.
+
+21
+00:01:13,500 --> 00:01:17,654
+In this generated scenario, sustained excess usage opens an incident.
+
+22
+00:01:17,654 --> 00:01:22,223
+The app shows the abnormal depletion and the evidence behind it.
+
+23
+00:01:22,223 --> 00:01:27,623
+It does not pretend to locate a leak or identify a physical fault.
+
+24
+00:01:29,500 --> 00:01:33,033
+The caretaker reviews the exact notice and explicitly approves
+
+25
+00:01:33,033 --> 00:01:36,958
+it. Approval belongs to this incident and this evidence revision.
+
+26
+00:01:36,958 --> 00:01:40,098
+The receipt means the notice was saved locally.
+
+27
+00:01:40,098 --> 00:01:45,201
+It does not mean a tanker was booked or a supplier was contacted.
+
+28
+00:01:46,500 --> 00:01:50,036
+Recording a repair does not close the incident.
+
+29
+00:01:50,036 --> 00:01:54,015
+Recovery needs three fresh independent normal readings after the
+
+30
+00:01:54,015 --> 00:01:56,225
+intervention and adequate planning margin.
+
+31
+00:01:56,225 --> 00:01:58,877
+The activity trail records what happened.
+
+32
+00:01:58,877 --> 00:02:03,740
+New observations support the recovery decision; a button or a message
+
+33
+00:02:03,740 --> 00:02:05,508
+cannot provide that evidence.
+
+34
+00:02:06,500 --> 00:02:10,287
+The original synthetic holdout has no late reserve predictions.
+
+35
+00:02:10,287 --> 00:02:14,494
+Stress cases still include twelve late predictions, and early warnings
+
+36
+00:02:14,494 --> 00:02:16,598
+and false alerts remain concerns.
+
+37
+00:02:16,598 --> 00:02:21,226
+Tests prove local behavior; they do not prove accuracy on real
+
+38
+00:02:21,226 --> 00:02:21,647
+tanks.
+
+39
+00:02:22,500 --> 00:02:28,400
+The repository includes Lambda, a SAM template, and a boto three
+
+40
+00:02:28,400 --> 00:02:31,618
+Dynamo DB adapter. GitHub checks pass.
+
+41
+00:02:31,618 --> 00:02:36,982
+Live AWS execution remains unverified; this demo uses local SQLite
+
+42
+00:02:36,982 --> 00:02:37,519
+storage.
+
+43
+00:02:38,500 --> 00:02:42,148
+Jal Rakshak connects reserve planning, explicit approval and reading
+
+44
+00:02:42,148 --> 00:02:44,580
+supported recovery in one caretaker workflow.
+
+45
+00:02:44,580 --> 00:02:49,039
+The next milestone is a real tank log and caretaker feedback.
+
+46
+00:02:49,039 --> 00:02:53,497
+Explore the public source, run the demo and inspect the evidence.

@@ -1,0 +1,15 @@
+1
+00:00:00,500 --> 00:00:04,901
+Water supply takes time. Jal Rakshak helps one hostel caretaker
+
+2
+00:00:04,901 --> 00:00:09,742
+plan before the reserve is breached, review an incident and verify
+
+3
+00:00:09,742 --> 00:00:14,142
+recovery with new readings. A working local prototype, with transparent
+
+4
+00:00:14,142 --> 00:00:15,903
+evidence and clear limits.

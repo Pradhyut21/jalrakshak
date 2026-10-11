@@ -74,5 +74,18 @@
     "verified_source_commit": "eaa9dc76281c67228bc1237204f941ec652cc1e4",
     "verified_on": "2026-10-11",
     "original_history_preserved": true
+  },
+  "presentation": {
+    "status": "RENDERED_AND_VERIFIED",
+    "created_on": "2026-10-11",
+    "demo_duration_seconds": 174,
+    "launch_duration_seconds": 22,
+    "video_verified": "docs/media/video-verification.json",
+    "media_manifest": "docs/media/manifest.json",
+    "voice_is_synthetic": true,
+    "human_voice_review_verified": false,
+    "youtube_uploaded": false,
+    "event_submitted": false,
+    "application_logic_changed": false
   }
 }

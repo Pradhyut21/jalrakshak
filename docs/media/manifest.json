@@ -1,0 +1,46 @@
+{
+  "created_at_utc": "2026-10-11T17:28:12.098770+00:00",
+  "scope": "October 11 presentation media only; not an application archive manifest",
+  "files": [
+    {
+      "file": "actual-ui-walkthrough.webm",
+      "bytes": 5547127,
+      "sha256": "223add5f2bd892632b72d973f2515d2eb3e563b6f1816cecd2f7638a069ef17f"
+    },
+    {
+      "file": "demo-poster.jpg",
+      "bytes": 157618,
+      "sha256": "7e7fe207fdde90629d3b0a1ea42c8f0ff9c9d1289992876be967dc67ebff8016"
+    },
+    {
+      "file": "JalRakshak-Demo.mp4",
+      "bytes": 20045775,
+      "sha256": "2bc638d531e798de06ff151e82425cdab39a5bbc6ee2cea79112a373f16a3714"
+    },
+    {
+      "file": "JalRakshak-Demo.srt",
+      "bytes": 4013,
+      "sha256": "cebb1291e9a4407e7a2a99df682983940ea530b387ee5e1e30e28d1566c8fbf0"
+    },
+    {
+      "file": "JalRakshak-Launch.mp4",
+      "bytes": 3906290,
+      "sha256": "2b0b102a907ce8c2863829faa1cba7fd2e92c60f6f6317d71f73efe7b660db67"
+    },
+    {
+      "file": "JalRakshak-Launch.srt",
+      "bytes": 361,
+      "sha256": "962c748f35fdd45e78e53fec6392a850db05d181b4da997ebfbe286137f774b5"
+    },
+    {
+      "file": "launch-poster.jpg",
+      "bytes": 166950,
+      "sha256": "aaa6f3341185d2c5cebfe965885957b738c71034a806a30d6fe540b9f504d9e1"
+    },
+    {
+      "file": "video-verification.json",
+      "bytes": 4024,
+      "sha256": "b94765c67be636d87caeac256b093f5131e08fc821e77cfad207d5e5dcfa34bc"
+    }
+  ]
+}
