@@ -6,6 +6,8 @@ A working local water-operations app for one caretaker and one tank: record stor
 
 The Git source includes an October 11 correction: the incident's approval indicator uses only actions associated with that incident. Five focused Chromium/HTTP checks and the production build pass. Earlier full-suite reports and the October 3 ZIP describe their recorded application bytes; the ZIP does not include this later correction. See the [selection review](docs/SELECTION_REVIEW_2026-10-11.md).
 
+[GitHub source CI passed](https://github.com/Pradhyut21/jalrakshak/actions/runs/38140601260), including the complete backend suite, synthetic evaluation, infrastructure source checks and frontend build. It does not establish live AWS execution or field accuracy.
+
 ## Run
 
 Use Python 3.13 and Node.js 22.18+ with npm. From the extracted project root:

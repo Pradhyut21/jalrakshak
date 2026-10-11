@@ -60,6 +60,11 @@
     "report": "artifacts/incident-progress-verification.json"
   },
   "full_browser_suite_current_patch_verified": false,
+  "github_source_ci": {
+    "status": "PASS",
+    "source_commit": "eaa9dc76281c67228bc1237204f941ec652cc1e4",
+    "report": "artifacts/github-source-ci-verification.json"
+  },
   "latest_archive_on": "2026-10-03",
   "latest_archive_includes_repository_patch": false,
   "git_publication": {
