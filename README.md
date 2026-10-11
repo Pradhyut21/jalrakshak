@@ -81,6 +81,8 @@ Run `.venv/Scripts/python.exe scripts/check_incident_progress.py` after building
 
 Read [AI_HANDOFF.md](AI_HANDOFF.md) and [active checkpoint](docs/PROJECT_STATE.md) to continue. [REVIEW_THIS_PROJECT.md](REVIEW_THIS_PROJECT.md) provides an independent review entry; [review fixes](docs/REVIEW_RESPONSE.md) map the reported defects to changes and remaining gaps.
 
+The [solo submission draft](docs/SUBMISSION_DRAFT.md), [two-round AI review](docs/SUBMISSION_REVIEW.md) and [YouTube upload pack](docs/YOUTUBE_UPLOAD.md) distinguish prepared materials from missing links and unresolved event eligibility. No event submission or YouTube publication has occurred.
+
 ## AWS, provenance and license
 
 The repository contains a boto3 DynamoDB adapter, Lambda handler and [SAM template](infra/template.yaml). SAM/Linux packaging and deployment have not been verified. External notifications remain disabled; no connected sensor or real caretaker pilot is claimed.

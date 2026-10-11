@@ -1,5 +1,22 @@
 {
   "schema_version": 3,
+  "submission_preparation": {
+    "status": "REVIEWED_DRAFT_NOT_SUBMITTED",
+    "prepared_on": "2026-10-11",
+    "solo_member": true,
+    "track": "Heat and Water",
+    "draft": "docs/SUBMISSION_DRAFT.md",
+    "review_record": "docs/SUBMISSION_REVIEW.md",
+    "youtube_upload_pack": "docs/YOUTUBE_UPLOAD.md",
+    "codex_review_agents": 3,
+    "review_rounds": 2,
+    "youtube_url_verified": false,
+    "organizer_exception_verified": false,
+    "deadline_extension_verified": false,
+    "aws_submission_criterion_accepted": false,
+    "event_submission_verified": false,
+    "application_logic_changed": false
+  },
   "product": "JalRakshak",
   "workspace_name": "SAANS",
   "package_kind": "WORKING_LOCAL_OBSERVED_PROTOTYPE",
