@@ -161,6 +161,6 @@ This is **v0.2.2, a working local prototype**. Real sensor logs, calibration, ca
 
 Development began October 1, 2026, before the published October 8 event start. This pre-event build cannot be claimed eligible under the [current project-start rule](https://www.wemakedevs.org/aws/env/rules) without organizer clarification. Original dates and Git history are preserved.
 
-Solo project with OpenAI Codex assistance for development and review. Brag/HyperFrames composed the video; Kokoro supplied synthetic narration. [Video credits](docs/DEMO_VIDEO.md) and [screenshot provenance](docs/images/README.md) identify presentation assets.
+Solo project with OpenAI Codex assistance for development and review. Kokoro supplied synthetic narration. [Video credits](docs/DEMO_VIDEO.md) and [screenshot provenance](docs/images/README.md) identify presentation assets.
 
 Original domain code and SVG assets are released under the [MIT license](LICENSE). Reference repositories informed research only; licensed dependency code retains its own [notices and attribution](THIRD_PARTY_NOTICES.md).

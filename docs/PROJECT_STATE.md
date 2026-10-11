@@ -6,6 +6,13 @@ Updated October 11, 2026 · Asia/Kolkata. **Version 0.2.2: WORKING_LOCAL_OBSERVE
 
 The user asked to fix the independent review and continue the original water-operations app in this workspace. Scope remains one caretaker, one tank and one incident loop. Winner repositories informed research; their restricted or unlicensed code was not copied. Preserve actual October 1–3 development dates and unresolved event-start eligibility.
 
+## October 11 README wording and YouTube description
+
+- User requested removal of only the Brag/HyperFrames video-production mention from the main README. Removed that clause; the rest of the README, synthetic-narration disclosure and detailed asset/license credits are unchanged.
+- Prepared a shorter YouTube description focused on the caretaker problem, demonstrated workflow, actual local stack and source-only AWS integration. Retained simulated-data, synthetic-narration and AI-coding disclosures. The submission form answers are unchanged; a separate read-only editorial agent found no must-fix factual issue.
+- Re-read the published event rules: no video-production-tool ban is stated. AI coding tools must be disclosed and reused work credited. This wording change does not resolve the previously documented eligibility or AWS evidence gaps. The description is prepared for the user to paste; no authenticated YouTube account edit was performed.
+- Verification passed: 51 local Markdown links, all 16 existing image/media hashes and an exact README comparison confirming only the requested clause was removed. Detailed credits remain present; application code and media bytes are unchanged. No application tests or new ZIP are needed for this documentation-only milestone. Publish the docs to the already-authorized public repository; next optional action is applying the prepared YouTube description.
+
 ## October 11 user-supplied YouTube demo
 
 - User supplied https://youtu.be/zM4BsdQfPdg after publishing the strengthened repository. Fresh signed-out Chromium confirmed title JalRakshak, video ID zM4BsdQfPdg, player status OK and advancing playback from 1.40s to 3.41s. Metadata reports 174 seconds; media element 174.041 seconds, below three minutes. The first scene matches the generated JalRakshak demo. Human listening was not performed; playback was muted. Evidence: artifacts/youtube-demo-verification.json.

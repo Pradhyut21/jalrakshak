@@ -19,16 +19,16 @@ JalRakshak | Water-Supply Planning for a Hostel Caretaker | 2:54 Demo
 
 ## Description to copy
 
-Water supply takes time. JalRakshak helps one hostel caretaker turn tank readings and supply lead time into a planning deadline before the reserve runs low, then follow an abnormal-depletion incident through approval and fresh-reading recovery.
+Water supply takes time. JalRakshak helps one hostel caretaker decide when to arrange delivery before the tank reserve runs low.
 
-This video demonstrates the working local React/TypeScript, FastAPI and SQLite prototype using fictional, visibly simulated tank readings. An empty observed workspace supports operator-entered logs and CSV import. Forecasts require a declared reading-error bound; missing or stale evidence stays UNKNOWN. Incident recovery requires three fresh normal post-intervention readings and adequate modeled margin.
+This 2:54 demo shows reserve forecasting, delayed-delivery previews, abnormal-depletion alerts, caretaker-approved local notices and recovery checks using fresh readings. Forecasting requires a declared reading-error bound; missing or stale data stays UNKNOWN.
 
-AWS integration source includes an optional boto3 DynamoDB repository, Lambda handler and AWS SAM template for API Gateway, Lambda, DynamoDB and CloudWatch Logs. Live AWS execution has not been verified; the recorded demo uses SQLite.
+Built with React/TypeScript, FastAPI and SQLite. The repository includes AWS SAM, Lambda, API Gateway and DynamoDB integration source; live AWS deployment remains unverified.
 
-Source, README, evaluation and licenses:
+GitHub:
 https://github.com/Pradhyut21/jalrakshak
 
-Solo project with AI-assisted development and review using OpenAI Codex. Narration is synthetic Kokoro audio; video composition uses Brag/HyperFrames. No real sensor, caretaker pilot or measured water savings are claimed. Development began October 1, before the event start; event eligibility and acceptance remain unresolved.
+Demo readings are simulated. Built solo with OpenAI Codex assistance; narration is synthetic.
 
 0:00 Water supply takes time
 0:12 One caretaker, one tank
@@ -43,6 +43,8 @@ Solo project with AI-assisted development and review using OpenAI Codex. Narrati
 2:38 Next evidence milestone
 
 ## Optional updates in YouTube Studio
+
+The concise description above focuses on the demo. Development dates and unresolved event eligibility remain documented in the repository and [submission draft](SUBMISSION_DRAFT.md); presentation dependencies retain their [credits and licensing](DEMO_VIDEO.md). The [published event rules](https://www.wemakedevs.org/aws/env/rules) reviewed on October 11 do not state a ban on video-production tools.
 
 1. Listen to the uploaded video, particularly the narration and service names; human listening and accent quality have not yet been independently verified. The audio is synthetic, not a real human recording.
 2. Open the existing video in your channel's YouTube Studio. Apply the title and description above, optionally add the thumbnail and SRT, and keep visibility **Unlisted** or **Public**. Answer YouTube's audience/content prompts truthfully for this video.
