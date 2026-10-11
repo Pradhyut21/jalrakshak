@@ -6,6 +6,13 @@ Updated October 11, 2026 · Asia/Kolkata. **Version 0.2.2: WORKING_LOCAL_OBSERVE
 
 The user asked to fix the independent review and continue the original water-operations app in this workspace. Scope remains one caretaker, one tank and one incident loop. Winner repositories informed research; their restricted or unlicensed code was not copied. Preserve actual October 1–3 development dates and unresolved event-start eligibility.
 
+## October 11 custom YouTube thumbnail
+
+- Created a standalone thumbnail with the built-in image-generation tool: forest/ivory identity, “ACT BEFORE RESERVE RUNS LOW”, LOCAL PROTOTYPE and a stylized tank/reserve line. The tank is a concept illustration, not actual hardware or an app screenshot; no readings, metrics or AWS execution are implied.
+- Exported docs/images/youtube-thumbnail.jpg at 1280×720 RGB JPEG, 187,861 bytes, below the 2 MB mobile upload limit. Preserved the original generated PNG locally in deliverables/youtube-thumbnail-output. Full prompt, source/export hashes and provenance are in docs/images/youtube-thumbnail.json; original image/media manifests retain their existing scope.
+- Independent read-only visual review passed; root inspected the 320×180 mobile preview and confirmed the headline remains readable. Updated upload instructions, demo page, asset provenance and package readiness. No channel edit was performed and thumbnail application is unverified. Next: select the JPG in the existing video's YouTube Studio thumbnail field and Save.
+- Final checks passed: 68 local document links, the new JPEG's size/dimensions/hash, source-image hash, package/provenance JSON consistency, all 16 original image/media hashes and Git whitespace. Application code, forecast/detector parameters and original video bytes are unchanged. This is a presentation-only milestone; no application test run or new ZIP is implied. Publication completes delivery to the already-authorized repository.
+
 ## October 11 README wording and YouTube description
 
 - User requested removal of only the Brag/HyperFrames video-production mention from the main README. Removed that clause; the rest of the README, synthetic-narration disclosure and detailed asset/license credits are unchanged.

@@ -121,6 +121,10 @@
     "youtube_publication_source": "USER_SUPPLIED_URL_SIGNED_OUT_PLAYBACK_VERIFIED",
     "youtube_url": "https://youtu.be/zM4BsdQfPdg",
     "event_submitted": false,
+    "youtube_thumbnail_ready": true,
+    "youtube_thumbnail": "docs/images/youtube-thumbnail.jpg",
+    "youtube_thumbnail_provenance": "docs/images/youtube-thumbnail.json",
+    "youtube_thumbnail_applied_verified": false,
     "application_logic_changed": false
   }
 }

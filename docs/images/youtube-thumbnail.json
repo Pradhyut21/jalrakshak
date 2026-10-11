@@ -1,0 +1,45 @@
+{
+  "created_at_utc": "2026-10-11T18:27:48.724802+00:00",
+  "scope": "Standalone YouTube thumbnail; separate from the original video and eight front-page image manifests",
+  "asset_type": "AI_GENERATED_CONCEPT_ILLUSTRATION",
+  "generator": "Built-in image_gen tool",
+  "actual_hardware_or_app_screenshot": false,
+  "illustrated_readings_are_operational_evidence": false,
+  "image": {
+    "file": "docs/images/youtube-thumbnail.jpg",
+    "width": 1280,
+    "height": 720,
+    "format": "JPEG",
+    "mode": "RGB",
+    "bytes": 187861,
+    "sha256": "189dd0ffb99691706aa9aba6992857dcad2c8ce0f7b50aae7b06380ce6503a3e"
+  },
+  "generated_source": {
+    "width": 1672,
+    "height": 941,
+    "sha256": "ad7944b986c1231d8af39a4f73f6cfc5940c56e23fe914c179d055344c5b6c7d",
+    "bytes": 1672102,
+    "retained_locally": "deliverables/youtube-thumbnail-output/generated-thumbnail.png",
+    "tracked_in_public_repository": false
+  },
+  "export": "FFmpeg Lanczos resize to 1280x720 JPEG; no creative edits after generation",
+  "exact_text": [
+    "JalRakshak",
+    "ACT BEFORE",
+    "RESERVE",
+    "RUNS LOW",
+    "LOCAL PROTOTYPE"
+  ],
+  "prompt": "Create one polished YouTube thumbnail for JalRakshak, a local water-supply planning prototype for one hostel caretaker. Use case: ads-marketing. Output intent: a finished wide 16:9 raster thumbnail, target 1280 x 720 pixels, crisp professional finish, opaque background. Design: dark forest green background (#173d37 to #244f46), warm ivory typography (#fafaf3), pale mint accent (#c8e7bb), restrained amber accent. Premium editorial tech aesthetic with bold clean typography and a single beautifully rendered stylized 3D water tank. Layout: left 58% holds text, right 42% holds a large transparent cylindrical water tank with believable mint water, a clearly visible amber reserve threshold around its lower quarter, and water visibly ABOVE that threshold. The tank is conceptual illustration, not a real installation or an app screenshot. Subtle depth and reflected light, readable silhouette at tiny mobile scale, no busy scenery. Exact text, correctly spelled and no additional words: brand 'JalRakshak' near upper left in a bold clean sans serif; dominant giant headline split into three lines 'ACT BEFORE' / 'RESERVE' / 'RUNS LOW', with RESERVE pale mint and other headline lines ivory; a modest pill 'LOCAL PROTOTYPE' near lower left. Use thick large text with generous spacing, no clipping. All important content at least 6% inside edges; keep bottom right clear for YouTube's time badge. Strong visual hierarchy and clear thumbnail-sized readability. Do not include numbers, forecasts, metrics, AWS logos, official logos, awards, people, interfaces, fake screenshots, charts, water-savings claims, alarm icons, photorealistic disaster imagery, tiny text, watermarks or extra copy. Make it attention-grabbing through contrast and clarity, not misleading claims.",
+  "review": {
+    "independent_visual_review": "PASS",
+    "preview_width": 320,
+    "preview_height": 180,
+    "headline_spelling": "PASS",
+    "legibility": "PASS",
+    "file_under_two_mb": true
+  },
+  "youtube_account_thumbnail_update_performed": false,
+  "expected_upload_target": "https://youtu.be/zM4BsdQfPdg",
+  "requirements_source": "https://support.google.com/youtube/answer/72431"
+}

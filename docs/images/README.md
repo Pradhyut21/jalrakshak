@@ -12,3 +12,9 @@ The four PNG files are unchanged copies of actual local interface captures from 
 | `unknown.png` | `13-empty-observed-unknown.png` | Empty local observed workspace captured for presentation; no actual tank log, reading, deadline or projection. |
 
 The original editable video delivery retains the capture evidence and source images outside the public repository. [manifest.json](manifest.json) records these eight published visual files, their sizes and hashes; it is not an application ZIP integrity manifest. The older [video media manifest](../media/manifest.json) retains its existing scope and bytes.
+
+## YouTube thumbnail
+
+[youtube-thumbnail.jpg](youtube-thumbnail.jpg) is a separate AI-generated concept illustration created with the built-in image-generation tool on October 11. Its tank is illustrative; it is not real hardware, an application screenshot or observed sensor evidence. The headline is “ACT BEFORE RESERVE RUNS LOW” with a visible LOCAL PROTOTYPE label. No AWS execution or measured impact is depicted.
+
+The upload export is an RGB JPG at 1280×720, 187,861 bytes. A read-only independent visual review and 320×180 inspection passed for headline spelling and legibility. [youtube-thumbnail.json](youtube-thumbnail.json) records the full generation prompt, source/export sizes and SHA-256 hashes. The source PNG is retained locally outside Git. This additional asset does not change the eight-file front-page manifest or original video media manifest. Upload instructions are in the [YouTube pack](../YOUTUBE_UPLOAD.md).

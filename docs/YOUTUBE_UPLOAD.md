@@ -7,11 +7,13 @@ At the signed-out check, the title was “JalRakshak” and the page showed no d
 ## Ready assets
 
 - Video: [JalRakshak-Demo.mp4](media/JalRakshak-Demo.mp4), 2 minutes 54 seconds, 1920×1080, narrated with captions.
-- Thumbnail: [demo-poster.jpg](media/demo-poster.jpg).
+- Recommended thumbnail: [youtube-thumbnail.jpg](images/youtube-thumbnail.jpg), 1280×720 JPG, 187,861 bytes. Bold headline and a conceptual tank illustration; [prompt and provenance](images/youtube-thumbnail.json). The [original video poster](media/demo-poster.jpg) remains available.
 - Subtitle file: [JalRakshak-Demo.srt](media/JalRakshak-Demo.srt), English with approximate phrase timing.
 - Optional social clip: [JalRakshak-Launch.mp4](media/JalRakshak-Launch.mp4), 22 seconds. Use the full demo for the required form field.
 
 On the creation workspace, the upload file is `D:\SAANS\docs\media\JalRakshak-Demo.mp4`. Public repository copies can be downloaded from the links above.
+
+The recommended thumbnail is saved at `D:\SAANS\docs\images\youtube-thumbnail.jpg`. In YouTube Studio, open the existing video, choose **Thumbnail → Upload file**, select this JPG and click **Save**. [YouTube's instructions](https://support.google.com/youtube/answer/72431) require a verified account for custom thumbnails; this file is below the 2 MB mobile limit and uses the recommended 16:9 ratio. Codex prepared the file but did not change the channel's thumbnail.
 
 ## Suggested title
 

@@ -4,7 +4,9 @@
 
 The [downloadable full demo](media/JalRakshak-Demo.mp4) and [22-second launch clip](media/JalRakshak-Launch.mp4) use the actual October 11 application interface in isolated simulated sessions. Both source files are 1080p at 30 fps, with quiet original music, narrated audio and captions. YouTube transcoding is separate from these local-file properties.
 
-![Demo thumbnail](media/demo-poster.jpg)
+![YouTube thumbnail: JalRakshak, act before reserve runs low, local prototype](images/youtube-thumbnail.jpg)
+
+The thumbnail is an AI-generated conceptual illustration, not a tank photograph or application screenshot. [Prompt, export details and hashes](images/youtube-thumbnail.json). The [original video poster](media/demo-poster.jpg) and original video bytes remain unchanged. The custom thumbnail is prepared for upload; applying it to the user's channel has not been verified.
 
 The narration is synthetic Kokoro `hm_omega` (a Hindi male preset) with English phonemization. It is not a human recording. Timing/signal checks passed; human listening, naturalness, pronunciation and exact accent quality have not been independently assessed. The signed-out playback check was muted and did not assess narration quality. The [SRT captions](media/JalRakshak-Demo.srt) use approximate phrase alignment.
 
