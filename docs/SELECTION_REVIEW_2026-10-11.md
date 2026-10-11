@@ -47,6 +47,8 @@ See [evaluation](EVALUATION.md), [evaluator](../scripts/backtest_reserve.py) and
 
 **Publication follow-up, October 11:** the user authorized pushing to `Pradhyut21/jalrakshak`. Before publication, corrected the indicator to require the current incident ID and added the existing backend field to the frontend Action type. Production build and type checking pass. Five focused Chromium/HTTP checks observe no incident, an old pre-incident approval, a newly opened incident, a pending current proposal and a correctly approved current incident. The first two check attempts exposed test assertion assumptions about class whitespace and an absent optional key; those assertions were corrected, and the passing report is `artifacts/incident-progress-verification.json`. Earlier failed reports remain in the excluded local verification-history directory. No algorithm, approval authorization or incident-recovery behavior changed. The October 3 ZIP remains unchanged and does not contain this later Git-source correction.
 
+Source publication subsequently succeeded on `main` at commit `eaa9dc76281c67228bc1237204f941ec652cc1e4`, verified against the remote Git ref and signed-out public access. The original history and development dates remain visible. The public-repository requirement is now addressed; this does not resolve the other eligibility, demonstration or submission gaps recorded at review time.
+
 Fresh check command:
 
 ```powershell

@@ -64,7 +64,10 @@
   "latest_archive_includes_repository_patch": false,
   "git_publication": {
     "repository": "https://github.com/Pradhyut21/jalrakshak",
-    "status": "READY_TO_PUSH",
+    "status": "PUBLISHED",
+    "branch": "main",
+    "verified_source_commit": "eaa9dc76281c67228bc1237204f941ec652cc1e4",
+    "verified_on": "2026-10-11",
     "original_history_preserved": true
   }
 }
