@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-11T12:44:26.345816+00:00",
+  "tool": "Playwright / Chromium",
+  "checks": [
+    "No incident has no completed approval step",
+    "An approved pre-incident notice does not complete approval without an incident",
+    "A new OPEN incident remains visually unapproved despite a historical local receipt",
+    "An unapproved proposal for the current incident does not complete approval",
+    "Approval of the current incident completes its step with a local receipt only"
+  ],
+  "unexpected_page_errors": [],
+  "failure": null,
+  "test_inputs": "Isolated generated SIMULATED_DEMO session, not field data",
+  "limits": "Focused browser/HTTP regression; no full browser suite, AWS or external notification check"
+}

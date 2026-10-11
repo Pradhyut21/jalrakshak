@@ -4,6 +4,8 @@ A working local water-operations app for one caretaker and one tank: record stor
 
 **Version 0.2.2.** Start with the simulated demonstration, or open an empty local workspace for operator-entered tank logs. Actual entries remain unverified; no connected sensor, validated caretaker pilot or cloud deployment is claimed.
 
+The Git source includes an October 11 correction: the incident's approval indicator uses only actions associated with that incident. Five focused Chromium/HTTP checks and the production build pass. Earlier full-suite reports and the October 3 ZIP describe their recorded application bytes; the ZIP does not include this later correction. See the [selection review](docs/SELECTION_REVIEW_2026-10-11.md).
+
 ## Run
 
 Use Python 3.13 and Node.js 22.18+ with npm. From the extracted project root:
@@ -46,6 +48,8 @@ The deadline is assumption-dependent. In the original synthetic 48-hour holdout,
 ```
 
 Build the interface with `npm ci` and `npm run build` in frontend. On Windows install the test browser with `.venv/Scripts/python.exe -m playwright install chromium`, then run `.venv/Scripts/python.exe scripts/browser_check.py http://127.0.0.1:8012` against the running app (adjust the URL to its port).
+
+Run `.venv/Scripts/python.exe scripts/check_incident_progress.py` after building for the focused approval regression. It starts and stops its own loopback server with a temporary database and generated demo records.
 
 Read [AI_HANDOFF.md](AI_HANDOFF.md) and [active checkpoint](docs/PROJECT_STATE.md) to continue. [REVIEW_THIS_PROJECT.md](REVIEW_THIS_PROJECT.md) provides an independent review entry; [review fixes](docs/REVIEW_RESPONSE.md) map the reported defects to changes and remaining gaps.
 

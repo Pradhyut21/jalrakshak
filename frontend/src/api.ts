@@ -37,7 +37,7 @@ export interface Analysis {
 export interface Action {
   id: string; type: string; status: string; created_at: string; approved_at: string | null;
   published_at: string | null; receipt_at: string | null; evidence_version: number;
-  message: string; destination: string;
+  message: string; destination: string; incident_id?: string | null;
 }
 export interface Incident {
   id: string; status: string; opened_at: string; intervention_at: string | null;

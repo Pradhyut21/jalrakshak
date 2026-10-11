@@ -3,18 +3,22 @@
   "product": "JalRakshak",
   "workspace_name": "SAANS",
   "package_kind": "WORKING_LOCAL_OBSERVED_PROTOTYPE",
-  "updated_on": "2026-10-03",
+  "updated_on": "2026-10-11",
   "timezone": "Asia/Kolkata",
   "implementation_started_on": "2026-10-01",
   "application_implemented": true,
   "data_kind": "SIMULATED_DEMO_OR_UNVERIFIED_LOCAL_OPERATOR_RECORDS",
   "local_workflow_verified": true,
   "backend_tests": {
+    "checked_on": "2026-10-03",
+    "scope": "Historical complete backend suite; 41 targeted checks also passed October 11",
     "passed": 186,
     "failed": 0,
     "dependency_deprecation_warnings": 2
   },
   "browser_checks": {
+    "checked_on": "2026-10-03",
+    "scope": "Historical full suite, before the October 11 incident-progress correction",
     "status": "PASS",
     "passed": 31,
     "unexpected_page_errors": 0
@@ -46,5 +50,21 @@
   "measurement_error_plausibility_warning_implemented": true,
   "measurement_error_review_threshold_percent": 0.5,
   "measurement_error_review_threshold_kind": "NONBLOCKING_UNCALIBRATED_HEURISTIC",
-  "feature_scope_frozen": true
+  "feature_scope_frozen": true,
+  "repository_patch": "2026-10-11-current-incident-approval-display",
+  "frontend_build_checked_on": "2026-10-11",
+  "incident_progress_checks": {
+    "status": "PASS",
+    "passed": 5,
+    "unexpected_page_errors": 0,
+    "report": "artifacts/incident-progress-verification.json"
+  },
+  "full_browser_suite_current_patch_verified": false,
+  "latest_archive_on": "2026-10-03",
+  "latest_archive_includes_repository_patch": false,
+  "git_publication": {
+    "repository": "https://github.com/Pradhyut21/jalrakshak",
+    "status": "READY_TO_PUSH",
+    "original_history_preserved": true
+  }
 }

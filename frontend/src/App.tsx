@@ -161,10 +161,12 @@ function Timeline({ dashboard, compact = false }: { dashboard: Dashboard; compac
 
 function IncidentProgress({ dashboard }: { dashboard: Dashboard }) {
   const { incident, actions } = dashboard;
-  const notified = actions.some(action => ['LOCAL_RECEIVED', 'PUBLISHED'].includes(action.status));
+  const approved = !!incident && actions.some(action =>
+    action.incident_id === incident.id
+    && (['LOCAL_RECEIVED', 'PUBLISHED'].includes(action.status) || !!action.approved_at));
   const steps = [
     { label: 'Detected', active: !!incident },
-    { label: 'Request approved', active: notified || actions.some(action => action.approved_at) },
+    { label: 'Request approved', active: approved },
     { label: 'New observations', active: !!incident?.intervention_at && dashboard.analysis.history.some(point => new Date(point.at).getTime() > new Date(incident.intervention_at!).getTime()) },
     { label: 'Verified recovery', active: incident?.status === 'RESOLVED' },
   ];

@@ -1,10 +1,19 @@
 # Active JalRakshak checkpoint
 
-Updated October 11, 2026 · Asia/Kolkata. **Version 0.2.2: WORKING_LOCAL_OBSERVED_PROTOTYPE. October 3 application milestone unchanged; selection review complete, feature scope frozen pending real evidence.**
+Updated October 11, 2026 · Asia/Kolkata. **Version 0.2.2: WORKING_LOCAL_OBSERVED_PROTOTYPE. Selection review complete; a small incident-approval display correction is verified for Git publication. Feature scope remains frozen pending real evidence.**
 
 ## Objective and decisions
 
 The user asked to fix the independent review and continue the original water-operations app in this workspace. Scope remains one caretaker, one tank and one incident loop. Winner repositories informed research; their restricted or unlicensed code was not copied. Preserve actual October 1–3 development dates and unresolved event-start eligibility.
+
+## October 11 Git publication preparation
+
+- User authorized pushing truthful source/history to https://github.com/Pradhyut21/jalrakshak. Destination verified public and empty with no branches/rulesets. Existing October2 commits and October1 implementation record remain intact. Git push is pending final integration; no event submission or organizer message is authorized by this repository push.
+- Corrected the review's UI approval association: IncidentProgress requires an existing current incident and an action with matching incident_id plus approval/receipt evidence. An earlier pre-incident or unrelated approval cannot complete the current step. Added the existing optional incident_id to the frontend Action interface; backend behavior and frozen forecasts are unchanged.
+- `npm.cmd run typecheck` and `npm.cmd run build` pass. Eight focused actual-source predicate cases pass. `.venv/Scripts/python.exe -B scripts/check_incident_progress.py`: **5 Chromium/HTTP checks pass**, zero JavaScript errors, using an isolated temporary SQLite database and generated simulated records. Actual pre-incident approval, new OPEN incident, pending proposal and current approval are exercised. Two initial test assertion errors (class whitespace and an absent optional key) were corrected; failed reports are preserved under excluded deliverables/verification-history.
+- Full backend/browser suites and fresh installation were not rerun for this frontend correction. October3 reports remain historical; the new focused report is `artifacts/incident-progress-verification.json`. No new ZIP was made; the October3 archive does not include this later Git-source patch.
+- Publishing audit found no credential-pattern matches or private-reference/runtime paths in tracked files or history; this is a pattern scan, not a universal guarantee. Untracked browser-failure.png stays excluded.
+- Next: complete and verify the authorized repository push; organizer eligibility ruling, real AWS demonstration and a compliant recorded demo remain separate unfinished requirements.
 
 ## October 11 selection review
 
@@ -12,7 +21,7 @@ The user asked to fix the independent review and continue the original water-ope
 - Current rules still exclude pre-event projects, including rewrites. User confirmed no written organizer acceptance, public repository, YouTube demo or AWS execution proof. The organizer's October 6 announcement specifies October 11 at8PM IST; the schedule remains less precise. Account eligibility and submission receipt remain unverified.
 - The user authorized GitHub committing/publishing. Preserve the October2 commits and October1 implementation record. An October11 commit cannot make the project event-eligible; concealing or rewriting these dates is not an authorized implementation path. No organizer message or submission is sent by this review.
 - Fresh read-only targeted checks: `.venv/Scripts/python.exe -B -m pytest -q -p no:cacheprovider backend/tests/test_domain.py backend/tests/test_evaluation.py backend/tests/test_reserve_backtest.py`: **41 passed in58.25 seconds**. Exact evaluation reproduction and an in-memory incident loop were observed. Offline infrastructure checker passes static AST only. Full backend/browser suites, installation and AWS execution were not rerun; October3 results below remain historical.
-- Newly reproduced, unfixed UI issue: IncidentProgress marks request approval from an unrelated historical action. A pre-incident notice can make a new OPEN incident appear approved; backend incident binding remains correct. See App.tsx:164. Address this before using that indicator as workflow evidence. No application source or frozen parameters changed in this review.
+- The selection review reproduced a UI issue: IncidentProgress marked request approval from an unrelated historical action. The subsequent publication-preparation correction above fixes it. Backend binding and frozen parameters remain unchanged.
 - Next: organizer eligibility ruling; if accepted, actual AWS demonstration and truthful public repository/video/writeup/submission receipt. Real tank evidence and caretaker usefulness remain the later product milestone. No selection odds or award promised. Existing October3 ZIPs are unchanged; no new archive is delivered.
 
 ## October 3 plausibility-warning patch
