@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="250" viewBox="0 0 1200 250" role="img" aria-labelledby="title description">
+  <title id="title">JalRakshak — make the next water decision clearer</title>
+  <desc id="description">Water-supply planning for one hostel caretaker. Plan supply, review the action and check recovery with fresh readings. Version 0.2.2, local prototype.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#173d37"/>
+      <stop offset="1" stop-color="#244f46"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="250" rx="20" fill="url(#background)"/>
+  <path d="M700 220C850 128 990 286 1200 179M770 170C944 67 1050 228 1220 103M839 114C970 30 1104 127 1216 42" fill="none" stroke="#92b5a6" stroke-width="1.5" opacity="0.25"/>
+  <rect x="48" y="46" width="66" height="66" rx="19" fill="#c8e7bb"/>
+  <g transform="translate(55 50) scale(1.1)">
+    <path d="M24 8c-3 6-12 15-12 22a12 12 0 0 0 24 0c0-7-9-16-12-22Z" fill="#173d37"/>
+    <path d="M18 30c0 4 3 6 6 6" stroke="#c8e7bb" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="134" y="65" font-size="12" font-weight="600" letter-spacing="3" fill="#c8e7bb">CARE FOR EVERY DROP</text>
+    <text x="132" y="113" font-size="47" font-weight="650" letter-spacing="-1.4" fill="#fafaf3">JalRakshak</text>
+    <text x="48" y="164" font-size="26" font-weight="500" fill="#fafaf3">Make the next water decision clearer.</text>
+    <text x="48" y="202" font-size="17" fill="#c8dfd4">One caretaker. One tank. A complete incident loop.</text>
+    <rect x="850" y="42" width="300" height="31" rx="15.5" fill="#365f52"/>
+    <text x="1000" y="63" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="1.1" fill="#e0efd7">v0.2.2 · LOCAL PROTOTYPE</text>
+    <text x="862" y="118" font-size="15" font-weight="700" fill="#c8e7bb">01</text>
+    <text x="900" y="118" font-size="19" fill="#fafaf3">Plan supply</text>
+    <text x="862" y="159" font-size="15" font-weight="700" fill="#c8e7bb">02</text>
+    <text x="900" y="159" font-size="19" fill="#fafaf3">Review the action</text>
+    <text x="862" y="200" font-size="15" font-weight="700" fill="#c8e7bb">03</text>
+    <text x="900" y="200" font-size="19" fill="#fafaf3">Check fresh readings</text>
+  </g>
+</svg>

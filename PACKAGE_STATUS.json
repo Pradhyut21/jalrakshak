@@ -1,5 +1,16 @@
 {
   "schema_version": 3,
+  "repository_presentation": {
+    "updated_on": "2026-10-11",
+    "readme": "README.md",
+    "visual_manifest": "docs/images/manifest.json",
+    "about_metadata_updated_and_verified": true,
+    "homepage_points_to_demo_documentation": true,
+    "relevant_topics": 9,
+    "visual_assets": 8,
+    "application_logic_changed": false,
+    "aws_deployment_claimed": false
+  },
   "submission_preparation": {
     "status": "REVIEWED_DRAFT_NOT_SUBMITTED",
     "prepared_on": "2026-10-11",

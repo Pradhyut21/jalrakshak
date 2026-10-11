@@ -1,0 +1,48 @@
+{
+  "created_at_utc": "2026-10-11T18:03:08.566715+00:00",
+  "scope": "Eight repository front-page visuals; not an application archive manifest",
+  "data_kind": "SIMULATED_DEMO_OR_EMPTY_CAPTURE_WORKSPACE",
+  "application_source_baseline": "eaa9dc76281c67228bc1237204f941ec652cc1e4",
+  "files": [
+    {
+      "file": "banner.svg",
+      "bytes": 2399,
+      "sha256": "3bb27e6fbc7e4ec6dc6355332f49858d253bac19f25762674d368b0c31f635d4"
+    },
+    {
+      "file": "status.svg",
+      "bytes": 483,
+      "sha256": "7ebb8bf66bcf000e189b368ca3988510a0301f0e86a418db90d611bda68ddf4b"
+    },
+    {
+      "file": "license.svg",
+      "bytes": 472,
+      "sha256": "378ebfac89d9d0f8467c084e494363aff0cb64462cf6882fddf59d7dd9828edc"
+    },
+    {
+      "file": "source-ci.svg",
+      "bytes": 701,
+      "sha256": "d0bb5b335e22cfefe0c9504e409b1028d3b847ec7031c4d1be9e6dfc6c9ba74c"
+    },
+    {
+      "file": "dashboard.png",
+      "bytes": 247632,
+      "sha256": "55ceb70e8adea4e59a4d26037d6e5e7d98e0469c0ca58e673be06c65043233d6"
+    },
+    {
+      "file": "incident.png",
+      "bytes": 329697,
+      "sha256": "038d692f51fd2b224c8f75ad5d7a68debf40774934215c7334de96437f4863b1"
+    },
+    {
+      "file": "recovery.png",
+      "bytes": 44791,
+      "sha256": "af910c37b630d7e71377cb1e5ce5056370fc0a78dd32011fe01afbebfbfeb96a"
+    },
+    {
+      "file": "unknown.png",
+      "bytes": 317444,
+      "sha256": "60cf5876483cd311005c202cd8606bcd6ae819b519d79dfbd154682824a34103"
+    }
+  ]
+}

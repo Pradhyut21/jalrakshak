@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="238" height="22" role="img" aria-labelledby="title description">
+  <title id="title">Application source CI passed October 11, 2026</title>
+  <desc id="description">Static dated evidence badge. Refers to the verified application-source run at eaa9dc7; does not claim a fresh check of later documentation commits.</desc>
+  <rect width="238" height="22" rx="3" fill="#173d37"/>
+  <path d="M78 0h157a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H78Z" fill="#2f805b"/>
+  <g fill="#fff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+    <text x="39" y="15">app source CI</text><text x="158" y="15">Oct 11, 2026 · passed</text>
+  </g>
+</svg>
